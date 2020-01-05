@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/templates/project/post_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evbi/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/post_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/post_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +89,7 @@
       <workItem from="1577548767362" duration="978000" />
       <workItem from="1578039007872" duration="686000" />
       <workItem from="1578076440162" duration="4027000" />
-      <workItem from="1578218475873" duration="6626000" />
+      <workItem from="1578218475873" duration="8637000" />
     </task>
     <servers />
   </component>
