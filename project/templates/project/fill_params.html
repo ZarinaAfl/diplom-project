@@ -1,0 +1,47 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+    <h3>Заполнение дополнительных параметров для интервенции "{{ interv.name }}"</h3>
+    {% comment %}
+    {% url 'fls:load_request' comp.id %}"
+{% endcomment %}
+    <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 3em">
+        {% csrf_token %}
+        {% for p in params %}
+            <div class="data_param">
+                <h5>Параметр "{{ p.name }}"</h5>
+                {% if p.type == 1 %}
+                    <div class="form-group">
+                        <label>Введите число
+                            <input type="number" class="form-control numb" name="sp_{{ sp.id }}"
+                                   id="sp_{{ sp.id }}">
+                        </label>
+                    </div>
+                {% endif %}
+
+                {% if p.type == 2 %}
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Введите текст</label>
+                        <textarea class="form-control" name="sp_{{ sp.id }} id=" exampleFormControlTextarea1"
+                        rows="3"></textarea>
+                    </div>
+                {% endif %}
+
+                {% if p.type == 3 or p.type == 4 %}
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Загрузите {% if p.type == 3%} файл {% else %} изображение{% endif %}</label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </form>
+                {% endif %}
+
+            </div>
+        {% endfor %}
+        <button type="submit" id="submit" class="save btn btn-default" style="margin: 0 auto !important;">Сохранить
+        </button>
+
+    </form>
+
+
+{% endblock %}

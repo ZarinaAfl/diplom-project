@@ -1,0 +1,81 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+    <h1>Добавление интервенции</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        </a>
+        <button type="submit" id="submit" class="save btn btn-default">Сохранить</button>
+    </form>
+    <script>
+        $(document).ready(function () {
+            $('.container').on('click', '.add_subparam', function () {
+                var lastid = $(".subparam:last").attr("id");
+                var id = "subparam_" + (Number(lastid.split('_')[1]) + 1);
+                $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .subparam:last").attr("id")).after("<div class=\"subparam d-block\" id=\"" + id + "\"></div>");
+                $("#" + id).append("<a href=\"#\" class=\"close delete_subparam\" style=\"color: red;font-size: 34px; \" aria-label=\"Close\"\n" +
+                    "                   role=\"button\">&times;</a>\n" +
+                    "                <div class=\"row\" style=\"margin-left: 10px;\">\n" +
+                    "                    <div class=\"form-group col-md-5\">\n" +
+                    "                        <label style=\"font-size: 20px;\">Название\n" +
+                    "                            <input style=\"font-size: 20px; font-weight: lighter\" class=\"form-control\" type=\"text\"\n" +
+                    "                                   id=\"sub_text\">\n" +
+                    "                        </label>\n" +
+                    "                    </div>\n" +
+                    "                    <div class=\"form-group col-md-3\">\n" +
+                    "                        <label style=\"font-size: 20px;\">Тип данных\n" +
+                    "                            <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control type_subparam\"\n" +
+                    "                                    id=\"type_subparam\">\n" +
+                    "                                {% for t in types %}\n"+
+                        "                                    <option value=\"{{ t | first }}\">{{ t | last }}</option>\n"
+                        +
+                        "                                {% endfor %}\n" +
+                    "                            </select>\n" +
+                    "\n" +
+                    "                        </label>\n" +
+                    "                    </div>\n" +
+                    "                </div>\n" +
+                    "                <div class=\"row\" style=\"margin-left: 10px;\">\n" +
+                    "                    <div class=\"form-row drop_down_list\" hidden>\n" +
+                    "                        <div class=\"form-group col-md-6\">\n" +
+                    "                            <label style=\"font-size: 20px;\">Выберите необходимый список\n" +
+                    "                                <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control\"\n" +
+                    "                                        id=\"enum_subparam\">\n" +
+                    "                                    {% for e in enums %}\n"+
+                        "                                        <option value=\"{{ e.id }}\">{{ e.name }}</option>\n"+
+                        "                                    {% endfor %}\n" +
+                    "                                </select>\n" +
+                    "                            </label>\n" +
+                    "                        </div>\n" +
+                    "                    </div>\n" +
+                    "                </div>\n" +
+                    "                <div class=\"row\" style=\"margin-left: 10px;\">\n" +
+                    "                </div>");
+
+            });
+
+
+            $(".container").on('click', '#submit', function () {
+                var subparams = $(".subparam");
+                var data_subparams = [];
+                for (j = 0; j < subparams.length; j++) {
+                    var tmp = {
+                        "name": $(subparams[j]).find("#sub_text").val(),
+                        "type_subparam": $(subparams[j]).find("#type_subparam").val(),
+                    };
+                    data_subparams.push(tmp);
+                    console.log(data_subparams);
+                }
+                var result = {"subparams": data_subparams, csrfmiddlewaretoken: '{{ csrf_token }}'};
+                $.ajax({
+                    type: "post",
+                    data: result,
+                    success: function (response) {
+                    }
+                });
+            });
+
+        });
+    </script>
+{% endblock %}
+

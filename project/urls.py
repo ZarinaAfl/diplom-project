@@ -2,9 +2,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
-    path('post/<int:pk>/', views.post_detail, name='post_detail'),
-    path('post/new/', views.post_new, name='post_new'),
-    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
-
+    path('interv_list', views.interv_list, name='interv_list'),
+    path('intervention/<int:pk>/fill_params/', views.fill_params, name='fill_params'),
+    path('intervention/<int:pk>/', views.interv_detail, name='interv_detail'),
+    path('intervention/add/', views.interv_add, name = 'interv_add'),
+    path('intervention/<int:pk>/edit/', views.interv_edit, name='interv_edit'),
+    path('intervention/<int:pk>/add_parameters/', views.add_parameters, name='add_parameters'),
 ]

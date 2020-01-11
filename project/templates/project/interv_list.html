@@ -1,0 +1,16 @@
+{% extends 'project/base.html' %}
+
+{% block content %}
+    <a href="{% url 'interv_add' %}" style="font-size: 24px">
+        <span class="fas fa-plus add_subparam"></span>
+    </a>
+    {% for interv in intervs %}
+        <div class="interv">
+            <div class="date">
+                {{ interv.published_date }}
+            </div>
+            <h1><a href="{% url 'interv_detail' pk=interv.pk %}">{{ interv.name }}</a></h1>
+            <p>{{ interv.annotation|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

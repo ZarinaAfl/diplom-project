@@ -1,18 +1,11 @@
-h1 a {
-    color: #FCA205;
-    font-family: 'Lobster';
+textarea {
+  width: 300px;
+  height: 120px;
 }
 
-body {
-    padding-left: 15px;
+a {
+    color: #4f4f4f;
 }
-
-.page-header {
-    background-color: #ff9400;
-    margin-top: 0;
-    padding: 20px 20px 20px 40px;
-}
-
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
     font-size: 36pt;
@@ -21,10 +14,6 @@ body {
 
 .content {
     margin-left: 40px;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
 }
 
 .date {
@@ -53,3 +42,4 @@ h1, h2, h3, h4 {
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
+

@@ -1,9 +1,13 @@
 from django import forms
 
-from .models import Post
+from .models import Intervention, Param
 
 class PostForm(forms.ModelForm):
-
     class Meta:
-        model = Post
-        fields = ('name', 'annotation',)
+        model = Intervention
+        fields = ('name', 'annotation', 'sphere')
+
+class ParamForm(forms.ModelForm):
+    class Meta:
+        model = Param
+        fields = ('name', 'type')

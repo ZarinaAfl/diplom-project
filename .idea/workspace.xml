@@ -2,11 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/templates/project/post_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/static/js/post_edit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/templates/project/add_parameters.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/templates/project/interv_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/templates/project/interv_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/templates/project/interv_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/project.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/post_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/post_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/post_edit.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
@@ -22,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="Python Script" />
         <option value="HTML File" />
       </list>
@@ -38,14 +47,37 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/diploma" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django server.Diplom">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Diplom" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/project" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Diplom" type="Python.DjangoServer" factoryName="Django server">
       <module name="Diplom" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -69,6 +101,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -95,7 +132,7 @@
       <workItem from="1577548767362" duration="978000" />
       <workItem from="1578039007872" duration="686000" />
       <workItem from="1578076440162" duration="4027000" />
-      <workItem from="1578218475873" duration="19039000" />
+      <workItem from="1578218475873" duration="112493000" />
     </task>
     <servers />
   </component>
@@ -103,13 +140,51 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="233" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578220891081">
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578398482079">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="3" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1578220891081" />
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1578398482079" />
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1578388648587">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1578388648587" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1578731392908">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578731392908" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1578731392907">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578731392907" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1578731392907">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578731392907" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1578731392907">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578731392907" />
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1578218475772">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1578218475772" />
+    <state x="335" y="76" width="588" height="488" key="find.popup" timestamp="1578758826448">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="335" y="76" width="588" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1578758826448" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/views.py</url>
+          <line>71</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Diplom$test.coverage" NAME="test Coverage Results" MODIFIED="1578731372733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/project" />
   </component>
 </project>
