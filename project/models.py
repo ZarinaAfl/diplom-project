@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.utils import timezone
 
@@ -61,46 +62,28 @@ class Param(models.Model):
     def __str__(self):
         return "Параметр %s интервенции %s" % (self.name, self.intervention.name)
 
-'''
+
+fs = FileSystemStorage(location='/media/images')
+
 class ParamValue(models.Model):
-    param = models.ForeignKey(Param, related_name='param_values', on_delete=models.CASCADE, blank=False, null=False)
-    request = models.ForeignKey(Request, related_name='request_param_values',
-                                on_delete=models.CASCADE, blank=False, null=False)
+    param = models.ForeignKey(Param, related_name='param_values', on_delete=models.CASCADE, blank=False, null=False,
+                              verbose_name='Значение параметра')
     value = models.FloatField(default=0, blank=True, null=True)
     text = models.TextField(blank=True, null=True)
-    enum_val = models.ForeignKey(ValuesForEnum,
-                                 related_name='cur_value_enum_values', on_delete=models.SET_NULL,
-                                 blank=True, null=True)
-
-    class Meta:
-        unique_together = (('param', 'request'),)
-
-    def __str__(self):
-        return "%s - %s - %s" % (self.request.participant, self.param.name,
-                                 self.value)
+    #image = models.ImageField(storage=fs)
+    file = models.FileField(null=True, blank=True)
 
     def is_number(self):
         return self.param.type == 1
 
-    def is_text(self):
-        return self.param.type == 2
-
     def is_file(self):
         return self.param.type == 3
 
-    def is_photo(self):
+    def is_image(self):
         return self.param.type == 4
-
-    def is_enum(self):
-        return self.param.type == 5
-
-    def is_link(self):
-        return self.param.type == 6
 
     def get_name(self):
         return self.param.name
 
     def get_files(self):
         return self.files.all()
-
-'''

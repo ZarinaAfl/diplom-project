@@ -9,34 +9,38 @@
         {% csrf_token %}
         {% for p in params %}
             <div class="data_param">
-                <h5>Параметр "{{ p.name }}"</h5>
-                {% if p.type == 1 %}
-                    <div class="form-group">
-                        <label>Введите число
-                            <input type="number" class="form-control numb" name="sp_{{ sp.id }}"
-                                   id="sp_{{ sp.id }}">
-                        </label>
-                    </div>
-                {% endif %}
+            <h5>Параметр "{{ p.name }}"</h5>
+            {% if p.type == 1 %}
+                <div class="form-group">
+                    <label>Введите число
+                        <input type="number" class="form-control numb" name="sp_{{ p.id }}">
+                    </label>
+                </div>
+            {% endif %}
 
-                {% if p.type == 2 %}
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Введите текст</label>
-                        <textarea class="form-control" name="sp_{{ sp.id }} id=" exampleFormControlTextarea1"
-                        rows="3"></textarea>
-                    </div>
-                {% endif %}
+            {% if p.type == 2 %}
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Введите текст</label>
+                    <textarea class="form-control" name="sp_{{ p.id }}" id="exampleFormControlTextarea1"
+                              rows="3"></textarea>
+                </div>
+            {% endif %}
 
-                {% if p.type == 3 or p.type == 4 %}
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Загрузите {% if p.type == 3%} файл {% else %} изображение{% endif %}</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                    </form>
-                {% endif %}
+            {% if p.type == 3 or p.type == 4 %}
+                <div class="col-xs-12">
+                <div class="file">
+                    <label>Загрузите {% if p.type == 3 %} файл {% else %} изображение{% endif %}
+                        <input type="file" class="file-upload" name="file_{{ p.id }}">
+                    </label>
+                </div>
+                <br>
+                <a href="#" style="color: #1e7e34;font-size: 24px">
+                    <span class="glyphicon glyphicon-plus add_file_field"></span>
+                </a>
 
-            </div>
+            {% endif %}
+
+        </div>
         {% endfor %}
         <button type="submit" id="submit" class="save btn btn-default" style="margin: 0 auto !important;">Сохранить
         </button>
