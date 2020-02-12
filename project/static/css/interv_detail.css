@@ -1,0 +1,24 @@
+a {
+    color: #3800c7;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.research {
+    margin-left: -20px !important;
+}
+
+img {
+    max-width: 50%;
+}
+
+.fa-plus {
+    margin-left: 10px;
+    margin-top: 7px;
+}
+
+h3 {
+    margin-left: 10px;
+}

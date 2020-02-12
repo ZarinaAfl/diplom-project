@@ -1,12 +1,20 @@
 {% extends 'project/base.html' %}
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/interv_add.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>Добавление интервенции</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        </a>
-        <button type="submit" id="submit" class="save btn btn-default">Сохранить</button>
-    </form>
+    <div class="col-8 interv-add">
+        <h1>Добавление интервенции</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            </a>
+            <button type="submit" id="submit" class="save btn btn-default">Сохранить</button>
+        </form>
+    </div>
+
     <script>
         $(document).ready(function () {
             $('.container').on('click', '.add_subparam', function () {

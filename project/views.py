@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .models import Intervention, TYPE_PARAM, Param, ParamValue
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, ParamFileForm
+from .forms import PostForm
 from django.shortcuts import redirect
 
 
@@ -16,7 +16,13 @@ def interv_list(request):
 
 def interv_detail(request, pk):
     interv = get_object_or_404(Intervention, pk=pk)
-    return render(request, 'project/interv_detail.html', {'interv': interv})
+    params = Param.objects.filter(intervention=interv)
+    subvalues = []
+    for sb in params:
+        sbvalue = ParamValue.objects.get(param=sb)
+        subvalues.append(sbvalue)
+    return render(request, 'project/interv_detail.html',
+                  {'interv': interv, 'params': params, 'subvalues': subvalues})
 
 
 def interv_add(request):
@@ -61,12 +67,11 @@ def add_parameters(request, pk):
 
 # @login_required(login_url="login/")
 def fill_params(request, pk):
-    form = ParamFileForm()
     # return render(request, 'project/fill_params.html')
     interv = Intervention.objects.get(pk=pk)
     if request.method == "GET":
         params = Param.objects.filter(intervention=interv)
-        return render(request, 'project/fill_params.html', {'interv': interv, 'params': params, 'form': form})
+        return render(request, 'project/fill_params.html', {'interv': interv, 'params': params})
     # POST-method
     else:
         k = 0
@@ -80,21 +85,8 @@ def fill_params(request, pk):
                     param_val = ParamValue(param=param)
                     if param.type == 3 or param.type == 4:
                         print(request.FILES)
-                        form = UploadFileForm(request.POST, request.FILES)
-                        for f in request.FILES.getlist("file_%s" % param.id):
-                            print(f)
-                            link_file = "test"
-                            # link_file = "%s/%s/%s.%s" % (
-                            #   participant.id, comp_id, int(time.time() * 1000), f.name.split(".")[1])
-                            fs = FileSystemStorage()
-                            filename = fs.save(link_file, f)
-
-                            # u = UploadData(param_value=param_val)
-                            if param.type == 4:
-                                param_val.image = filename
-                            else:
-                                param_val.file = filename
-                            param_val.save()
+                        instance = ParamValue(param=param, file=request.FILES["file_%s" % param.id])
+                        instance.save()
                     else:
                         print('sp_%s' % param.id)
                         val = request.POST["sp_%s" % param.id]
@@ -109,7 +101,6 @@ def fill_params(request, pk):
                         param_val.save()
                         # ParamValue.objects.all().delete()
                 return redirect('interv_detail', pk=interv.pk)
-
                 # key = "params[%s][%s]"
                 # print(key)
                 # print(request.POST)

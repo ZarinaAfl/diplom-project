@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project/static/css/interv_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evbi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evbi/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/project.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,10 +26,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="Python Script" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -45,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/diploma" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
@@ -137,7 +141,9 @@
       <workItem from="1579949021292" duration="19656000" />
       <workItem from="1580663784756" duration="1231000" />
       <workItem from="1580750155175" duration="3218000" />
-      <workItem from="1581064992808" duration="21897000" />
+      <workItem from="1581064992808" duration="42266000" />
+      <workItem from="1581433940760" duration="717000" />
+      <workItem from="1581494961308" duration="12954000" />
     </task>
     <servers />
   </component>
@@ -153,41 +159,41 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="417" y="152" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1581232010875" />
-    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1579949959642">
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1581498560435">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1579949959642" />
-    <state width="1237" height="170" key="GridCell.Tab.0.bottom" timestamp="1581234033296">
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1581498560435" />
+    <state width="1237" height="152" key="GridCell.Tab.0.bottom" timestamp="1581510749976">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581234033296" />
-    <state width="1237" height="170" key="GridCell.Tab.0.center" timestamp="1581234033296">
+    <state width="1237" height="152" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581510749976" />
+    <state width="1237" height="152" key="GridCell.Tab.0.center" timestamp="1581510749976">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581234033296" />
-    <state width="1237" height="170" key="GridCell.Tab.0.left" timestamp="1581234033296">
+    <state width="1237" height="152" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581510749976" />
+    <state width="1237" height="152" key="GridCell.Tab.0.left" timestamp="1581510749975">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581234033296" />
-    <state width="1237" height="170" key="GridCell.Tab.0.right" timestamp="1581234033296">
+    <state width="1237" height="152" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581510749975" />
+    <state width="1237" height="152" key="GridCell.Tab.0.right" timestamp="1581510749976">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="170" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581234033296" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1579949022336">
+    <state width="1237" height="152" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581510749976" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1581495316887">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1579949022336" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1581234541201">
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1581495316887" />
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1581504092540">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1581234541201" />
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1581504092540" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/project/views.py</url>
-          <line>121</line>
+          <line>112</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

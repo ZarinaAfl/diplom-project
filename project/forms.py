@@ -14,12 +14,3 @@ class ParamForm(forms.ModelForm):
         fields = ('name', 'type')
 
 
-class ParamFileForm(forms.ModelForm):
-    class Meta:
-        model = ParamValue
-        fields = [
-            "param",
-            "value",
-            "text",
-            "file"
-        ]

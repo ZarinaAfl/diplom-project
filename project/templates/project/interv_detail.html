@@ -1,17 +1,55 @@
 {% extends 'project/base.html' %}
-
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/interv_detail.css' %}">
+{% endblock %}
 {% block content %}
-    <div class="post">
-        {% if interv.published_date %}
-            <div class="date">
-                {{ interv.published_date }}
+    <div class="row">
+        <div class="post col-8">
+            <div class="p-3 mb-2 bg-light text-dark">
+                <div class="date">
+                    {{ interv.published_date }}
+                </div>
+                <h1>{{ interv.name }}</h1>
+                <p><b>Аннотация: </b> {{ interv.annotation|linebreaksbr }}</p>
+                {% for sb in subvalues %}
+                    <div class="param">
+                        <b>{{ sb.param.name }}</b>:
+
+                        {% if sb.is_number %}
+                            {{ sb.value }} <br>
+                        {% endif %}
+
+                        {% if sb.is_text %}
+                            {{ sb.text }}<br>
+                        {% endif %}
+
+                        {% if sb.is_file %}
+                            <a href="{{ sb.file.url }}" download>{{ sb.filename }}</a>
+                        {% endif %}
+
+                        {% if sb.is_image %}
+                            <br>
+                            <a href="{{ sb.file.url }}"> <img href="{{ sb.file.url }}"
+                                                              src="{{ sb.file.url }}" class="img-responsive"/>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'interv_edit' pk=interv.pk %}"><span
-                    class="glyphicon glyphicon-pencil"></span></a>
-        {% endif %}
-        <h1>{{ interv.name }}</h1>
-        <p>{{ interv.annotation|linebreaksbr }}</p>
-    </div>
+        </div>
+        <div class="col-4 research">
+            <div class="p-3 mb-2 bg-light text-dark">
+                <div class="row">
+                    <h3>Исследования</h3>
+                    <a href="{% url 'interv_add' %}" style="font-size: 22px">
+                        <span class="fas fa-plus add_subparam"></span>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
 {% endblock %}
