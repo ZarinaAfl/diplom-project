@@ -1,7 +1,3 @@
-a {
-    color: #3800c7;
-}
-
 .row {
     margin-top: 10px;
 }
@@ -21,4 +17,10 @@ img {
 
 h3 {
     margin-left: 10px;
+}
+
+.template {
+    margin-left: 100px;
+    background-color: #009ada;
+    color: white;
 }

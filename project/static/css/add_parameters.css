@@ -1,0 +1,19 @@
+
+
+.fas {
+     font-size: 24px;
+}
+
+.close {
+    color: red;
+    font-size: 34px;
+}
+
+.col-xs-12 {
+    margin-left: 10px;
+}
+
+.form-control {
+    font-size: 20px;
+    font-weight: lighter;
+}

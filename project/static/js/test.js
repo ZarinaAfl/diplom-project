@@ -1,11 +1,11 @@
 $(document).ready(function () {
     $(document).ready(function () {
-        $('.container').on('click', '.add_subparam', function () {
+        $('.container-fluid').on('click', '.add_subparam', function () {
             var html = document.getElementById('subparam_1').innerHTML;
             document.getElementById('result').innerHTML = html;
         });
     });
-    $(".container").on('click', '#submit', function () {
+    $(".container-fluid").on('click', '#submit', function () {
         var subparams = $("#" + $(params[i]).attr("id") + " .subparam");
         var data_subparams = [];
         for (j = 0; j < subparams.length; j++) {

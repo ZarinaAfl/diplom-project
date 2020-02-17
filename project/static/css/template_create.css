@@ -1,0 +1,22 @@
+.instruction {
+    font-size: 11pt;
+    color: #5c5c5c;
+}
+
+.close {
+    color: red;
+    font-size: 34px;
+}
+
+.fas {
+    font-size: 24px;
+}
+
+.col-xs-12 {
+    margin-left: 10px;
+}
+
+.form-control {
+    font-size: 20px;
+    font-weight: lighter;
+}

@@ -1,5 +1,9 @@
 {% extends 'project/base.html' %}
-
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/interv_list.css' %}">
+{% endblock %}
 {% block content %}
     <div class="col-8">
         <a href="{% url 'interv_add' %}" style="font-size: 24px">
@@ -10,7 +14,7 @@
                 <div class="date">
                     {{ interv.published_date }}
                 </div>
-                <h1><a href="{% url 'interv_detail' pk=interv.pk %}">{{ interv.name }}</a></h1>
+                <h1><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h1>
                 <p>{{ interv.annotation|linebreaksbr }}</p>
             </div>
         {% endfor %}

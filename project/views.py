@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
-from .models import Intervention, TYPE_PARAM, Param, ParamValue
+from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
@@ -21,8 +21,7 @@ def interv_detail(request, pk):
     for sb in params:
         sbvalue = ParamValue.objects.get(param=sb)
         subvalues.append(sbvalue)
-    return render(request, 'project/interv_detail.html',
-                  {'interv': interv, 'params': params, 'subvalues': subvalues})
+    return render(request, 'project/interv_detail.html', {'interv': interv, 'params': params, 'subvalues': subvalues})
 
 
 def interv_add(request):
@@ -123,3 +122,26 @@ def interv_edit(request, pk):
     else:
         form = PostForm(instance=interv)
     return render(request, 'project/interv_edit.html', {'form': form, 'types': TYPE_PARAM})
+
+
+def create_templ(request, pk):
+    interv = Intervention.objects.get(pk=pk)
+    if request.method == "GET":
+        # form = PostForm
+        return render(request, 'project/template_create.html', {'types': TYPE_PARAM, 'interv': interv})
+    else:
+        k = 0
+        while True:
+            try:
+                name_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "name")]
+                type_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "type_templ_param")]
+                interv = Intervention.objects.get(pk=pk)
+                template = Template.objects.get(intervention=interv)
+
+                templ_param = TemplParam(intervention=interv, name=name_subparam, type=type_templ_param)
+                subparam.save()
+                k += 1
+            except Exception as e:
+                print(e)
+                break
+        return redirect('fill_params', pk=interv.pk)

@@ -2,21 +2,24 @@
 {% load static %}
 {% block extra_head %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/add_parameters.css' %}">
+    <link rel="stylesheet" href="{% static 'css/template_create.css' %}">
 {% endblock %}
 {% block content %}
     <div class="row">
         <div class="post col-8">
             <div class="p-3 mb-2 bg-light text-dark">
-                <div id="params">
-                    <h3>Добавление дополнительных параметров для интервенции "{{ interv.name }}"</h3>
+                <div id="templ_params">
+                    <h4>Создание шаблона исследования для интервенции "{{ interv.name }}"</h4>
+                    <p class="instruction">Добавьте параметры необходимые для отображения на платформе и расчета
+                        эффективности интервенции
+                    </p>
                     <div class="col-xs-12">
                         <a href="#">
-                            <span class="fas fa-plus add_subparam"></span>
+                            <span class="fas fa-plus add_templ_param"></span>
                         </a>
                     </div>
-                    <div class="subparam d-block" id="subparam_1">
-                        <a href="#" class="close delete_subparam" aria-label="Close" role="button">&times;</a>
+                    <div class="templ_param d-block" id="templ_param_1">
+                        <a href="#" class="close delete_templ_param" aria-label="Close" role="button">&times;</a>
                         <div class="row" style="margin-left: 10px;">
                             <div class="form-group col-md-5">
                                 <label style="font-size: 20px;">Название
@@ -26,8 +29,8 @@
                             <div class="form-group col-md-3">
                                 <label style="font-size: 20px;">Тип данных
                                     <select style="font-size: 20px; font-weight: lighter"
-                                            class="form-control type_subparam"
-                                            id="type_subparam">
+                                            class="form-control type_templ_param"
+                                            id="type_templ_param">
                                         {% for t in types %}
                                             <option value="{{ t | first }}">{{ t | last }}</option>
                                         {% endfor %}
@@ -48,21 +51,21 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            $('.container-fluid').on('click', '.delete_subparam', function () {
+            $('.container-fluid').on('click', '.delete_templ_param', function () {
                 var id = $(this).parent().parent().attr("id");
-                var total_element = $("#" + id + " .subparam").length;
+                var total_element = $("#" + id + ".templ_param").length;
                 if (total_element !== 1) {
                     $(this).parent().remove();
                 }
             });
 
-            $('.container-fluid').on('click', '.add_subparam', function () {
-                console.log("fwewfwfw");
-                var lastid = $(".subparam:last").attr("id");
-                console.log(lastid);
-                var id = "subparam_" + (Number(lastid.split('_')[1]) + 1);
-                $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .subparam:last").attr("id")).after("<div class=\"subparam d-block\" id=\"" + id + "\"></div>");
-                $("#" + id).append("<a href=\"#\" class=\"close delete_subparam\" style=\"color: red;font-size: 34px; \" aria-label=\"Close\"\n" +
+            $('.container-fluid').on('click', '.add_templ_param', function () {
+                var lastid = $(".templ_param:last").attr("id");
+                var id = "templ_param_" + (Number(lastid.split('_')[2]) + 1);
+                console.log(id);
+
+                $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .templ_param:last").attr("id")).after("<div class=\"templ_param d-block\" id=\"" + id + "\"></div>");
+                $("#" + id).append("<a href=\"#\" class=\"close delete_templ_param\" style=\"color: red;font-size: 34px; \" aria-label=\"Close\"\n" +
                     "                   role=\"button\">&times;</a>\n" +
                     "                <div class=\"row\" style=\"margin-left: 10px;\">\n" +
                     "                    <div class=\"form-group col-md-5\">\n" +
@@ -73,8 +76,8 @@
                     "                    </div>\n" +
                     "                    <div class=\"form-group col-md-3\">\n" +
                     "                        <label style=\"font-size: 20px;\">Тип данных\n" +
-                    "                            <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control type_subparam\"\n" +
-                    "                                    id=\"type_subparam\">\n" +
+                    "                            <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control type_templ_param\"\n" +
+                    "                                    id=\"type_templ_param\">\n" +
                     "                                {% for t in types %}\n"+
                         "                                    <option value=\"{{ t | first }}\">{{ t | last }}</option>\n"
                         +
@@ -88,12 +91,12 @@
             });
 
             $(".container-fluid").on('click', '#submit', function () {
-                var subparams = $(".subparam");
+                var subparams = $(".templ_param");
                 var data_subparams = [];
                 for (j = 0; j < subparams.length; j++) {
                     var tmp = {
                         "name": $(subparams[j]).find("#sub_text").val(),
-                        "type_subparam": $(subparams[j]).find("#type_subparam").val(),
+                        "type_templ_param": $(subparams[j]).find("#type_templ_param").val(),
                     };
                     data_subparams.push(tmp);
                 }
@@ -102,12 +105,13 @@
                     type: "post",
                     data: result,
                     success: function (response) {
-                        window.location = "http://127.0.0.1:8000/intervention/".concat({{ interv.pk }}).concat("/fill_params");
+                        window.location = "http://127.0.0.1:8000/intervention/".concat({{ interv.pk }}).concat("/fill_templ_params");
                     }
                 });
             });
 
         });
     </script>
+
 
 {% endblock %}
