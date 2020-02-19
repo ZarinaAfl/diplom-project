@@ -7,6 +7,7 @@
 .close {
     color: red;
     font-size: 34px;
+    margin-right: 50px;
 }
 
 .col-xs-12 {
@@ -16,4 +17,8 @@
 .form-control {
     font-size: 20px;
     font-weight: lighter;
+}
+
+.btn {
+    width: 150px;
 }

@@ -1,3 +1,9 @@
 .header {
     color: #2d2d2d;
 }
+
+.btn {
+    margin-top: 10px;
+    background-color: #009ada;
+    color: white;
+}

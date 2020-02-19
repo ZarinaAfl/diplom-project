@@ -3,15 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/interv_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/add_parameters.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/add_parameters.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/interv_add.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_add.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/static/css/interv_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/js/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/js/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/add_parameters.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/add_parameters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/interv_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_add.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/interv_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/interv_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/template_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
@@ -28,8 +29,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -146,6 +147,7 @@
       <workItem from="1581494961308" duration="20884000" />
       <workItem from="1581671190457" duration="15765000" />
       <workItem from="1581761344940" duration="5732000" />
+      <workItem from="1582095847487" duration="15862000" />
     </task>
     <servers />
   </component>
@@ -165,30 +167,46 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1581697454427" />
-    <state width="1237" height="109" key="GridCell.Tab.0.bottom" timestamp="1581770046512">
+    <state width="1237" height="242" key="GridCell.Tab.0.bottom" timestamp="1582116948720">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="109" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581770046512" />
-    <state width="1237" height="109" key="GridCell.Tab.0.center" timestamp="1581770046512">
+    <state width="1237" height="242" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582116948720" />
+    <state width="1237" height="242" key="GridCell.Tab.0.center" timestamp="1582116948719">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="109" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581770046512" />
-    <state width="1237" height="109" key="GridCell.Tab.0.left" timestamp="1581770046511">
+    <state width="1237" height="242" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582116948719" />
+    <state width="1237" height="242" key="GridCell.Tab.0.left" timestamp="1582116948719">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="109" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581770046511" />
-    <state width="1237" height="109" key="GridCell.Tab.0.right" timestamp="1581770046512">
+    <state width="1237" height="242" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582116948719" />
+    <state width="1237" height="242" key="GridCell.Tab.0.right" timestamp="1582116948720">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="109" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581770046512" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1581761355536">
+    <state width="1237" height="242" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582116948720" />
+    <state width="1237" height="242" key="GridCell.Tab.1.bottom" timestamp="1582116948722">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1581761355536" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1581750120923">
+    <state width="1237" height="242" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582116948722" />
+    <state width="1237" height="242" key="GridCell.Tab.1.center" timestamp="1582116948721">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1581750120923" />
+    <state width="1237" height="242" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582116948721" />
+    <state width="1237" height="242" key="GridCell.Tab.1.left" timestamp="1582116948720">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="242" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582116948720" />
+    <state width="1237" height="242" key="GridCell.Tab.1.right" timestamp="1582116948722">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="242" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582116948722" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1582096031663">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582096031663" />
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1582101121588">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1582101121588" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1581697506561">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -199,8 +217,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/project/templates/project/add_parameters.html</url>
-          <line>58</line>
+          <line>59</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/views.py</url>
+          <line>128</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/project/views.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

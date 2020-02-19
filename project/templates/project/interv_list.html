@@ -6,8 +6,12 @@
 {% endblock %}
 {% block content %}
     <div class="col-8">
+        </a>
         <a href="{% url 'interv_add' %}" style="font-size: 24px">
-            <span class="fas fa-plus add_subparam"></span>
+            <button type="button" class="btn">
+                <span class="fas fa-plus add_subparam"></span> Добавить
+            </button>
+
         </a>
         {% for interv in intervs %}
             <div class="interv">

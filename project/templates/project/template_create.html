@@ -91,16 +91,16 @@
             });
 
             $(".container-fluid").on('click', '#submit', function () {
-                var subparams = $(".templ_param");
-                var data_subparams = [];
-                for (j = 0; j < subparams.length; j++) {
+                var templ_params = $(".templ_param");
+                var data_templ_params = [];
+                for (j = 0; j < templ_params.length; j++) {
                     var tmp = {
-                        "name": $(subparams[j]).find("#sub_text").val(),
-                        "type_templ_param": $(subparams[j]).find("#type_templ_param").val(),
+                        "name": $(templ_params[j]).find("#sub_text").val(),
+                        "type_templ_param": $(templ_params[j]).find("#type_templ_param").val(),
                     };
-                    data_subparams.push(tmp);
+                    data_templ_params.push(tmp);
                 }
-                var result = {"subparams": data_subparams, csrfmiddlewaretoken: '{{ csrf_token }}'};
+                var result = {"templ_params": data_templ_params, csrfmiddlewaretoken: '{{ csrf_token }}'};
                 $.ajax({
                     type: "post",
                     data: result,

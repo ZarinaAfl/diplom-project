@@ -11,7 +11,7 @@ from django.shortcuts import redirect
 # Create your views here.
 def interv_list(request):
     intervs = Intervention.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'project/interv_list.html', {'intervs': intervs})
+    return render(request, 'project/interv_list.html', {'intervs': intervs, 'activate': 'intervs'})
 
 
 def interv_detail(request, pk):
@@ -40,14 +40,15 @@ def interv_add(request):
             return render(request, 'project/interv_add.html', {'form': form, 'types': TYPE_PARAM})
     else:
         form = PostForm
-        return render(request, 'project/interv_add.html', {'form': form, 'types': TYPE_PARAM})
+        return render(request, 'project/interv_add.html', {'form': form, 'types': TYPE_PARAM, 'activate': 'intervs'})
 
 
 def add_parameters(request, pk):
     interv = Intervention.objects.get(pk=pk)
     if request.method == "GET":
         form = PostForm
-        return render(request, 'project/add_parameters.html', {'form': form, 'types': TYPE_PARAM, 'interv': interv})
+        return render(request, 'project/add_parameters.html',
+                      {'form': form, 'types': TYPE_PARAM, 'interv': interv, 'activate': 'intervs'})
     else:
         k = 0
         while True:
@@ -100,13 +101,6 @@ def fill_params(request, pk):
                         param_val.save()
                         # ParamValue.objects.all().delete()
                 return redirect('interv_detail', pk=interv.pk)
-                # key = "params[%s][%s]"
-                # print(key)
-                # print(request.POST)
-                # name_subparam = request.POST["%s[%s][%s]" % ("subparams", k, "name")]
-                # type_subparam = request.POST["%s[%s][%s]" % ("subparams", k, "type_subparam")]
-                # param = Param(intervention=interv, name=param_name, type=type)
-                # param.save()
 
 
 def interv_edit(request, pk):
@@ -134,14 +128,62 @@ def create_templ(request, pk):
         while True:
             try:
                 name_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "name")]
+                print(name_templ_param)
                 type_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "type_templ_param")]
                 interv = Intervention.objects.get(pk=pk)
-                template = Template.objects.get(intervention=interv)
-
-                templ_param = TemplParam(intervention=interv, name=name_subparam, type=type_templ_param)
-                subparam.save()
+                template = Template(intervention=interv)
+                template.save()
+                templ_param = TemplParam(template=template, name=name_templ_param, type=type_templ_param)
+                templ_param.save()
                 k += 1
             except Exception as e:
                 print(e)
                 break
-        return redirect('fill_params', pk=interv.pk)
+        return redirect('fill_templ_params', pk=interv.pk)
+
+def create_formula(request, pk):
+    return
+
+def add_research(request, pk):
+    interv = Intervention.objects.get(pk=pk)
+    if request.method == "GET":
+        template = Template.objects.get(intervention=interv)
+        templ_params = TemplParam.objects.filter(template=template)
+        return render(request, 'project/fill_templ_params.html', {'interv': interv, 'params': templ_params})
+
+def fill_templ_params(request, pk):
+    interv = Intervention.objects.get(pk=pk)
+    if request.method == "GET":
+        template = Template.objects.get(intervention=interv)
+        templ_params = TemplParam.objects.filter(template=template)
+        return render(request, 'project/fill_templ_params.html', {'interv': interv, 'params': templ_params})
+    else:
+        k = 0
+        while True:
+            collection = []
+            template = Template.objects.filter(intervention=interv)
+            templ_params = TemplParam.objects.filter(template=template)
+            collection.append({"params": templ_params})
+
+            for c in collection:
+                for param in c["params"]:
+                    # ParamValue
+                    param_val = ParamValue(param=param)
+                    if param.type == 3 or param.type == 4:
+                        print(request.FILES)
+                        instance = ParamValue(param=param, file=request.FILES["file_%s" % param.id])
+                        instance.save()
+                    else:
+                        print('sp_%s' % param.id)
+                        val = request.POST["sp_%s" % param.id]
+                        # val = request.POST.get("sp_%s" % param.id)
+                        print(val)
+                        # value = request.POST.get("sp_%s" % param.id)
+                        if param.type == 1:
+                            param_val.value = val
+                        elif param.type == 2:
+                            print(val)
+                            param_val.text = val
+                        param_val.save()
+                        # ParamValue.objects.all().delete()
+                return redirect('interv_detail', pk=interv.pk)

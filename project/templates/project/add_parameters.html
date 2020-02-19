@@ -9,21 +9,20 @@
         <div class="post col-8">
             <div class="p-3 mb-2 bg-light text-dark">
                 <div id="params">
-                    <h3>Добавление дополнительных параметров для интервенции "{{ interv.name }}"</h3>
+                    <h4>Добавление дополнительных параметров для интервенции "{{ interv.name }}"</h4>
                     <div class="col-xs-12">
                         <a href="#">
                             <span class="fas fa-plus add_subparam"></span>
                         </a>
                     </div>
                     <div class="subparam d-block" id="subparam_1">
-                        <a href="#" class="close delete_subparam" aria-label="Close" role="button">&times;</a>
                         <div class="row" style="margin-left: 10px;">
-                            <div class="form-group col-md-5">
+                            <div class="form-group col-5">
                                 <label style="font-size: 20px;">Название
                                     <input class="form-control" type="text" id="sub_text">
                                 </label>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-4">
                                 <label style="font-size: 20px;">Тип данных
                                     <select style="font-size: 20px; font-weight: lighter"
                                             class="form-control type_subparam"
@@ -32,12 +31,14 @@
                                             <option value="{{ t | first }}">{{ t | last }}</option>
                                         {% endfor %}
                                     </select>
-
                                 </label>
+                                <a href="#" class="close delete_subparam" aria-label="Close" role="button">&times;</a>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" id="submit" class="save btn btn-default">Далее</button>
+                    <div class="text-center">
+                        <button type="submit" id="submit" name="singlebutton" class="btn btn-primary">Далее</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,21 +58,19 @@
             });
 
             $('.container-fluid').on('click', '.add_subparam', function () {
-                console.log("fwewfwfw");
                 var lastid = $(".subparam:last").attr("id");
                 console.log(lastid);
                 var id = "subparam_" + (Number(lastid.split('_')[1]) + 1);
                 $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .subparam:last").attr("id")).after("<div class=\"subparam d-block\" id=\"" + id + "\"></div>");
-                $("#" + id).append("<a href=\"#\" class=\"close delete_subparam\" style=\"color: red;font-size: 34px; \" aria-label=\"Close\"\n" +
-                    "                   role=\"button\">&times;</a>\n" +
+                $("#" + id).append(
                     "                <div class=\"row\" style=\"margin-left: 10px;\">\n" +
-                    "                    <div class=\"form-group col-md-5\">\n" +
+                    "                    <div class=\"form-group col-5\">\n" +
                     "                        <label style=\"font-size: 20px;\">Название\n" +
                     "                            <input style=\"font-size: 20px; font-weight: lighter\" class=\"form-control\" type=\"text\"\n" +
                     "                                   id=\"sub_text\">\n" +
                     "                        </label>\n" +
                     "                    </div>\n" +
-                    "                    <div class=\"form-group col-md-3\">\n" +
+                    "                    <div class=\"form-group col-4\">\n" +
                     "                        <label style=\"font-size: 20px;\">Тип данных\n" +
                     "                            <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control type_subparam\"\n" +
                     "                                    id=\"type_subparam\">\n" +
@@ -82,6 +81,8 @@
                     "                            </select>\n" +
                     "\n" +
                     "                        </label>\n" +
+                    "                                <a href=\"#\" class=\"close delete_subparam\" aria-label=\"Close\" role=\"button\">&times;</a>\n" +
+
                     "                    </div>\n" +
                     "                </div>");
 
