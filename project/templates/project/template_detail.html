@@ -1,0 +1,56 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/template_detail.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="post col-8">
+            <div class="p-3 mb-2 bg-light text-dark">
+                <h2>Шаблон исследования для интервенции "{{ interv.name }}"</h2>
+                <br>
+                <h3>Параметры:</h3>
+                {% for templ_param in templ_params %}
+                    <div class="param">
+                        <b>{{ templ_param.name }}</b>:
+
+                        {% if templ_param.is_number %}
+                            {{ templ_param.value }} <br>
+                        {% endif %}
+
+                        {% if templ_param.is_text %}
+                            {{ templ_param.text }}<br>
+                        {% endif %}
+
+                        {% if templ_param.is_file %}
+                            <a href="{{ templ_param.file.url }}" download>{{ templ_param.filename }}</a>
+                        {% endif %}
+
+                        {% if templ_param.is_image %}
+                            <br>
+                            <a href="{{ templ_param.file.url }}"> <img href="{{ templ_param.file.url }}"
+                                                                       src="{{ templ_param.file.url }}"
+                                                                       class="img-responsive"/>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <br>
+                <b>Формула расчета эффективности: </b>{{ template.formula }}
+
+            </div>
+        </div>
+        <div class="col-4 research">
+            <div class="p-3 mb-2 bg-light text-dark">
+                <div class="row">
+                    <h3>Исследования</h3>
+                    <a href="{% url 'add_research' interv.pk %}">
+                        <span class="fas fa-plus add_subparam"></span>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+{% endblock %}

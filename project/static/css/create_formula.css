@@ -1,0 +1,16 @@
+.row {
+    margin-top: 14px;
+}
+
+.param {
+    font-size: 16px;
+}
+
+.operations, .func {
+    margin-top: 14px !important;
+}
+
+.funct {
+    width: 3em;
+}
+

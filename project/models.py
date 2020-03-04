@@ -43,6 +43,7 @@ class Template(models.Model):
     intervention = models.ForeignKey(Intervention, related_name='research_template', on_delete=models.CASCADE,
                                      blank=False, null=False, verbose_name='Шаблон исследования')
     description = models.TextField(verbose_name="Описание")
+    formula = models.TextField(blank=True, null=True)
 
 
 class TemplParam(models.Model):
@@ -60,16 +61,16 @@ class TemplParam(models.Model):
         return os.path.basename(self.file.name)
 
     def is_number(self):
-        return self.param.type == 1
+        return self.type == 1
 
     def is_text(self):
-        return self.param.type == 2
+        return self.type == 2
 
     def is_file(self):
-        return self.param.type == 3
+        return self.type == 3
 
     def is_image(self):
-        return self.param.type == 4
+        return self.type == 4
 
     def get_name(self):
         return self.param.name

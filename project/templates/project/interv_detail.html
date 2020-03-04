@@ -43,10 +43,11 @@
             <div class="p-3 mb-2 bg-light text-dark">
                 <div class="row">
                     <h3>Исследования</h3>
-                    <a href="{% url 'add_research' %}" style="font-size: 22px">
+                    <a href="{% url 'add_research' interv.pk %}">
                         <span class="fas fa-plus add_subparam"></span>
                     </a>
-                    <a href="{% url 'create_template' interv.pk %}" style="font-size: 22px">
+
+                    <a href="{% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
                 </div>

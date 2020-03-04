@@ -1,0 +1,26 @@
+.post {
+    margin-top: 2em !important;
+    margin-left: 2em;
+}
+
+.oper, .func, .numb {
+    margin-top: 1em;
+}
+
+.for_sign {
+    font-size: 20px;
+    width: 2em;
+}
+
+#field_numb {
+    width: 130px;
+}
+
+.back {
+    float: right;
+}
+
+.save-btn {
+    text-align: center;
+    margin: auto;
+}

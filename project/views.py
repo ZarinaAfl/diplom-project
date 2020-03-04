@@ -21,7 +21,13 @@ def interv_detail(request, pk):
     for sb in params:
         sbvalue = ParamValue.objects.get(param=sb)
         subvalues.append(sbvalue)
-    return render(request, 'project/interv_detail.html', {'interv': interv, 'params': params, 'subvalues': subvalues})
+    template = Template.objects.filter(intervention=interv)
+    templ = False
+    if len(template) != 0:
+        templ = True
+
+    return render(request, 'project/interv_detail.html',
+                  {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ})
 
 
 def interv_add(request):
@@ -125,24 +131,50 @@ def create_templ(request, pk):
         return render(request, 'project/template_create.html', {'types': TYPE_PARAM, 'interv': interv})
     else:
         k = 0
+        template = Template(intervention=interv)
+        template.save()
         while True:
             try:
                 name_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "name")]
                 print(name_templ_param)
                 type_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "type_templ_param")]
                 interv = Intervention.objects.get(pk=pk)
-                template = Template(intervention=interv)
-                template.save()
                 templ_param = TemplParam(template=template, name=name_templ_param, type=type_templ_param)
                 templ_param.save()
                 k += 1
             except Exception as e:
                 print(e)
                 break
-        return redirect('fill_templ_params', pk=interv.pk)
+        return redirect('create_formula', pk=interv.pk)
+
+
+def template_detail(request, pk):
+    interv = Intervention.objects.get(pk=pk)
+    if request.method == "GET":
+        # form = PostForm
+        templ = Template.objects.get(intervention=interv)
+        templ_params = TemplParam.objects.filter(template=templ)
+        return render(request, 'project/template_detail.html',
+                      {'types': TYPE_PARAM, 'interv': interv, 'template': templ, 'templ_params': templ_params})
+
+
+FUNCTIONS = ["log", "ln", "x!", "sqrt", "abs"]
+
 
 def create_formula(request, pk):
-    return
+    interv = Intervention.objects.get(pk=pk)
+    templ = Template.objects.get(intervention=interv)
+
+    if request.method == "GET":
+        params = TemplParam.objects.filter(template=templ)
+
+        return render(request, 'project/create_formula.html', {'params': params, 'funcs': FUNCTIONS})
+    else:
+        formula = request.POST["formula"]
+        templ.formula = formula
+        templ.save()
+        return redirect('template_detail', pk=interv.pk)
+
 
 def add_research(request, pk):
     interv = Intervention.objects.get(pk=pk)
@@ -150,6 +182,7 @@ def add_research(request, pk):
         template = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=template)
         return render(request, 'project/fill_templ_params.html', {'interv': interv, 'params': templ_params})
+
 
 def fill_templ_params(request, pk):
     interv = Intervention.objects.get(pk=pk)
