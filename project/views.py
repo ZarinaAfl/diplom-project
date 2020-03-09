@@ -1,11 +1,12 @@
-from django.contrib.auth.decorators import login_required
-from django.core.files.storage import FileSystemStorage
-from django.shortcuts import render
-from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template
+import cexprtk as cexprtk
+from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
+from py_expression_eval import Parser
+
+parser = Parser()
 
 
 # Create your views here.
@@ -26,8 +27,10 @@ def interv_detail(request, pk):
     if len(template) != 0:
         templ = True
 
+    researches = Research.objects.filter(intervention=interv)
     return render(request, 'project/interv_detail.html',
-                  {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ})
+                  {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ,
+                   'researches': researches})
 
 
 def interv_add(request):
@@ -94,15 +97,15 @@ def fill_params(request, pk):
                         instance = ParamValue(param=param, file=request.FILES["file_%s" % param.id])
                         instance.save()
                     else:
-                        print('sp_%s' % param.id)
+                        # print('sp_%s' % param.id)
                         val = request.POST["sp_%s" % param.id]
                         # val = request.POST.get("sp_%s" % param.id)
-                        print(val)
+                        # print(val)
                         # value = request.POST.get("sp_%s" % param.id)
                         if param.type == 1:
                             param_val.value = val
                         elif param.type == 2:
-                            print(val)
+                            # print(val)
                             param_val.text = val
                         param_val.save()
                         # ParamValue.objects.all().delete()
@@ -136,7 +139,7 @@ def create_templ(request, pk):
         while True:
             try:
                 name_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "name")]
-                print(name_templ_param)
+                # print(name_templ_param)
                 type_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "type_templ_param")]
                 interv = Intervention.objects.get(pk=pk)
                 templ_param = TemplParam(template=template, name=name_templ_param, type=type_templ_param)
@@ -154,8 +157,10 @@ def template_detail(request, pk):
         # form = PostForm
         templ = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=templ)
+        researches = Research.objects.filter(template=templ)
         return render(request, 'project/template_detail.html',
-                      {'types': TYPE_PARAM, 'interv': interv, 'template': templ, 'templ_params': templ_params})
+                      {'types': TYPE_PARAM, 'interv': interv, 'template': templ, 'templ_params': templ_params,
+                       'researches': researches})
 
 
 FUNCTIONS = ["log", "ln", "x!", "sqrt", "abs"]
@@ -181,42 +186,64 @@ def add_research(request, pk):
     if request.method == "GET":
         template = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=template)
-        return render(request, 'project/fill_templ_params.html', {'interv': interv, 'params': templ_params})
-
-
-def fill_templ_params(request, pk):
-    interv = Intervention.objects.get(pk=pk)
-    if request.method == "GET":
-        template = Template.objects.get(intervention=interv)
-        templ_params = TemplParam.objects.filter(template=template)
-        return render(request, 'project/fill_templ_params.html', {'interv': interv, 'params': templ_params})
+        return render(request, 'project/add_research.html', {'interv': interv, 'params': templ_params})
     else:
         k = 0
         while True:
             collection = []
-            template = Template.objects.filter(intervention=interv)
-            templ_params = TemplParam.objects.filter(template=template)
+            templ = Template.objects.get(intervention=interv)
+            templ_params = TemplParam.objects.filter(template=templ)
+            name_research = request.POST["name_research"]
+            research = Research(intervention=interv, template=templ, name=name_research)
+            research.save()
             collection.append({"params": templ_params})
-
             for c in collection:
                 for param in c["params"]:
                     # ParamValue
-                    param_val = ParamValue(param=param)
+                    templ_param = TemplParam.objects.get(template=templ, name=param.name)
+                    param_val = ResearchParamValue(research=research, param=templ_param)
+
                     if param.type == 3 or param.type == 4:
-                        print(request.FILES)
-                        instance = ParamValue(param=param, file=request.FILES["file_%s" % param.id])
+                        # print(request.FILES)
+                        instance = ResearchParamValue(research=research, param=templ_param,
+                                                      file=request.FILES["file_%s" % param.id])
                         instance.save()
                     else:
-                        print('sp_%s' % param.id)
                         val = request.POST["sp_%s" % param.id]
                         # val = request.POST.get("sp_%s" % param.id)
-                        print(val)
+                        # print(val)
                         # value = request.POST.get("sp_%s" % param.id)
                         if param.type == 1:
                             param_val.value = val
+                            param_val.save()
                         elif param.type == 2:
-                            print(val)
                             param_val.text = val
-                        param_val.save()
+                            param_val.save()
                         # ParamValue.objects.all().delete()
-                return redirect('interv_detail', pk=interv.pk)
+            research.effect = calculate_effect(research)
+            research.save()
+            return redirect('interv_detail', pk=interv.pk)
+
+
+def calculate_effect(research):
+    params = ResearchParamValue.objects.filter(research=research)
+    formula = research.template.formula
+
+    vars = ['a', 'b', 'c', 'd', 'e', 'x', 'y', 'z']
+    var_val = {}
+    k = 0
+    print("ДО  " + formula)
+    for p in params:
+        if p.is_number():
+            print(p.param.name + ' ' + str(p.value))
+            name_p = p.param.name
+            if name_p in formula:
+                formula = formula.replace(name_p, vars[k])
+                var_val[vars[k]] = p.value
+                k = k + 1
+    print("ПОСЛЕ  " + formula)
+
+    result = parser.parse(formula).evaluate(var_val)
+    print(result)
+    return result
+    # ОБРАБОТАТЬ ФУНКЦИИ

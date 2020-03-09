@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="col-8 interv-add">
-        <h1>Добавление интервенции</h1>
+        <h2>Добавление интервенции</h2>
         <form method="POST" class="post-form">{% csrf_token %}
             {{ form.as_p }}
             <div class="text-center">

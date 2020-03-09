@@ -7,11 +7,11 @@
 {% block content %}
     <div class="row">
         <div class="post col-8">
-            <div class="p-3 mb-2 bg-light text-dark">
+            <div class="p-3 mb-2 info">
                 <div class="date">
                     {{ interv.published_date }}
                 </div>
-                <h1>{{ interv.name }}</h1>
+                <h2>{{ interv.name }}</h2>
                 <p><b>Аннотация: </b> {{ interv.annotation|linebreaksbr }}</p>
                 {% for sb in subvalues %}
                     <div class="param">
@@ -40,20 +40,33 @@
             </div>
         </div>
         <div class="col-4 research">
-            <div class="p-3 mb-2 bg-light text-dark">
+            <div class="p-3 mb-2 research_list">
                 <div class="row">
-                    <h3>Исследования</h3>
+                    <h4>&nbsp;Исследования</h4>
                     <a href="{% url 'add_research' interv.pk %}">
                         <span class="fas fa-plus add_subparam"></span>
                     </a>
 
-                    <a href="{% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
+                    <a href="
+
+
+                            {% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
+
+                    <ul>
+                        {% for r in researches %}
+                            <li>
+                                <div class="r">
+                                    <a href="add_research.html"> {{ r.name }}</a>
+                                </div>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+
                 </div>
-
-
             </div>
-        </div>
 
 {% endblock %}

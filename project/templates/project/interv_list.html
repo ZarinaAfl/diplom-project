@@ -18,7 +18,7 @@
                 <div class="date">
                     {{ interv.published_date }}
                 </div>
-                <h1><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h1>
+                <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h3>
                 <p>{{ interv.annotation|linebreaksbr }}</p>
             </div>
         {% endfor %}
