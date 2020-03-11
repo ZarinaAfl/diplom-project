@@ -3,6 +3,9 @@
     color: #5c5c5c;
 }
 
+.post {
+    margin-top: 1em;
+}
 .close {
     color: red;
     font-size: 34px;

@@ -2,27 +2,38 @@
 {% load static %}
 {% block extra_head %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/template_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/research_detail.css' %}">
 {% endblock %}
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="template col-10">
-            <div class="p-3 mb-2">
-                <h4>Шаблон исследования для интервенции "{{ interv.name }}"</h4>
-                <br>
-                <h5>Параметры:</h5>
-                <ul>
-                    {% for param in templ_params %}
-                        <li>
-                            <div class="r">
-                                {{ param.name }}
-                            </div>
-                        </li>
+        <div class="research col-10">
+            <div class="p-3 mb-2 info">
+                <h2>{{ interv.name }}</h2>
+                <h3>{{ research.name }}</h3>
+                {% for p in params_value %}
+                    <div class="param">
+                        <b>{{ p.param.name }}</b>:
 
-                    {% endfor %}
-                </ul>
-                <b>Формула расчета эффективности: </b>{{ template.formula }}
+                        {% if p.is_number %}
+                            {{ p.value }} <br>
+                        {% endif %}
 
+                        {% if p.is_text %}
+                            {{ p.text }}<br>
+                        {% endif %}
+
+                        {% if p.is_file %}
+                            <a href="{{ p.file.url }}" download>{{ p.filename }}</a>
+                        {% endif %}
+
+                        {% if p.param.is_image %}
+                            <br>
+                            <a href="{{ p.file.url }}"> <img href="{{ p.file.url }}"
+                                                             src="{{ p.file.url }}" class="img-responsive"/>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

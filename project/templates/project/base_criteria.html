@@ -6,17 +6,14 @@
 {% endblock %}
 
 {% block content %}
-    {% block cycle_and_head %}
-    {% endblock %}
-
     <form name="form" method="post">
         {% csrf_token %}
-        <div class="row">
+        <div class="row justify-content-md-center">
             <div class="post col-10 constructor bg-light text-dark">
                 <h4>Создание формулы для расчета эффективности</h4>
                 <hr>
                 <div class="row">
-                    <div class="p-3 mb-2 col-5 ">
+                    <div class="p-3 mb-2 col-6">
                         <h5>Формула</h5>
                         <label style="font-size: 20px;">
                         <textarea style="resize: none; font-size: 20px;" name="formula_show "
@@ -46,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="p-3 mb-2 col-5">
+                    <div class="p-3 mb-3 col-6 tool">
                         <h5>Параметры критерия</h5>
                         {% for p in params %}
                             {% if p.type == 1 %}

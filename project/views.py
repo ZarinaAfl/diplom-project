@@ -5,6 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
 from py_expression_eval import Parser
+from .models import SPHERE
 
 parser = Parser()
 
@@ -12,7 +13,11 @@ parser = Parser()
 # Create your views here.
 def interv_list(request):
     intervs = Intervention.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'project/interv_list.html', {'intervs': intervs, 'activate': 'intervs'})
+    speheres = []
+    for s in SPHERE:
+        speheres.append(s[1])
+
+    return render(request, 'project/interv_list.html', {'intervs': intervs, 'activate': 'intervs', 'sphere': speheres})
 
 
 def interv_detail(request, pk):
@@ -247,3 +252,15 @@ def calculate_effect(research):
     print(result)
     return result
     # ОБРАБОТАТЬ ФУНКЦИИ
+
+
+def research_detail(request, interv_pk, res_pk):
+    research = Research.objects.get(pk=res_pk)
+    interv = Intervention.objects.get(pk = interv_pk)
+    params = TemplParam.objects.filter(template=Template.objects.get(intervention=interv))
+    res_params_value = ResearchParamValue.objects.filter(research = research)
+    researches = Research.objects.filter(intervention=interv)
+    return render(request, 'project/research_detail.html', {'research': research, 'interv': interv,
+                                                            'params': params,
+                                                            'params_value': res_params_value,
+                                                            'researches': researches})

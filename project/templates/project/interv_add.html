@@ -6,15 +6,18 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-8 interv-add">
-        <h2>Добавление интервенции</h2>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <div class="text-center">
-                <button type="submit" id="submit" name="singlebutton" class="btn btn-primary">Далее</button>
-            </div>
-        </form>
+    <div class="row justify-content-md-center">
+        <div class="col-8 interv-add p-3 mb-2 bg-light text-dark">
+            <h4>Добавление интервенции</h4>
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center">
+                    <button type="submit" id="submit" name="singlebutton" class="btn btn-primary">Далее</button>
+                </div>
+            </form>
+        </div>
     </div>
+
 
     <script>
         $(document).ready(function () {

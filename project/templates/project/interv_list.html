@@ -5,23 +5,51 @@
     <link rel="stylesheet" href="{% static 'css/interv_list.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="col-8">
-        </a>
-        <a href="{% url 'interv_add' %}" style="font-size: 24px">
-            <button type="button" class="btn">
-                <span class="fas fa-plus add_subparam"></span> Добавить
-            </button>
+    <div class="row justify-content-md-center">
 
-        </a>
-        {% for interv in intervs %}
-            <div class="interv">
-                <div class="date">
-                    {{ interv.published_date }}
+
+        <div class="col-8">
+            <div class="card">
+                <h6 class="card-header">Фильтр</h6>
+                <div class="card-body">
+                    <div class="row filter">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="defaultChecked2" checked>
+                            <label class="custom-control-label" for="defaultChecked2">Все</label>
+                        </div>
+
+                        {% for s in sphere %}
+                            <!-- Default unchecked -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                <label class="custom-control-label" for="defaultUnchecked">{{ s }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" placeholder="Поиск...">
+                    </div>
                 </div>
-                <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h3>
-                <p>{{ interv.annotation|linebreaksbr }}</p>
             </div>
-        {% endfor %}
+
+            <a href="{% url 'interv_add' %}" style="font-size: 24px">
+                <button type="button" class="btn">
+                    <span class="fas fa-plus add_subparam"></span> Добавить
+                </button>
+
+            </a>
+            {% for interv in intervs %}
+                <div class="interv">
+                    <div class="date">
+                        {{ interv.published_date }}
+                    </div>
+                    <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h3>
+                    <p class="annotation" row>{{ interv.annotation|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}

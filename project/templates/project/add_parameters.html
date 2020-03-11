@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'css/add_parameters.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="row">
+    <div class="row justify-content-md-center">
         <div class="post col-8">
             <div class="p-3 mb-2 bg-light text-dark">
                 <div id="params">
@@ -18,13 +18,13 @@
                     <div class="subparam d-block" id="subparam_1">
                         <div class="row" style="margin-left: 10px;">
                             <div class="form-group col-5">
-                                <label style="font-size: 20px;">Название
+                                <label>Название
                                     <input class="form-control" type="text" id="sub_text">
                                 </label>
                             </div>
                             <div class="form-group col-4">
-                                <label style="font-size: 20px;">Тип данных
-                                    <select style="font-size: 20px; font-weight: lighter"
+                                <label>Тип данных
+                                    <select style="font-weight: lighter"
                                             class="form-control type_subparam"
                                             id="type_subparam">
                                         {% for t in types %}
@@ -53,7 +53,7 @@
                 var id = $(this).parent().parent().attr("id");
                 var total_element = $("#" + id + " .subparam").length;
                 if (total_element !== 1) {
-                    $(this).parent().remove();
+                    $(this).parent().parent().remove();
                 }
             });
 
@@ -65,14 +65,14 @@
                 $("#" + id).append(
                     "                <div class=\"row\" style=\"margin-left: 10px;\">\n" +
                     "                    <div class=\"form-group col-5\">\n" +
-                    "                        <label style=\"font-size: 20px;\">Название\n" +
-                    "                            <input style=\"font-size: 20px; font-weight: lighter\" class=\"form-control\" type=\"text\"\n" +
+                    "                        <label>Название\n" +
+                    "                            <input style=\"font-weight: lighter\" class=\"form-control\" type=\"text\"\n" +
                     "                                   id=\"sub_text\">\n" +
                     "                        </label>\n" +
                     "                    </div>\n" +
                     "                    <div class=\"form-group col-4\">\n" +
-                    "                        <label style=\"font-size: 20px;\">Тип данных\n" +
-                    "                            <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control type_subparam\"\n" +
+                    "                        <label>Тип данных\n" +
+                    "                            <select style=\"font-weight: lighter\" class=\"form-control type_subparam\"\n" +
                     "                                    id=\"type_subparam\">\n" +
                     "                                {% for t in types %}\n"+
                         "                                    <option value=\"{{ t | first }}\">{{ t | last }}</option>\n"

@@ -5,49 +5,53 @@
     <link rel="stylesheet" href="{% static 'css/fill_params.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="col-8 params">
-        <h3>Заполнение дополнительных параметров для интервенции "{{ interv.name }}"</h3>
-        <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 1em">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% for p in params %}
-                <div class="data_param">
-                <h5>Параметр "{{ p.name }}"</h5>
-                {% if p.type == 1 %}
-                    <div class="form-group">
-                        <label>Введите число
-                            <input type="number" class="form-control numb" name="sp_{{ p.id }}">
-                        </label>
-                    </div>
-                {% endif %}
+    <div class="row justify-content-md-center">
+        <div class="col-8 params p-3 mb-2 bg-light text-dark">
+            <h4>Заполнение дополнительных параметров для интервенции "{{ interv.name }}"</h4>
+            <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 1em">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% for p in params %}
+                    <div class="data_param">
+                    <h5>Параметр "{{ p.name }}"</h5>
+                    {% if p.type == 1 %}
+                        <div class="form-group">
+                            <label>Введите число
+                                <input type="number" class="form-control numb" name="sp_{{ p.id }}">
+                            </label>
+                        </div>
+                    {% endif %}
 
-                {% if p.type == 2 %}
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Введите текст</label>
-                        <textarea class="form-control" name="sp_{{ p.id }}" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
-                    </div>
-                {% endif %}
+                    {% if p.type == 2 %}
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Введите текст</label>
+                            <textarea class="form-control" name="sp_{{ p.id }}" id="exampleFormControlTextarea1"
+                                      rows="3"></textarea>
+                        </div>
+                    {% endif %}
 
-                {% if p.type == 3 or p.type == 4 %}
-                    <div class="col-xs-12">
-                    <div class="file">
-                        <label>Загрузите {% if p.type == 3 %} файл {% else %} изображение{% endif %}
-                            <input type="file" class="file-upload" name="file_{{ p.id }}">
-                        </label>
-                    </div>
-                    <br>
-                    <a href="#" style="color: #1e7e34;font-size: 24px">
-                        <span class="glyphicon glyphicon-plus add_file_field"></span>
-                    </a>
+                    {% if p.type == 3 or p.type == 4 %}
+                        <div class="col-xs-12">
+                        <div class="file">
+                            <label>Загрузите {% if p.type == 3 %} файл {% else %} изображение{% endif %}
+                                <input type="file" class="file-upload" name="file_{{ p.id }}">
+                            </label>
+                        </div>
+                        <br>
+                        <a href="#" style="color: #1e7e34;font-size: 24px">
+                            <span class="glyphicon glyphicon-plus add_file_field"></span>
+                        </a>
 
-                {% endif %}
+                    {% endif %}
 
-            </div>
-            {% endfor %}
-            <button type="submit" id="submit" class="save btn btn-default" style="margin: 0 auto !important;">Сохранить
-            </button>
+                </div>
+                {% endfor %}
+                <div class="text-center">
+                    <button type="submit" id="submit" name="singlebutton" class="btn btn-primary">Сохранить</button>
+                </div>
 
-        </form>
+            </form>
+        </div>
     </div>
+
 {% endblock %}

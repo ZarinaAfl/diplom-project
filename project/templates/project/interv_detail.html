@@ -58,7 +58,7 @@
                         {% for r in researches %}
                             <li>
                                 <div class="r">
-                                    <a href="add_research.html"> {{ r.name }}</a>
+                                    <a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a>
                                 </div>
                             </li>
 

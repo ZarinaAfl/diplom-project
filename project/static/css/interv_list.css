@@ -7,3 +7,43 @@
     background-color: #009ada;
     color: white;
 }
+
+.card-header {
+    font-size: 16px;
+    height: 2.5em;
+    background-color: #009ada;
+    color: white;
+}
+
+.card {
+    margin-top: 1em;
+    height: 10em;
+}
+
+.input-group{
+    margin-top: 1em;
+}
+
+.custom-checkbox {
+    margin-left: 1em;
+}
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.has-search {
+    padding-top: 1em;
+}
