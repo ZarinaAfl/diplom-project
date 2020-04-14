@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/static/css/research_detail.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/add_parameters.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/add_parameters.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/base_criteria.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/base_criteria.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/create_formula.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/create_formula.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/interv_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/template_create.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/template_create.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/add_parameters.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/add_parameters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/base_criteria.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base_criteria.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/template_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/template_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/diploma" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
@@ -159,7 +143,10 @@
       <workItem from="1582974127077" duration="612000" />
       <workItem from="1583317385993" duration="15688000" />
       <workItem from="1583743045858" duration="26146000" />
-      <workItem from="1583907841246" duration="21580000" />
+      <workItem from="1583907841246" duration="22341000" />
+      <workItem from="1584118910160" duration="611000" />
+      <workItem from="1584472665861" duration="133000" />
+      <workItem from="1585844478925" duration="6006000" />
     </task>
     <servers />
   </component>
@@ -167,10 +154,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578398482079">
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585845775993">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1578398482079" />
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1585845775993" />
     <state x="417" y="152" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581232010875">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -179,26 +166,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583754782312" />
-    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1583322246654">
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1585901308320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1583322246654" />
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom" timestamp="1583931548103">
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585901308320" />
+    <state width="1237" height="150" key="GridCell.Tab.0.bottom" timestamp="1586849698552">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583931548103" />
-    <state width="1237" height="150" key="GridCell.Tab.0.center" timestamp="1583931548102">
+    <state width="1237" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
+    <state width="1237" height="150" key="GridCell.Tab.0.center" timestamp="1586849698552">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583931548102" />
-    <state width="1237" height="150" key="GridCell.Tab.0.left" timestamp="1583931548102">
+    <state width="1237" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
+    <state width="1237" height="150" key="GridCell.Tab.0.left" timestamp="1586849698552">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583931548102" />
-    <state width="1237" height="150" key="GridCell.Tab.0.right" timestamp="1583931548102">
+    <state width="1237" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
+    <state width="1237" height="150" key="GridCell.Tab.0.right" timestamp="1586849698552">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583931548102" />
+    <state width="1237" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
     <state width="1237" height="242" key="GridCell.Tab.1.bottom" timestamp="1582138954725">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -215,10 +202,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="242" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582138954725" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1583317386098">
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1584472685673">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1583317386098" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584472685673" />
     <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1583936607930">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
