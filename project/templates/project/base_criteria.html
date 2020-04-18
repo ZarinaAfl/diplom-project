@@ -126,7 +126,6 @@
 
 
     <script type="text/javascript">
-
         $(document).ready(function () {
             var symbols = ['+', '-', '/', '*'];
             var left_branch = '(';
@@ -232,38 +231,5 @@
                 $("#desc_show").val(content);
             }
         });
-    </script>
-{% endblock %}
-{% block script %}
-    <script>
-        $(document).ready(function () {
-            $("#closeModal").click(function () {
-                $("input[name='item']:checked").prop('checked', false);
-                $("#insert").text('');
-                $("#checkAll").prop('checked', false);
-            });
-
-            $("#apply_checkbox").click(function () {
-                var params = [];
-                var params_sh = [];
-                $.each($("input[name='item']:checked"), function () {
-                    params.push("a_" + $(this).attr("id"));
-                    params_sh.push($("label[for='" + $(this).attr("id") + "']").text());
-                    $(this).prop('checked', false);
-                });
-                array.push($("#insert").text() + "(" + params + ") ");
-                display.push($("#insert").text() + "(" + params_sh + ") ");
-                $("#insert").text('');
-                $("#checkAll").prop('checked', false);
-                disabled_button();
-                full_textarea();
-            });
-
-
-            $("#checkAll").click(function () {
-                $(".form-check-input").prop('checked', $(this).prop('checked'));
-            });
-        });
-
     </script>
 {% endblock %}

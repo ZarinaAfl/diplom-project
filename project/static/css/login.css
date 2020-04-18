@@ -1,0 +1,21 @@
+h3 {
+    text-align: center;
+}
+
+.btn {
+    margin-top: 10px;
+    background-color: #009ada;
+    color: white;
+}
+
+.login_form {
+    position: absolute;
+    top: 25%;
+    margin-top: -0.625em;
+}
+
+.logout {
+
+    /* или */
+    margin-left: auto;
+}

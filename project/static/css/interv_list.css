@@ -2,6 +2,10 @@
     color: #2d2d2d;
 }
 
+.card-body {
+    padding-top: 0.5em;
+}
+
 .btn {
     margin-top: 10px;
     background-color: #009ada;
@@ -17,33 +21,71 @@
 
 .card {
     margin-top: 1em;
-    height: 10em;
+    height: 7.3em;
 }
 
-.input-group{
+.input-group, .add_btn {
     margin-top: 1em;
 }
 
-.custom-checkbox {
-    margin-left: 1em;
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
 }
 
+.search {
+    margin-top: 10px;
+    padding-left: 0.5em;
+}
+/* Styles for wrapping the search box */
+
+.main {
+    width: 50%;
+    margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
 .has-search .form-control {
-  padding-left: 2.375rem;
+    padding-left: 2.375rem;
 }
 
 .has-search .form-control-feedback {
-  position: absolute;
-  z-index: 2;
-  display: block;
-  width: 2.375rem;
-  height: 2.375rem;
-  line-height: 2.375rem;
-  text-align: center;
-  pointer-events: none;
-  color: #aaa;
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.fa-search {
+    margin-top: 0.1em;
+}
+input {
+    width: 20em;
+}
+.all_filter {
+    margin-left: 0.5em;
 }
 
-.has-search {
+
+.dropdown-toggle {
+    height: 3em;
+}
+input {
+    height: 3em;
+}
+
+.intervs{
     padding-top: 1em;
 }

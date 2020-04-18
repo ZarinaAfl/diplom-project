@@ -1,6 +1,7 @@
 import os
 
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.utils import timezone
@@ -13,6 +14,11 @@ TYPE_PARAM = (
     (3, 'FILE'),
     (4, 'IMAGE'),
 )
+ROLE_CHOICES = (
+    (1, 'Администратор'),
+    (2, 'Автор интервенции'),
+    (3, 'Исследователь'),
+)
 
 SPHERE = (
     ('M', 'Математика'),
@@ -20,6 +26,17 @@ SPHERE = (
     ('L', 'Литература'),
 )
 
+class CustomUser(models.Model):
+    fullname = models.CharField(max_length=100, verbose_name="ФИО", default="")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
+    role = models.IntegerField(choices=ROLE_CHOICES, blank=True, null=True, default=ROLE_CHOICES[0][0],
+                               verbose_name="Роль")
+
+    def __str__(self):
+        return self.fullname
+
+    def get_username(self):
+        return self.fullname
 
 class Intervention(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -28,7 +45,7 @@ class Intervention(models.Model):
     sphere = models.CharField(
         max_length=2,
         choices=SPHERE,
-        default='MATHS', verbose_name="Тематическая область"
+        default='MATHS', verbose_name="Дисциплина"
     )
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -55,7 +72,7 @@ class Param(models.Model):
 class ParamValue(models.Model):
     param = models.ForeignKey(Param, related_name='param_values', on_delete=models.CASCADE, blank=False, null=False,
                               verbose_name='Значение параметра')
-    value = models.FloatField(default=0, blank=True, null=True)
+    value = models.IntegerField(default=0, blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     file = models.FileField(default='file')
     image = models.ImageField(default='image')

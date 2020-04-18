@@ -6,41 +6,57 @@
 {% endblock %}
 {% block content %}
     <div class="row justify-content-md-center">
-
-
         <div class="col-8">
-            <div class="card">
-                <h6 class="card-header">Фильтр</h6>
-                <div class="card-body">
-                    <div class="row filter">
-                        <!-- Default checked -->
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="defaultChecked2" checked>
-                            <label class="custom-control-label" for="defaultChecked2">Все</label>
-                        </div>
+            <div class="row">
+                <div class="col-11">
+                    <div class="card">
+                        <h6 class="card-header">Фильтр</h6>
+                        <div class="row">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-1 all_filter">
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button"
+                                                    data-toggle="dropdown">Все
+                                                <span class="caret"></span></button>
+                                            <ul class="dropdown-menu">
+                                                <input class="form-control" id="myInput" type="text" placeholder="пои">
+                                                <li><a href="#">HTML</a></li>
+                                                <li><a href="#">CSS</a></li>
+                                                <li><a href="#">JavaScript</a></li>
+                                                <li><a href="#">jQuery</a></li>
+                                                <li><a href="#">Bootstrap</a></li>
+                                                <li><a href="#">Angular</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-10">
+                                        <form class="form-inline search" method="get" action=".">
+                                            <div class="form-group has-search">
+                                                <span class="fa fa-search form-control-feedback"></span>
+                                                <input size="77" type="text" class="form-control" name="title_contains"
+                                                       placeholder="Поиск...">
+                                            </div>
+                                        </form>
+                                    </div>
 
-                        {% for s in sphere %}
-                            <!-- Default unchecked -->
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                                <label class="custom-control-label" for="defaultUnchecked">{{ s }}</label>
+                                </div>
                             </div>
-                        {% endfor %}
-                    </div>
-                    <div class="form-group has-search">
-                        <span class="fa fa-search form-control-feedback"></span>
-                        <input type="text" class="form-control" placeholder="Поиск...">
+                        </div>
                     </div>
                 </div>
+                <div class="col-1"><a href="{% url 'interv_add' %}" style="font-size: 24px">
+                    <button type="button" class="btn add_btn">
+                        <span class="fas fa-plus add_subparam"></span> Добавить
+                    </button>
+
+                </a>
+                </div>
+
             </div>
 
-            <a href="{% url 'interv_add' %}" style="font-size: 24px">
-                <button type="button" class="btn">
-                    <span class="fas fa-plus add_subparam"></span> Добавить
-                </button>
-
-            </a>
-            {% for interv in intervs %}
+        <div class="intervs">
+                {% for interv in intervs %}
                 <div class="interv">
                     <div class="date">
                         {{ interv.published_date }}
@@ -50,6 +66,21 @@
                 </div>
             {% endfor %}
         </div>
+
+        </div>
     </div>
 
+    <div class="row">
+        <ul>
+            {% for interv in queryset %}
+                <li>
+                    <span>{{ interv.name }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+
+
+    </div>
 {% endblock %}

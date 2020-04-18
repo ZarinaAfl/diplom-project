@@ -13,7 +13,7 @@
                 {{ form.as_p }}
                 {% for p in params %}
                     <div class="data_param">
-                    <h5>Параметр "{{ p.name }}"</h5>
+                    <h5>{{ p.name }}</h5>
                     {% if p.type == 1 %}
                         <div class="form-group">
                             <label>Введите число

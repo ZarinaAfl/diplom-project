@@ -2,12 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/static/js/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/templates/project/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/templates/project/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evbi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/interv_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/base_criteria.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base_criteria.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="Django default" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -15,10 +47,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -38,7 +70,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/diploma" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
@@ -147,6 +179,8 @@
       <workItem from="1584118910160" duration="611000" />
       <workItem from="1584472665861" duration="133000" />
       <workItem from="1585844478925" duration="6006000" />
+      <workItem from="1586965692175" duration="599000" />
+      <workItem from="1586974409287" duration="35476000" />
     </task>
     <servers />
   </component>
@@ -170,46 +204,46 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1585901308320" />
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom" timestamp="1586849698552">
+    <state width="1237" height="150" key="GridCell.Tab.0.bottom" timestamp="1587198130215">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
-    <state width="1237" height="150" key="GridCell.Tab.0.center" timestamp="1586849698552">
+    <state width="1237" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587198130215" />
+    <state width="1237" height="150" key="GridCell.Tab.0.center" timestamp="1587198130215">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
-    <state width="1237" height="150" key="GridCell.Tab.0.left" timestamp="1586849698552">
+    <state width="1237" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587198130215" />
+    <state width="1237" height="150" key="GridCell.Tab.0.left" timestamp="1587198130215">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
-    <state width="1237" height="150" key="GridCell.Tab.0.right" timestamp="1586849698552">
+    <state width="1237" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587198130215" />
+    <state width="1237" height="150" key="GridCell.Tab.0.right" timestamp="1587198130215">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1586849698552" />
-    <state width="1237" height="242" key="GridCell.Tab.1.bottom" timestamp="1582138954725">
+    <state width="1237" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587198130215" />
+    <state width="1237" height="242" key="GridCell.Tab.1.bottom" timestamp="1587197067432">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582138954725" />
-    <state width="1237" height="242" key="GridCell.Tab.1.center" timestamp="1582138954725">
+    <state width="1237" height="242" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587197067432" />
+    <state width="1237" height="242" key="GridCell.Tab.1.center" timestamp="1587197067432">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582138954725" />
-    <state width="1237" height="242" key="GridCell.Tab.1.left" timestamp="1582138954725">
+    <state width="1237" height="242" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587197067432" />
+    <state width="1237" height="242" key="GridCell.Tab.1.left" timestamp="1587197067432">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582138954725" />
-    <state width="1237" height="242" key="GridCell.Tab.1.right" timestamp="1582138954725">
+    <state width="1237" height="242" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587197067432" />
+    <state width="1237" height="242" key="GridCell.Tab.1.right" timestamp="1587197067432">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="242" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582138954725" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1584472685673">
+    <state width="1237" height="242" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587197067432" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1586974419534">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584472685673" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1583936607930">
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1586974419534" />
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1587197678046">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1583936607930" />
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1587197678046" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583746582622">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

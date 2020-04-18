@@ -1,4 +1,8 @@
 import cexprtk as cexprtk
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
@@ -10,14 +14,47 @@ from .models import SPHERE
 parser = Parser()
 
 
-# Create your views here.
-def interv_list(request):
-    intervs = Intervention.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    speheres = []
-    for s in SPHERE:
-        speheres.append(s[1])
+def logout_view(request):
+    logout(request)
+    return redirect("login_view")
 
-    return render(request, 'project/interv_list.html', {'intervs': intervs, 'activate': 'intervs', 'sphere': speheres})
+
+def login_view(request):
+    # if not request.user.is_anonymous:
+    # return redirect("project:profile")
+    if request.method == 'POST':
+        user = authenticate(
+            username=request.POST['username'],
+            password=request.POST['password']
+        )
+        if user is not None:
+            login(request, user, backend=None)
+            return redirect("interv_list")
+        else:
+            error_message = 'Пользователь не найден' if not User.objects.filter(
+                username=request.POST['username']).count() \
+                else 'Неверный пароль'
+            return render(request, 'project/login.html', {'error': error_message,
+                                                          'email': request.POST['username']})
+    return render(request, 'project/login.html')
+
+
+@login_required(login_url="/login")
+def profile_view(request):
+    return render(request, 'project/profile.html', {'activate': 'profile'})
+
+
+@login_required(login_url="/login")
+def interv_list(request):
+    title_contains = request.GET.get('title_contains')
+    intervs = Intervention.objects.all()
+    if title_contains is not None:
+        intervs = Intervention.objects.filter(published_date__lte=timezone.now(), name__icontains=title_contains).order_by(
+        'published_date')
+    spheres = []
+    for s in SPHERE:
+        spheres.append(s[1])
+    return render(request, 'project/interv_list.html', {'intervs': intervs, 'activate': 'intervs', 'sphere': spheres})
 
 
 def interv_detail(request, pk):
@@ -256,9 +293,9 @@ def calculate_effect(research):
 
 def research_detail(request, interv_pk, res_pk):
     research = Research.objects.get(pk=res_pk)
-    interv = Intervention.objects.get(pk = interv_pk)
+    interv = Intervention.objects.get(pk=interv_pk)
     params = TemplParam.objects.filter(template=Template.objects.get(intervention=interv))
-    res_params_value = ResearchParamValue.objects.filter(research = research)
+    res_params_value = ResearchParamValue.objects.filter(research=research)
     researches = Research.objects.filter(intervention=interv)
     return render(request, 'project/research_detail.html', {'research': research, 'interv': interv,
                                                             'params': params,
