@@ -1,9 +1,10 @@
-import cexprtk as cexprtk
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_protect
 
-from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research
+from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research, \
+    StageResearch, TaskStage, CustomUser
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
@@ -49,8 +50,9 @@ def interv_list(request):
     title_contains = request.GET.get('title_contains')
     intervs = Intervention.objects.all()
     if title_contains is not None:
-        intervs = Intervention.objects.filter(published_date__lte=timezone.now(), name__icontains=title_contains).order_by(
-        'published_date')
+        intervs = Intervention.objects.filter(published_date__lte=timezone.now(),
+                                              name__icontains=title_contains).order_by(
+            'published_date')
     spheres = []
     for s in SPHERE:
         spheres.append(s[1])
@@ -200,9 +202,17 @@ def template_detail(request, pk):
         templ = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=templ)
         researches = Research.objects.filter(template=templ)
+        stages = StageResearch.objects.filter(template=templ)
+        tasks = []
+        for s in stages:
+            task = TaskStage.objects.filter(stage=s)
+            for t in task:
+                tasks.append(t)
         return render(request, 'project/template_detail.html',
                       {'types': TYPE_PARAM, 'interv': interv, 'template': templ, 'templ_params': templ_params,
-                       'researches': researches})
+                       'researches': researches,
+                       'stages': stages,
+                       'tasks': tasks})
 
 
 FUNCTIONS = ["log", "ln", "x!", "sqrt", "abs"]
@@ -220,7 +230,7 @@ def create_formula(request, pk):
         formula = request.POST["formula"]
         templ.formula = formula
         templ.save()
-        return redirect('template_detail', pk=interv.pk)
+        return redirect('research_tasks', interv_pk=interv.pk)
 
 
 def add_research(request, pk):
@@ -291,6 +301,22 @@ def calculate_effect(research):
     # ОБРАБОТАТЬ ФУНКЦИИ
 
 
+def appoint_persons(request, interv_pk):
+    interv = Intervention.objects.get(pk=interv_pk)
+    templ = Template.objects.get(intervention=interv)
+    stages = StageResearch.objects.filter(template=templ)
+    tasks = []
+    for s in stages:
+        task = TaskStage.objects.filter(stage=s)
+        for t in task:
+            tasks.append(t)
+    current_user = CustomUser.objects.get(user=request.user)
+    organization = current_user.organization
+    close_users = CustomUser.objects.filter(organization= organization)
+
+    return render(request, 'project/appoint_persons.html', {'stages': stages, 'tasks': tasks, 'users': close_users})
+
+
 def research_detail(request, interv_pk, res_pk):
     research = Research.objects.get(pk=res_pk)
     interv = Intervention.objects.get(pk=interv_pk)
@@ -301,3 +327,31 @@ def research_detail(request, interv_pk, res_pk):
                                                             'params': params,
                                                             'params_value': res_params_value,
                                                             'researches': researches})
+
+
+@login_required(login_url="login/")
+def research_tasks(request, interv_pk):
+    interv = Intervention.objects.get(pk=interv_pk)
+    if request.method == "GET":
+        return render(request, 'project/research_tasks.html')
+    else:
+        template = Template.objects.get(intervention=interv)  # получаем шаблон исследования
+        stages_kol = int(request.POST['stages_kol'])
+        tasks_kol = int(request.POST['tasks_kol'])
+        req = request.POST
+        for k in range(0, stages_kol):
+            stage_number = req.get("%s[%s][%s]" % ("data_stages", k, "stage_number"))
+            stage_value = req.get("%s[%s][%s]" % ("data_stages", k, "stage_value"))
+            stage = StageResearch(template=template, number=stage_number, name=stage_value)
+            stage.save()
+
+        for k in range(0, tasks_kol):
+            task_r = req.get("%s[%s][%s]" % ("data_tasks", k, "task_number")).split('_')
+            task_number = task_r[2]
+            task_stage = task_r[1]
+            stage = StageResearch.objects.get(template=template, number=task_stage)
+            task_value = req.get("%s[%s][%s]" % ("data_tasks", k, "task_value"))
+            task = TaskStage(stage=stage, number=task_number, name=task_value)
+            task.save()
+
+        return redirect('interv_detail', pk=interv.pk)

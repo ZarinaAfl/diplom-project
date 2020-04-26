@@ -46,7 +46,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Исследование
                         <a href="{% url 'add_research' interv.pk %}">
-                            <span class="fas fa-plus add_subparam"></span>
+                            <span class="fas fa-plus add_etap"></span>
                         </a></th>
                     <th scope="col">Период проведения</th>
                     <th scope="col">Эффективность</th>
@@ -55,7 +55,6 @@
                 <tbody>
                 {% for r in researches %}
                     <tr>
-
                         <th scope="row" class="number"></th>
                         <td><a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a></td>
                         <td>23.03.2020 - 30.04.2020</td>

@@ -1,21 +1,20 @@
 .header {
     color: #2d2d2d;
 }
-
 .card-body {
     padding-top: 0.5em;
 }
 
 .btn {
     margin-top: 10px;
-    background-color: #009ada;
+    background-color: #2e009d;
     color: white;
 }
 
 .card-header {
     font-size: 16px;
     height: 2.5em;
-    background-color: #009ada;
+    background-color: #000839ff;
     color: white;
 }
 
@@ -78,7 +77,9 @@ input {
     margin-left: 0.5em;
 }
 
-
+.add_btn {
+    margin-left: -1.2em;
+}
 .dropdown-toggle {
     height: 3em;
 }

@@ -2,9 +2,6 @@
 .post {
     margin-top: 1em;
 }
-.fas {
-     font-size: 24px;
-}
 
 .close {
     color: red;
@@ -27,4 +24,10 @@ select, label {
 
 .btn {
     width: 150px;
+    background-color: #2e009d;
+}
+
+.fa-plus {
+    color: #2e009d;
+    font-size: 24px;
 }

@@ -6,6 +6,9 @@
     margin-top: 1em;
 }
 
+.btn-save {
+    background-color: #2e009d;
+}
 .for_sign {
     font-size: 20px;
     width: 2em;

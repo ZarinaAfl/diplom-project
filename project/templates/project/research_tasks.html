@@ -1,0 +1,205 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/research_tasks.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="row justify-content-md-center">
+        <div class="post col-8">
+            <div class="p-3 mb-2 bg-light text-dark">
+                <div id="params">
+                    <h6>{{ interv.name }}</h6>
+                    <h4>Этапы и задачи исследования</h4>
+                    <div class="col-xs-12">
+                        <button class="btn add_stage"><i class="fas fa-plus add_etap"></i></button>
+                    </div>
+                    <div class="stage d-block" id="1">
+                        <div class="row" style="margin-left: 10px;">
+                            <div class="input-group etap col-11">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Этап 1</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Default" id="stage_name"
+                                       aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="form-group col-1"><a href="#" class="close delete_stage" aria-label="Close"
+                                                             role="button">&times;</a></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="days">
+                                <div class="input-group etap col-12">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Кол-во дней</span>
+                                    </div>
+                                    <input type="number" class="form-control" aria-label="Default"
+                                           aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row tasks_header">
+                            <div class="col-6"></div>
+                            <h5>Задачи</h5>
+                        </div>
+                        <div class="tasks">
+                            <div class="row" id="task_1_1">
+                                <div class="add_task col-3">
+                                    <span class="fas fa-plus"></span>
+                                </div>
+
+                                <div class="input-group col-8">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">1</span>
+                                    </div>
+                                    <input type="text" class="form-control task" aria-label="Default"
+                                           aria-describedby="inputGroup-sizing-default" id="t_1_1">
+                                </div>
+
+                                <div class=" col-1"><a href="#" class="close delete_task" aria-label="Close"
+                                                       role="button">&times;</a></div>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" id="submit" name="singlebutton" class="btn btn-save btn-primary">Далее</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.container-fluid').on('click', '.delete_stage', function () {
+                var id = $(this).parent().parent().attr("id");
+                var total_element = $("#" + id + " .stage").length;
+                if (total_element !== 1) {
+                    $(this).parent().parent().remove();
+                }
+            });
+
+            $('.container-fluid').on('click', '.add_etap', function () {
+                var lastid = $(".stage:last").attr("id");
+                var e_number = (Number(lastid) + 1);
+                var task_id = "task_" + e_number + "_1";
+                var id = e_number;
+                $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .stage:last").attr("id")).after("<div class=\"stage d-block\" id=\"" + id + "\"></div>");
+                $("#" + id).append(
+                    "                        <div class=\"row\" style=\"margin-left: 10px;\">\n" +
+                    "                            <div class=\"input-group etap col-11\">\n" +
+                    "                                <div class=\"input-group-prepend\">\n" +
+                    "                                    <span class=\"input-group-text\" id=\"inputGroup-sizing-default\">Этап " + e_number + "</span>\n" +
+                    "                                </div>\n" +
+                    "                                <input type=\"text\" class=\"form-control\" aria-label=\"Default\" id=\"stage_name\"\n" +
+                    "                                       aria-describedby=\"inputGroup-sizing-default\">\n" +
+                    "                            </div>\n" +
+                    "                            <div class=\"form-group col-1\"><a href=\"#\" class=\"close delete_stage\" aria-label=\"Close\"\n" +
+                    "                                                             role=\"button\">&times;</a></div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"row\">\n" +
+                    "                            <div class=\"days\">\n" +
+                    "                                <div class=\"input-group etap col-12\">\n" +
+                    "                                    <div class=\"input-group-prepend\">\n" +
+                    "                                        <span class=\"input-group-text\" id=\"inputGroup-sizing-default\">Кол-во дней</span>\n" +
+                    "                                    </div>\n" +
+                    "                                    <input type=\"number\" class=\"form-control\" aria-label=\"Default\"\n" +
+                    "                                           aria-describedby=\"inputGroup-sizing-default\">\n" +
+                    "                                </div>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"row tasks_header\">\n" +
+                    "                            <div class=\"col-6\"></div>\n" +
+                    "                            <h5>Задачи</h5>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"tasks\">\n" +
+                    "                            <div class=\"row\" id=" + task_id + ">\n" +
+                    "                                <div class=\"add_task col-3\">\n" +
+                    "                                    <span class=\"fas fa-plus\"></span>\n" +
+                    "                                </div>\n" +
+                    "                                <div class=\"input-group col-8\">\n" +
+                    "                                    <div class=\"input-group-prepend\">\n" +
+                    "                                        <span class=\"input-group-text\" id=\"inputGroup-sizing-default\">1</span>\n" +
+                    "                                    </div>\n" +
+                    "                                    <input type=\"text\" class=\"form-control task\" aria-label=\"Default\"\n" +
+                    "                                           aria-describedby=\"inputGroup-sizing-default\" id =\"t_" + e_number + "_1\">\n" +
+                    "                                </div>\n" +
+                    "                                <div class=\" col-1\"><a href=\"#\" class=\"close delete_task\" aria-label=\"Close\"\n" +
+                    "                                                       role=\"button\">&times;</a></div>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                        <hr>\n");
+            });
+
+            $('.container-fluid').on('click', '.add_task', function () {
+                var tasks = $(this).parent().parent();
+                var current_task = tasks.children().last().attr("id");
+
+                var stage = current_task.split('_')[1];
+                var last_task = current_task.split('_')[2];
+
+                var id = "task_" + stage + "_" + (Number(last_task) + 1);
+                var task_id = Number(last_task) + 1;
+                var p = $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .row:last").attr("id")).after("<div class=\"row\" id=\"" + id + "\"></div>");
+                $("#" + id).append(
+                    "                                <div class=\"add_task col-3\">\n" +
+                    "                                </div>\n" +
+                    "                                <div class=\"input-group col-8\">\n" +
+                    "                                    <div class=\"input-group-prepend\">\n" +
+                    "                                        <span class=\"input-group-text\" id=\"inputGroup-sizing-default\">" + task_id + "</span>\n" +
+                    "                                    </div>\n" +
+                    "                                    <input type=\"text\" class=\"form-control task\" aria-label=\"Default\"\n" +
+                    "                                           aria-describedby=\"inputGroup-sizing-default\" id =\"t_" + stage + "_" + task_id + "\">\n" +
+                    "                                </div>\n" +
+                    "                                <div class=\" col-1\"><a href=\"#\" class=\"close delete_task\" aria-label=\"Close\"\n" +
+                    "                                                       role=\"button\">&times;</a></div>");
+
+            });
+
+            $(".container-fluid").on('click', '#submit', function () {
+                var stages = $(".stage");
+                var tasks = $(".task");
+                var data_stages = [];
+                var data_tasks = [];
+
+                for (j = 0; j < stages.length; j++) {
+                    var stage_tmp = {
+                        "stage_number": $(stages[j]).attr("id"),
+                        "stage_value": $(stages[j]).find('#stage_name').val(),
+                    };
+                    data_stages.push(stage_tmp);
+                }
+
+                for (j = 0; j < tasks.length; j++) {
+                    var tasks_tmp = {
+                        "task_number": $(tasks[j]).attr("id"),
+                        "task_value": $(tasks[j]).val(),
+                    };
+                    data_tasks.push(tasks_tmp);
+                }
+
+                $.ajax({
+                    type: "post",
+                    data: {
+                        stages_kol: data_stages.length,
+                        tasks_kol: data_tasks.length,
+                        data_stages, data_tasks, csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                    success: function (response) {
+                        window.location = "http://127.0.0.1:8000/intervention/".concat({{ interv.pk }});
+                    }
+                });
+            });
+
+        });
+    </script>
+
+{% endblock %}

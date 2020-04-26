@@ -22,5 +22,7 @@ urlpatterns = [
     path('intervention/<int:pk>/create_formula/', create_formula, name='create_formula'),
     path('intervention/<int:pk>/template_detail/', template_detail, name='template_detail'),
     path('intervention/<int:interv_pk>/research_detail/<int:res_pk>', research_detail, name='research_detail'),
+    path('intervention/<int:interv_pk>/research_tasks', research_tasks, name='research_tasks'),
+    path('intervention/<int:interv_pk>/research/appoint_persons', appoint_persons, name='appoint_persons')
 
 ]

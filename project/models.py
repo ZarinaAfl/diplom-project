@@ -26,8 +26,14 @@ SPHERE = (
     ('L', 'Литература'),
 )
 
+
+class EducatInst(models.Model):
+    name = models.CharField(max_length=255, verbose_name="образовательное учреждение", default="")
+
+
 class CustomUser(models.Model):
     fullname = models.CharField(max_length=100, verbose_name="ФИО", default="")
+    organization = models.ForeignKey(EducatInst, on_delete=models.CASCADE)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
     role = models.IntegerField(choices=ROLE_CHOICES, blank=True, null=True, default=ROLE_CHOICES[0][0],
                                verbose_name="Роль")
@@ -37,6 +43,7 @@ class CustomUser(models.Model):
 
     def get_username(self):
         return self.fullname
+
 
 class Intervention(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -116,7 +123,7 @@ class TemplParam(models.Model):
 
 class Research(models.Model):
     intervention = models.ForeignKey(Intervention, related_name='research_interv', on_delete=models.CASCADE,
-                                 blank=False, null=False, verbose_name='Исследование интервенции', default=None)
+                                     blank=False, null=False, verbose_name='Исследование интервенции', default=None)
     template = models.ForeignKey(Template, related_name='template', on_delete=models.CASCADE,
                                  blank=False, null=False)
     name = models.CharField(max_length=70, default='test')
@@ -153,3 +160,17 @@ class ResearchParamValue(models.Model):
 
     # def get_files(self):
     #   return self.files.all()
+
+
+class StageResearch(models.Model):
+    template = models.ForeignKey(Template, related_name='stage_research', on_delete=models.CASCADE,
+                                 blank=False, null=False, verbose_name='Этап исследования', default=None)
+    number = models.IntegerField(verbose_name="Номер этапа", default=None)
+    name = models.CharField(max_length=255, default='null')
+
+
+class TaskStage(models.Model):
+    stage = models.ForeignKey(StageResearch, related_name='task_stage', on_delete=models.CASCADE,
+                              blank=False, null=False, verbose_name='Этап задачи', default=None)
+    number = models.IntegerField(verbose_name="Номер задачи", default=None)
+    name = models.CharField(max_length=255, default='null')

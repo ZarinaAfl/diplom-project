@@ -1,0 +1,62 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/add_research.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="row justify-content-md-center">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Назначение лиц</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12 p-3 mb-2 bg-light text-dar">
+                            <label for="exampleFormControlSelect1">Ответственный</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                {% for user in users %}
+                                    <option>{{ user.fullname }}</option>
+                                {% endfor %}
+                            </select>
+
+                            {% for s in stages %}
+                                <h6>{{ s.name }}</h6>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Исполнитель</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        {% for user in users %}
+                                            <option>{{ user.fullname }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endfor %}
+                            <div class="text-center">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="submit" id="submit" name="singlebutton" class="btn btn-save btn-primary">
+                            Назначить
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

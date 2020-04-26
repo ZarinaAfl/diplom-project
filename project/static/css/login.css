@@ -4,7 +4,7 @@ h3 {
 
 .btn {
     margin-top: 10px;
-    background-color: #009ada;
+    background-color: #2e009d;
     color: white;
 }
 
@@ -15,7 +15,6 @@ h3 {
 }
 
 .logout {
-
     /* или */
     margin-left: auto;
 }

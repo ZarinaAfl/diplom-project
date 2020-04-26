@@ -1,0 +1,47 @@
+.etap {
+    width: 100%;
+    height: 2em;
+}
+
+.add_etap {
+    font-size: 22px;
+}
+
+.delete_stage {
+    padding-right: 0.6em;
+    color: red;
+    font-size: 34px;
+}
+
+.delete_task {
+    color: red;
+    font-size: 28px;
+    padding-right: 0.6em;
+}
+
+.add_task {
+    text-align: right;
+}
+
+.add_stage {
+    background-color: #f8f9fa;
+}
+.add_task {
+    font-size: 19px;
+}
+
+.days {
+    margin-left: 24px;
+    width: 15em;
+}
+
+.btn-save {
+    background-color: #2e009d;
+}
+
+.fa-plus {
+    color: #2e009d;
+}
+
+
+

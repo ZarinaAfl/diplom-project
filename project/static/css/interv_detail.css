@@ -2,6 +2,14 @@
     margin-top: 10px;
 }
 
+.fa-plus {
+    color: #2e009d;
+    font-size: 18px;
+}
+
+.researches {
+    padding-top: 1em;
+}
 .research {
     margin-left: -20px !important;
 }
@@ -25,10 +33,9 @@ h3 {
 
 .template {
     margin-left: 100px;
-    background-color: #009ada;
+    background-color: #2e009d;
     color: white;
 }
-
 
 a {
     font-size: 16px;

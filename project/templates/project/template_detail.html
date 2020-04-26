@@ -22,8 +22,25 @@
                     {% endfor %}
                 </ul>
                 <b>Формула расчета эффективности: </b>{{ template.formula }}
-
             </div>
+                <div class="stages col-10">
+            {% for stage in stages %}
+                <h5>Этап: {{ stage.name }}</h5>
+                <ul>
+                    {% for task in tasks %}
+                        {% if task.stage == stage %}
+                        <li>
+                            <div class="r">
+                                {{ task.name}}
+                            </div>
+                        </li>
+                        {% endif %}
+
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </div>
+
         </div>
     </div>
 
@@ -35,7 +52,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Исследование
                         <a href="{% url 'add_research' interv.pk %}">
-                            <span class="fas fa-plus add_subparam"></span>
+                            <span class="fas fa-plus add_etap"></span>
                         </a></th>
                     <th scope="col">Период проведения</th>
                     <th scope="col">Эффективность</th>
