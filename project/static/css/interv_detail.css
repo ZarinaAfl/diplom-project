@@ -7,9 +7,6 @@
     font-size: 18px;
 }
 
-.researches {
-    padding-top: 1em;
-}
 .research {
     margin-left: -20px !important;
 }
@@ -18,25 +15,26 @@ img {
     max-width: 50%;
 }
 
-.fa-plus {
-    margin-left: 10px;
-    margin-top: 7px;
-}
-
 .info, .research_list {
     background-color: rgba(0, 176, 255, 0.11);
 }
 
+.add_research {
+    background-color: transparent;
+}
 h3 {
     margin-left: 10px;
 }
 
 .template {
-    margin-left: 100px;
+    margin-left: 5em;
     background-color: #2e009d;
     color: white;
 }
 
+.fa-plus {
+    padding-bottom: 1em;
+}
 a {
     font-size: 16px;
 }

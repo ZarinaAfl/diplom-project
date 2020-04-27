@@ -69,12 +69,23 @@ def interv_detail(request, pk):
     template = Template.objects.filter(intervention=interv)
     templ = False
     if len(template) != 0:
+        template = template[0]
         templ = True
-
     researches = Research.objects.filter(intervention=interv)
+
+    stages = StageResearch.objects.filter(template=template)
+    print(stages)
+    tasks = []
+    for s in stages:
+        task = TaskStage.objects.filter(stage=s)
+        for t in task:
+            tasks.append(t)
+    current_user = CustomUser.objects.get(user=request.user)
+    organization = current_user.organization
+    close_users = CustomUser.objects.filter(organization=organization)
     return render(request, 'project/interv_detail.html',
                   {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ,
-                   'researches': researches})
+                   'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users})
 
 
 def interv_add(request):
@@ -312,7 +323,7 @@ def appoint_persons(request, interv_pk):
             tasks.append(t)
     current_user = CustomUser.objects.get(user=request.user)
     organization = current_user.organization
-    close_users = CustomUser.objects.filter(organization= organization)
+    close_users = CustomUser.objects.filter(organization=organization)
 
     return render(request, 'project/appoint_persons.html', {'stages': stages, 'tasks': tasks, 'users': close_users})
 

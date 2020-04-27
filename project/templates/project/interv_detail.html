@@ -43,10 +43,10 @@
             <div class="p-3 mb-2 research_list">
                 <div class="row">
                     <h4>&nbsp;Исследования</h4>
-                    <a href="{% url 'add_research' interv.pk %}">
-                        <span class="fas fa-plus add_etap"></span>
-                    </a>
-                    <button class="btn add_stage" data-toggle="modal" data-target="#exampleModalCenter"><i
+{#                    <a href="{% url 'add_research' interv.pk %}">#}
+{#                        <span class="fas fa-plus add_etap"></span>#}
+{#                    </a>#}
+                    <button class="btn add_research" data-toggle="modal" data-target="#exampleModalCenter"><i
                             class="fas fa-plus add_etap"></i></button>
 
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
@@ -97,11 +97,7 @@
                         </div>
                     </div>
 
-                    <a href="
-
-
-
-                            {% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
+                    <a href="{% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
 
@@ -112,7 +108,6 @@
                                     <a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a>
                                 </div>
                             </li>
-
                         {% endfor %}
                     </ul>
 

@@ -1,3 +1,5 @@
-from django.test import TestCase
+class Stage(models.Model):
+    stage = models.ForeignKey(StageResearch, on_delete=models.CASCADE, default=None)
+    responsible = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
 
-# Create your tests here.
+organization = models.ForeignKey(EducatInst, on_delete=models.CASCADE, default=None)
