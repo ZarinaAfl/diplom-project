@@ -3,47 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evbi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0002_auto_20200105_1418.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0003_auto_20200107_1114.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0004_auto_20200107_1204.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0005_auto_20200126_1127.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0006_auto_20200126_2044.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0007_auto_20200126_2045.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0008_uploaddata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0009_auto_20200208_1257.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0010_auto_20200208_1338.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0011_auto_20200208_1442.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0012_auto_20200208_1511.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0013_auto_20200209_1004.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0014_auto_20200209_1040.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0015_auto_20200209_1354.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0016_remove_uploaddata_header_for_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0017_paramvalue_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0018_remove_paramvalue_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0019_paramvalue_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0020_auto_20200212_1234.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0021_remove_paramvalue_file_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0022_paramvalue_image.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0023_auto_20200212_1341.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0024_template_templparam.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0025_auto_20200214_1625.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0026_templparam_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0027_template_formula.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0028_auto_20200309_1449.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0029_research_intervention.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0030_research_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0031_research_effect.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0032_customuser.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0033_auto_20200418_1122.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0034_stageresearch_taskstage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0035_auto_20200426_1750.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/migrations/0036_auto_20200426_1811.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/interv_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/project.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/interv_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,9 +67,12 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/project" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Diplom\project" />
+      <recent name="C:\Diplom\project\migrations" />
       <recent name="C:\Diplom\project\templates\project" />
     </key>
   </component>
@@ -212,7 +181,11 @@
       <workItem from="1586974409287" duration="51800000" />
       <workItem from="1587375693717" duration="47498000" />
       <workItem from="1587631704230" duration="1812000" />
-      <workItem from="1587800409674" duration="44782000" />
+      <workItem from="1587800409674" duration="47541000" />
+      <workItem from="1588079679466" duration="10695000" />
+      <workItem from="1588156709419" duration="15978000" />
+      <workItem from="1588422823220" duration="559000" />
+      <workItem from="1588423404344" duration="819000" />
     </task>
     <servers />
   </component>
@@ -236,46 +209,50 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587841702056" />
-    <state width="1237" height="147" key="GridCell.Tab.0.bottom" timestamp="1587993511766">
+    <state width="1237" height="216" key="GridCell.Tab.0.bottom" timestamp="1588422777339">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="147" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587993511766" />
-    <state width="1237" height="147" key="GridCell.Tab.0.center" timestamp="1587993511766">
+    <state width="1237" height="216" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588422777339" />
+    <state width="1237" height="216" key="GridCell.Tab.0.center" timestamp="1588422777339">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="147" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1587993511766" />
-    <state width="1237" height="147" key="GridCell.Tab.0.left" timestamp="1587993511765">
+    <state width="1237" height="216" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588422777339" />
+    <state width="1237" height="216" key="GridCell.Tab.0.left" timestamp="1588422777338">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="147" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1587993511765" />
-    <state width="1237" height="147" key="GridCell.Tab.0.right" timestamp="1587993511766">
+    <state width="1237" height="216" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588422777338" />
+    <state width="1237" height="216" key="GridCell.Tab.0.right" timestamp="1588422777339">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="147" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1587993511766" />
-    <state width="1237" height="275" key="GridCell.Tab.1.bottom" timestamp="1587902481131">
+    <state width="1237" height="216" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588422777339" />
+    <state width="1237" height="275" key="GridCell.Tab.1.bottom" timestamp="1588051844671">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="275" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1587902481131" />
-    <state width="1237" height="275" key="GridCell.Tab.1.center" timestamp="1587902481130">
+    <state width="1237" height="275" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588051844671" />
+    <state width="1237" height="275" key="GridCell.Tab.1.center" timestamp="1588051844668">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="275" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1587902481130" />
-    <state width="1237" height="275" key="GridCell.Tab.1.left" timestamp="1587902481130">
+    <state width="1237" height="275" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1588051844668" />
+    <state width="1237" height="275" key="GridCell.Tab.1.left" timestamp="1588051844667">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="275" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1587902481130" />
-    <state width="1237" height="275" key="GridCell.Tab.1.right" timestamp="1587902481130">
+    <state width="1237" height="275" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1588051844667" />
+    <state width="1237" height="275" key="GridCell.Tab.1.right" timestamp="1588051844669">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="275" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1587902481130" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1587800410231">
+    <state width="1237" height="275" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1588051844669" />
+    <state x="144" y="0" key="SettingsEditor" timestamp="1588422426324">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587800410231" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1587982632394">
+    <state x="144" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588422426324" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1588423405940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1587982632394" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1588423405939" />
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1588096066754">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1588096066754" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583746582622">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -286,7 +263,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/project/views.py</url>
-          <line>352</line>
+          <line>374</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

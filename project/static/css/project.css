@@ -1,8 +1,19 @@
 textarea {
-  width: 300px;
-  height: 120px;
+    width: 300px;
+    height: 120px;
 }
-
+.navbar {
+    position: relative;
+}
+.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    font-size: 1.5em;
+    color: #e3e3e3 !important;
+    display: block;
+    text-shadow: #3400cc 0 0 10px;
+}
 h1 {
     font-family: Montserrat, Sans-Serif;
 }
@@ -10,6 +21,7 @@ h1 {
 .param {
     margin-top: 1%;
 }
+
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
     font-size: 36pt;

@@ -32,9 +32,9 @@ class EducatInst(models.Model):
 
 
 class CustomUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
     fullname = models.CharField(max_length=100, verbose_name="ФИО", default="")
     organization = models.ForeignKey(EducatInst, on_delete=models.CASCADE)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
     role = models.IntegerField(choices=ROLE_CHOICES, blank=True, null=True, default=ROLE_CHOICES[0][0],
                                verbose_name="Роль")
 
@@ -126,8 +126,9 @@ class Research(models.Model):
                                      blank=False, null=False, verbose_name='Исследование интервенции', default=None)
     template = models.ForeignKey(Template, related_name='template', on_delete=models.CASCADE,
                                  blank=False, null=False)
-    name = models.CharField(max_length=70, default='test')
     effect = models.IntegerField(verbose_name='Эффективность интервенции по исследованию', default=0)
+    organization = models.ForeignKey(EducatInst, related_name='org_research', default=None, on_delete=models.SET_NULL,
+                                     null=True)
 
 
 class ResearchParamValue(models.Model):
@@ -168,6 +169,9 @@ class StageResearch(models.Model):
     number = models.IntegerField(verbose_name="Номер этапа", default=None)
     name = models.CharField(max_length=255, default='null')
 
+class Stage(models.Model):
+    stage = models.ForeignKey(StageResearch, on_delete=models.CASCADE, null=False)
+    responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
 class TaskStage(models.Model):
     stage = models.ForeignKey(StageResearch, related_name='task_stage', on_delete=models.CASCADE,
