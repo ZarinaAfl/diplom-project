@@ -49,40 +49,47 @@
                     <button class="btn add_research" data-toggle="modal" data-target="#exampleModalCenter"><i
                             class="fas fa-plus add_etap"></i></button>
 
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Назначение лиц</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Назначение ответственных лиц и
+                                        исполнителей</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-12 p-3 mb-2 bg-light text-dar">
-                                        <label for="exampleFormControlSelect1">Ответственный</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            {% for user in users %}
-                                                <option>{{ user.fullname }}</option>
-                                            {% endfor %}
-                                        </select>
-
-                                        {% for s in stages %}
-                                            <h6>{{ s.name }}</h6>
-                                            <div class="form-group stage"  id="{{ s.pk }}">
-                                                <label for="exampleFormControlSelect1">Исполнитель</label>
-                                                <select class="form-control">
-                                                    {% for user in users %}
-                                                        <option class="executor" id="{{ user.pk }}">{{ user.fullname }}</option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
+                                    <label for="exampleFormControlSelect1">Ответственный</label>
+                                    <select class="col-6 form-control" id="exampleFormControlSelect1">
+                                        {% for user in users %}
+                                            <option>{{ user.fullname }}</option>
                                         {% endfor %}
-                                        <div class="text-center">
+                                    </select>
+                                    <hr>
 
-                                        </div>
-                                    </div>
+                                    {% for s in stages %}
+                                        <h5>{{ s.name }}</h5>
+                                        {% for t in tasks %}
+                                            {% if t.stage == s %}
+                                                <div class="task" id="{{ t.pk }}">
+                                                    <p><b>Задача: </b>{{ t.name }}</p>
+                                                    <div class="form-group stage col-6" id="{{ s.pk }}">
+                                                        <select class="form-control">
+                                                            {% for user in users %}
+                                                                <option class="executor"
+                                                                        id="{{ user.pk }}">{{ user.fullname }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if not forloop.last %}
+                                            <hr>
+                                        {% endif %}
+                                    {% endfor %}
 
                                 </div>
                                 <div class="modal-footer">
@@ -99,6 +106,10 @@
 
                     <a href="
 
+
+
+
+
                             {% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
@@ -107,13 +118,11 @@
                         {% for r in researches %}
                             <li>
                                 <div class="r">
-                                    <a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a>
+                                    <a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.organization }}</a>
                                 </div>
                             </li>
                         {% endfor %}
                     </ul>
-
-
                 </div>
             </div>
         </div>
@@ -122,21 +131,20 @@
         $(document).ready(function () {
             $(".container-fluid").on('click', '#assign', function () {
                 console.log("TEST");
-                var stages = [];
+                var tasks = [];
 
-                var s = document.getElementsByClassName("stage");
-                for (j = 0; j < s.length; j++) {
-                    console.log(s[j].id);
+                var t = document.getElementsByClassName("task");
+                for (j = 0; j < t.length; j++) {
                     var tmp = {
-                        "pk": s[j].id,
-                        "executor": s[j].getElementsByClassName('executor')[0].id
+                        "pk": t[j].id,
+                        "executor": t[j].getElementsByClassName('executor')[0].id
                     };
-                    stages  .push(tmp);
+                    tasks.push(tmp);
                 }
-                console.log(result);
+                console.log(t.length)
                 $.ajax({
                     type: "post",
-                    data: result,
+                    data: {tasks, csrfmiddlewaretoken: '{{ csrf_token }}', tasks_count: t.length},
                     success: function (response) {
                         window.location = "http://127.0.0.1:8000/our_researches";
                     }

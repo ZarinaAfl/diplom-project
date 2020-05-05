@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 
 from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research, \
-    StageResearch, TaskStage, CustomUser
+    StageResearch, TaskStage, CustomUser, ResponsResearch
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
@@ -90,17 +90,22 @@ def interv_detail(request, pk):
                        'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users})
 
     if request.method == 'POST':
+        req = request.POST
         current_user = CustomUser.objects.get(user=request.user)
         organization = current_user.organization
         templ = Template.objects.get(intervention=interv)
-        research = Research(intervention=interv, template=templ, organization=organization)
+        research = Research(intervention=interv, template=templ, organization=organization, name=organization)
         research.save()
-        stages_kol = int(request.POST['stages_kol'])
-        tasks_kol = int(request.POST['tasks_kol'])
-        req = request.POST
-        for k in range(0, stages_kol):
-            print(r"загрушка")
 
+        for i in range(int(req.get('tasks_count'))):
+            task = TaskStage.objects.get(pk=req["%s[%s][%s]" % ("tasks", i, "pk")])
+            responsible = CustomUser.objects.get(pk=req["%s[%s][%s]" % ("tasks", i, "executor")])
+            t = ResponsResearch(research=research, taskstage=task, responsible=responsible)
+            t.save()
+
+        researches = Research.objects.filter(organization=organization)
+        print(researches)
+        return redirect('our_researches')
 
 def interv_add(request):
     if request.method == "POST":
@@ -326,29 +331,35 @@ def calculate_effect(research):
     # ОБРАБОТАТЬ ФУНКЦИИ
 
 
-def appoint_persons(request, interv_pk):
-    interv = Intervention.objects.get(pk=interv_pk)
-    current_user = CustomUser.objects.get(user=request.user)
-    organization = current_user.organization
-    templ = Template.objects.get(intervention=interv)
-    if request.GET:
-        stages = StageResearch.objects.filter(template=templ)
-        tasks = []
-        for s in stages:
-            task = TaskStage.objects.filter(stage=s)
-            for t in task:
-                tasks.append(t)
-        close_users = CustomUser.objects.filter(organization=organization)
+# def appoint_persons(request, interv_pk):
+#     interv = Intervention.objects.get(pk=interv_pk)
+#     current_user = CustomUser.objects.get(user=request.user)
+#     organization = current_user.organization
+#     templ = Template.objects.get(intervention=interv)
+#     if request.GET:
+#         stages = StageResearch.objects.filter(template=templ)
+#         tasks = []
+#         for s in stages:
+#             task = TaskStage.objects.filter(stage=s)
+#             for t in task:
+#                 tasks.append(t)
+#         close_users = CustomUser.objects.filter(organization=organization)
+#
+#         return render(request, 'project/appoint_persons.html', {'stages': stages, 'tasks': tasks, 'users': close_users})
+#     if request.POST:
+#         print("text")
+#         research = Research(intervention=interv, template=templ, organization=request.user)
+#         research.save()
+#         return redirect('our_researches', pk=interv.pk)
 
-        return render(request, 'project/appoint_persons.html', {'stages': stages, 'tasks': tasks, 'users': close_users})
-    if request.POST:
-        print("text")
-        research = Research(intervention=interv, template=templ, organization=request.user)
-        research.save()
-        return redirect('our_researches', pk=interv.pk)
 
 def our_researches(request):
-    return render(request, 'project/our_researches.html')
+    current_user = CustomUser.objects.get(user=request.user)
+    organization = current_user.organization
+    researches = Research.objects.filter(organization=organization)
+    print(researches)
+    if request.method == "GET":
+        return render(request, 'project/our_researches.html', {'researches': researches, 'activate': 'researches'})
 
 def research_detail(request, interv_pk, res_pk):
     research = Research.objects.get(pk=res_pk)

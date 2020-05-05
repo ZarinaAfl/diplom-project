@@ -30,6 +30,8 @@ SPHERE = (
 class EducatInst(models.Model):
     name = models.CharField(max_length=255, verbose_name="образовательное учреждение", default="")
 
+    def __str__(self):
+        return self.name
 
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
@@ -122,6 +124,7 @@ class TemplParam(models.Model):
 
 
 class Research(models.Model):
+    name = models.CharField(max_length=255, default='test')
     intervention = models.ForeignKey(Intervention, related_name='research_interv', on_delete=models.CASCADE,
                                      blank=False, null=False, verbose_name='Исследование интервенции', default=None)
     template = models.ForeignKey(Template, related_name='template', on_delete=models.CASCADE,
@@ -129,6 +132,9 @@ class Research(models.Model):
     effect = models.IntegerField(verbose_name='Эффективность интервенции по исследованию', default=0)
     organization = models.ForeignKey(EducatInst, related_name='org_research', default=None, on_delete=models.SET_NULL,
                                      null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class ResearchParamValue(models.Model):
@@ -169,12 +175,25 @@ class StageResearch(models.Model):
     number = models.IntegerField(verbose_name="Номер этапа", default=None)
     name = models.CharField(max_length=255, default='null')
 
+    def __str__(self):
+        return "Стадия \"%s\" исследования интервенции \"%s\"" % (self.name, self.template.intervention.name)
+
 class Stage(models.Model):
     stage = models.ForeignKey(StageResearch, on_delete=models.CASCADE, null=False)
-    responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+
 
 class TaskStage(models.Model):
     stage = models.ForeignKey(StageResearch, related_name='task_stage', on_delete=models.CASCADE,
                               blank=False, null=False, verbose_name='Этап задачи', default=None)
     number = models.IntegerField(verbose_name="Номер задачи", default=None)
     name = models.CharField(max_length=255, default='null')
+
+    def __str__(self):
+        return "Задача \"%s\" стадии \"%s\"" % (self.name, self.stage.name)
+
+class ResponsResearch(models.Model):
+    research = models.ForeignKey(Research, related_name='task_stage', on_delete=models.CASCADE,
+                              blank=False, null=False, verbose_name='Исследование', default=None)
+    taskstage = models.ForeignKey(TaskStage, related_name='task_stage', on_delete=models.CASCADE,
+                              blank=False, null=False, verbose_name='Этап задачи', default=None)
+    responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
