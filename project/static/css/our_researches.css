@@ -19,6 +19,18 @@ input[type=text] {
     box-shadow: 0 0 4px #00b0ff;
 }
 
+.btn-fill {
+    background-color: #2e009d;
+    color: white;
+}
+
+.template {
+    background-color: rgba(218, 218, 218, 0.24);
+}
+.badge {
+    font-size: 0.72em;
+}
+
 .has-search .form-control {
     padding-left: 2.375rem;
 }

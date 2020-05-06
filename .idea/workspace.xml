@@ -3,13 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/add_research.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/add_research.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/appoint_persons.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/fill_params.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/fill_templ_params.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/static/css/our_researches.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/our_researches.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/add_research.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/add_research.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/interv_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/our_researches.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/our_researches.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/post_list.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,6 +191,7 @@
       <workItem from="1588422823220" duration="559000" />
       <workItem from="1588423404344" duration="5669000" />
       <workItem from="1588444643113" duration="23778000" />
+      <workItem from="1588751941980" duration="13062000" />
     </task>
     <servers />
   </component>
@@ -202,30 +207,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="417" y="152" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1581232010875" />
-    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583754782312">
+    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588773981811">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583754782312" />
+    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588773981811" />
     <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1587841702056">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587841702056" />
-    <state width="1237" height="188" key="GridCell.Tab.0.bottom" timestamp="1588708692869">
+    <state width="1237" height="188" key="GridCell.Tab.0.bottom" timestamp="1588758938581">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="188" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588708692869" />
-    <state width="1237" height="188" key="GridCell.Tab.0.center" timestamp="1588708692869">
+    <state width="1237" height="188" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1588758938581" />
+    <state width="1237" height="188" key="GridCell.Tab.0.center" timestamp="1588758938580">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="188" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588708692869" />
-    <state width="1237" height="188" key="GridCell.Tab.0.left" timestamp="1588708692869">
+    <state width="1237" height="188" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1588758938580" />
+    <state width="1237" height="188" key="GridCell.Tab.0.left" timestamp="1588758938579">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="188" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588708692869" />
-    <state width="1237" height="188" key="GridCell.Tab.0.right" timestamp="1588708692869">
+    <state width="1237" height="188" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1588758938579" />
+    <state width="1237" height="188" key="GridCell.Tab.0.right" timestamp="1588758938581">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="188" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588708692869" />
+    <state width="1237" height="188" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1588758938581" />
     <state width="1237" height="275" key="GridCell.Tab.1.bottom" timestamp="1588051844671">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -246,14 +251,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="144" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588422426324" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1588444658072">
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1588751943635">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1588444658072" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1588096066754">
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1588751943635" />
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1588778815168">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1588096066754" />
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1588778815168" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588697846092">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -264,12 +269,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/project/views.py</url>
-          <line>385</line>
+          <line>388</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/project/views.py</url>
-          <line>188</line>
+          <line>190</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>

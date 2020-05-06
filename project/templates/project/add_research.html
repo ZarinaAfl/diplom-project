@@ -11,10 +11,10 @@
             <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 1em">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <div class="form-group">
+{% comment %}                <div class="form-group">
                     <label for="exampleFormControlTextarea1">Название исследования</label>
                     <textarea class="form-control" name="name_research" id="exampleFormControlTextarea1"></textarea>
-                </div>
+                </div>{% endcomment %}
                 {% for p in params %}
                     <div class="data_param">
                     <h5>{{ p.name }}</h5>

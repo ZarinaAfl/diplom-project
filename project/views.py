@@ -94,7 +94,8 @@ def interv_detail(request, pk):
         current_user = CustomUser.objects.get(user=request.user)
         organization = current_user.organization
         templ = Template.objects.get(intervention=interv)
-        research = Research(intervention=interv, template=templ, organization=organization, name=organization)
+        research = Research(intervention=interv, template=templ, organization=organization,
+                            name=req.get('research_name'))
         research.save()
 
         for i in range(int(req.get('tasks_count'))):
@@ -106,6 +107,7 @@ def interv_detail(request, pk):
         researches = Research.objects.filter(organization=organization)
         print(researches)
         return redirect('our_researches')
+
 
 def interv_add(request):
     if request.method == "POST":
@@ -360,6 +362,7 @@ def our_researches(request):
     print(researches)
     if request.method == "GET":
         return render(request, 'project/our_researches.html', {'researches': researches, 'activate': 'researches'})
+
 
 def research_detail(request, interv_pk, res_pk):
     research = Research.objects.get(pk=res_pk)

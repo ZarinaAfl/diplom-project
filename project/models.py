@@ -33,6 +33,7 @@ class EducatInst(models.Model):
     def __str__(self):
         return self.name
 
+
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
     fullname = models.CharField(max_length=100, verbose_name="ФИО", default="")
@@ -124,6 +125,12 @@ class TemplParam(models.Model):
 
 
 class Research(models.Model):
+    STATUS = (
+        ('in work', 'В работе'),
+        ('completed', 'Завершено'),
+        ('canceled', 'Отменено'),
+    )
+
     name = models.CharField(max_length=255, default='test')
     intervention = models.ForeignKey(Intervention, related_name='research_interv', on_delete=models.CASCADE,
                                      blank=False, null=False, verbose_name='Исследование интервенции', default=None)
@@ -132,6 +139,8 @@ class Research(models.Model):
     effect = models.IntegerField(verbose_name='Эффективность интервенции по исследованию', default=0)
     organization = models.ForeignKey(EducatInst, related_name='org_research', default=None, on_delete=models.SET_NULL,
                                      null=True)
+    status = models.CharField(choices=STATUS, max_length=50, blank=True, null=True, default=STATUS[0][0],
+                              verbose_name="Статус")
 
     def __str__(self):
         return self.name
@@ -178,6 +187,7 @@ class StageResearch(models.Model):
     def __str__(self):
         return "Стадия \"%s\" исследования интервенции \"%s\"" % (self.name, self.template.intervention.name)
 
+
 class Stage(models.Model):
     stage = models.ForeignKey(StageResearch, on_delete=models.CASCADE, null=False)
 
@@ -191,9 +201,10 @@ class TaskStage(models.Model):
     def __str__(self):
         return "Задача \"%s\" стадии \"%s\"" % (self.name, self.stage.name)
 
+
 class ResponsResearch(models.Model):
     research = models.ForeignKey(Research, related_name='task_stage', on_delete=models.CASCADE,
-                              blank=False, null=False, verbose_name='Исследование', default=None)
+                                 blank=False, null=False, verbose_name='Исследование', default=None)
     taskstage = models.ForeignKey(TaskStage, related_name='task_stage', on_delete=models.CASCADE,
-                              blank=False, null=False, verbose_name='Этап задачи', default=None)
+                                  blank=False, null=False, verbose_name='Этап задачи', default=None)
     responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)

@@ -2,11 +2,10 @@
 {% load static %}
 {% block extra_head %}
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'css/fill_params.css' %}">
 {% endblock %}
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="col-8 params p-3 mb-2 bg-light text-dark">
+        <div class="col-8 params p-3 mb-2 bg-light text-dark" style="margin-top: 20px">
             <h4>Заполнение дополнительных параметров для интервенции "{{ interv.name }}"</h4>
             <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 1em">
                 {% csrf_token %}

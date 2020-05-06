@@ -6,18 +6,17 @@
 {% endblock %}
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="row">
-            <form class="form-inline search" method="get" action=".">
-                <div class="form-group has-search">
-                    <span class="fa fa-search form-control-feedback"></span>
-                    <input size="80" type="text" class="form-control" name="title_contains"
-                           placeholder="Поиск...">
-                </div>
-            </form>
+        <div class="template col-11">
+            <div class="row justify-content-md-center">
+                <form class="form-inline search" method="get" action=".">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input size="80" type="text" class="form-control" name="title_contains"
+                               placeholder="Поиск...">
+                    </div>
+                </form>
 
-        </div>
-
-        <div class="template col-10">
+            </div>
             <table class="table">
                 <thead>
                 <tr>
@@ -25,6 +24,7 @@
                     <th scope="col">Исследование</th>
                     <th scope="col">Интервенция</th>
                     <th scope="col">Статус</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,11 +37,53 @@
                         <td>
                             <a href="{% url 'interv_detail' r.template.intervention.pk %}"> {{ r.template.intervention.name }}</a>
                         </td>
-                        <td>{{ r.effect }}</td>
+                        <td>
+                            <h5>
+                                {% if r.status == 'completed' %}
+                                    <span class="badge badge-success">
+                                {% elif r.status == 'in work' %}
+                                    <span class="badge badge-warning">
+                                {% elif r.status == 'canceled' %}
+                                    <span class="badge badge-danger">
+                                {% endif %}
+                                {{ r.get_status_display }}</span>
+                            </h5>
+                        </td>
+                        <td>
+                            {% if r.status == 'in work' %}
+                                <a href="intervention/{{ r.intervention.pk }}/add_research/">
+                                    <button type="button" class="btn-sm btn-fill btn">Заполнить</button>
+                                </a>
+                            {% endif %}
+                        </td>
+
+
+                        {% comment %}
+                    если в работе, то кнопка заполнить
+{% endcomment %}
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 

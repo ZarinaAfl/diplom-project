@@ -61,6 +61,13 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="research_name">Название исследования</label>
+                                        <input type="email" class="form-control" id="research_name"
+                                               aria-describedby="emailHelp">
+                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email
+                                            with anyone else.</small>
+                                    </div>
                                     <label for="exampleFormControlSelect1">Ответственный</label>
                                     <select class="col-6 form-control" id="exampleFormControlSelect1">
                                         {% for user in users %}
@@ -106,10 +113,6 @@
 
                     <a href="
 
-
-
-
-
                             {% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
@@ -144,7 +147,12 @@
                 console.log(t.length)
                 $.ajax({
                     type: "post",
-                    data: {tasks, csrfmiddlewaretoken: '{{ csrf_token }}', tasks_count: t.length},
+                    data: {
+                        tasks,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        tasks_count: t.length,
+                        research_name: document.getElementById('research_name').value
+                    },
                     success: function (response) {
                         window.location = "http://127.0.0.1:8000/our_researches";
                     }
