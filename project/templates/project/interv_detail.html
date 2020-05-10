@@ -54,19 +54,21 @@
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Назначение ответственных лиц и
-                                        исполнителей</h5>
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Новое исследование</h5>
+
+
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <div class="alert alert-primary" role="alert">
+                                        This is a primary alert—check it out!
+                                    </div>
                                     <div class="form-group">
                                         <label for="research_name">Название исследования</label>
                                         <input type="email" class="form-control" id="research_name"
                                                aria-describedby="emailHelp">
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email
-                                            with anyone else.</small>
                                     </div>
                                     <label for="exampleFormControlSelect1">Ответственный</label>
                                     <select class="col-6 form-control" id="exampleFormControlSelect1">
@@ -113,6 +115,8 @@
 
                     <a href="
 
+
+
                             {% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
@@ -121,7 +125,7 @@
                         {% for r in researches %}
                             <li>
                                 <div class="r">
-                                    <a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.organization }}</a>
+                                    <a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a>
                                 </div>
                             </li>
                         {% endfor %}
@@ -144,7 +148,6 @@
                     };
                     tasks.push(tmp);
                 }
-                console.log(t.length)
                 $.ajax({
                     type: "post",
                     data: {

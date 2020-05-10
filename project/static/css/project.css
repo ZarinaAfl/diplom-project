@@ -5,6 +5,9 @@ textarea {
 .navbar {
     position: relative;
 }
+.container-fluid {
+    margin-top: 3.6em;
+}
 .brand {
     position: absolute;
     left: 50%;

@@ -16,7 +16,7 @@
                                 <div class="row">
                                     <div class="col-1 all_filter">
                                         <div class="dropdown">
-                                            <button class="btn btn-primary dropdown-toggle" type="button"
+                                            <button class="btn all_btn btn-primary dropdown-toggle" type="button"
                                                     data-toggle="dropdown">Все
                                                 <span class="caret"></span></button>
                                             <ul class="dropdown-menu">
@@ -45,27 +45,68 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-1"><a href="{% url 'interv_add' %}" style="font-size: 24px">
-                    <button type="button" class="btn add_btn">
+                <div class="col-1">
+                    <button type="button" class="btn add_btn" data-toggle="modal" data-target="#exampleModalCenter">
                         <span class="fas fa-plus add_etap"></span> Добавить
                     </button>
 
-                </a>
+                    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Добавление интервенции</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="research_name">Название</label>
+                                        <input type="email" class="form-control" id="research_name"
+                                               aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Описание</label>
+                                        <textarea class="form-control interv_desc" id="exampleFormControlTextarea1"
+                                                  rows="3"></textarea>
+                                    </div>
+                                    <label for="exampleFormControlSelect1">Дисциплина</label>
+                                    <select class="col-6 form-control sphere" name="sphere"
+                                            id="exampleFormControlSelect1">
+                                        {% for s in sphere %}
+                                            <option class="{{ s.0 }}">{{ s.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть
+                                    </button>
+                                    <button type="submit" id="further" name="singlebutton"
+                                            class="btn btn-save btn-primary">
+                                        Далее
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
             </div>
 
-        <div class="intervs">
+            <div class="intervs">
                 {% for interv in intervs %}
-                <div class="interv">
-                    <div class="date">
-                        {{ interv.published_date }}
+                    <div class="interv">
+                        <div class="date">
+                            {{ interv.created_date }}
+                        </div>
+                        <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h3>
+                        <p class="annotation" row>{{ interv.annotation|linebreaksbr }}</p>
                     </div>
-                    <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h3>
-                    <p class="annotation" row>{{ interv.annotation|linebreaksbr }}</p>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
 
         </div>
     </div>
@@ -82,5 +123,29 @@
     </div>
 
 
-    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".container-fluid").on('click', '#further', function () {
+                console.log("TEST");
+                var name = document.getElementById('research_name').value;
+                var desc = document.getElementsByClassName('interv_desc')[0].value;
+                var sphere = $('select[name="sphere"] :selected').attr('class');
+                console.log(sphere);
+                $.ajax({
+                    type: "post",
+                    data: {
+                        interv_name: name,
+                        interv_desc: desc,
+                        sphere: sphere,
+                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                    },
+                       success: function (response) {
+                        window.location = "http://127.0.0.1:8000/intervention/".concat(response).concat("/add_parameters/");
+                    }
+                });
+            });
+
+        });
+    </script>
+
 {% endblock %}

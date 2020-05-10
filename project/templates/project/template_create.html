@@ -4,30 +4,35 @@
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'css/template_create.css' %}">
 {% endblock %}
+
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="post col-8">
-            <div class="p-3 mb-2 bg-light text-dark">
+        <div class="post col-8" style="">
+            <div class="p-3">
                 <div id="templ_params">
                     <h4>Создание шаблона исследования для интервенции "{{ interv.name }}"</h4>
-                    <p class="instruction">Добавьте параметры необходимые для отображения на платформе и расчета
-                        эффективности интервенции
+                    <p class="instruction">Прикрепите протокол провдения исследования. Добавьте параметры исследования
+                        необходимые для отображения на платформе и расчета эффективности интервенции
                     </p>
+                    <label>Протокол
+                        <input type="file" class="file-upload" name="protocol">
+                    </label>
+
                     <div class="col-xs-12">
                         <a href="#">
                             <span class="fas fa-plus add_templ_param"></span>
                         </a>
                     </div>
                     <div class="templ_param d-block" id="templ_param_1">
-                        <div class="row" style="margin-left: 10px;">
-                            <div class="form-group col-md-5">
-                                <label style="font-size: 20px;">Название
-                                    <input class="form-control" type="text" id="sub_text">
+                        <div class="row" style="margin-left: 1.5em;">
+                            <div class="form-group col-md-6">
+                                <label style="font-size: 19px;">Название
+                                    <input class="form-control param_name" type="text" id="sub_text">
                                 </label>
                             </div>
                             <div class="form-group col-md-3">
-                                <label style="font-size: 20px;">Тип данных
-                                    <select style="font-size: 20px; font-weight: lighter"
+                                <label style="font-size: 19px;">Тип данных
+                                    <select style="font-size: 19px; font-weight: lighter"
                                             class="form-control type_templ_param"
                                             id="type_templ_param">
                                         {% for t in types %}
@@ -69,16 +74,16 @@
                 console.log(id);
 
                 $("#" + $("#" + $(this).parent().parent().parent().attr("id") + " .templ_param:last").attr("id")).after("<div class=\"templ_param d-block\" id=\"" + id + "\"></div>");
-                $("#" + id).append("<div class=\"row\" style=\"margin-left: 10px;\">\n" +
-                    "                    <div class=\"form-group col-md-5\">\n" +
-                    "                        <label style=\"font-size: 20px;\">Название\n" +
-                    "                            <input style=\"font-size: 20px; font-weight: lighter\" class=\"form-control\" type=\"text\"\n" +
+                $("#" + id).append("<div class=\"row\" style=\"margin-left: 1.5em;\">\n" +
+                    "                    <div class=\"form-group col-md-6\">\n" +
+                    "                        <label style=\"font-size: 19px;\">Название\n" +
+                    "                            <input style=\"font-size: 19px; font-weight: lighter\" class=\"form-control param_name\" type=\"text\"\n" +
                     "                                   id=\"sub_text\">\n" +
                     "                        </label>\n" +
                     "                    </div>\n" +
                     "                    <div class=\"form-group col-md-3\">\n" +
-                    "                        <label style=\"font-size: 20px;\">Тип данных\n" +
-                    "                            <select style=\"font-size: 20px; font-weight: lighter\" class=\"form-control type_templ_param\"\n" +
+                    "                        <label style=\"font-size: 19px;\">Тип данных\n" +
+                    "                            <select style=\"font-size: 19px; font-weight: lighter\" class=\"form-control type_templ_param\"\n" +
                     "                                    id=\"type_templ_param\">\n" +
                     "                                {% for t in types %}\n"+
                         "                                    <option value=\"{{ t | first }}\">{{ t | last }}</option>\n"
@@ -97,17 +102,34 @@
             $(".container-fluid").on('click', '#submit', function () {
                 var templ_params = $(".templ_param");
                 var data_templ_params = [];
+                var protocol = ($('input[type=file]')[0].files[0]);
+                var formdata = new FormData();
+                formdata.append('protocol', protocol);
                 for (j = 0; j < templ_params.length; j++) {
+                    var n = "name_".concat(j);
+                    var t = "type_".concat(j);
+                    formdata.append(n, $(templ_params[j]).find("#sub_text").val());
+                    formdata.append(t, $(templ_params[j]).find("#type_templ_param").val());
                     var tmp = {
                         "name": $(templ_params[j]).find("#sub_text").val(),
                         "type_templ_param": $(templ_params[j]).find("#type_templ_param").val(),
                     };
-                    data_templ_params.push(tmp);
+                    {#formdata.append(j.toString(), tmp)#}
+                    {#data_templ_params.push(tmp);#}
+                    console.log(formdata)
                 }
-                var result = {"templ_params": data_templ_params, csrfmiddlewaretoken: '{{ csrf_token }}'};
+
+                var result = {
+                    {#"templ_params": data_templ_params,#}
+                    "protocol": protocol
+                };
+
+                console.log(formdata);
                 $.ajax({
                     type: "post",
-                    data: result,
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
                     success: function (response) {
                         window.location = "http://127.0.0.1:8000/intervention/".concat({{ interv.pk }}).concat("/create_formula");
                     }

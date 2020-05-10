@@ -1,17 +1,2 @@
 {% extends 'project/base_criteria.html' %}
 
-{% block name_button %}
-    {% if next %}
-        Сохранить и перейти к следующему параметру
-    {% else %}
-        Завершить настройку формул для критериев
-    {% endif %}
-{% endblock %}
-{% block cycle_popup %}
-    {% for p in params %}
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="item" id="{{ p.id }}">
-            <label style="font-size: 20px;" class="form-check-label" for="{{ p.id }}">{{ p.name }}</label>
-        </div>
-    {% endfor %}
-{% endblock %}

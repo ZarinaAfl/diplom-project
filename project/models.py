@@ -26,6 +26,12 @@ SPHERE = (
     ('L', 'Литература'),
 )
 
+STATUS = (
+    ('in work', 'В работе'),
+    ('completed', 'Завершено'),
+    ('canceled', 'Отменено'),
+)
+
 
 class EducatInst(models.Model):
     name = models.CharField(max_length=255, verbose_name="образовательное учреждение", default="")
@@ -58,11 +64,6 @@ class Intervention(models.Model):
         default='MATHS', verbose_name="Дисциплина"
     )
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
 
     def __str__(self):
         return self.name
@@ -114,6 +115,7 @@ class Template(models.Model):
                                      blank=False, null=False, verbose_name='Шаблон исследования')
     description = models.TextField(verbose_name="Описание")
     formula = models.TextField(blank=True, null=True)
+    protocol = models.FileField(default='file')
 
 
 class TemplParam(models.Model):
@@ -125,12 +127,6 @@ class TemplParam(models.Model):
 
 
 class Research(models.Model):
-    STATUS = (
-        ('in work', 'В работе'),
-        ('completed', 'Завершено'),
-        ('canceled', 'Отменено'),
-    )
-
     name = models.CharField(max_length=255, default='test')
     intervention = models.ForeignKey(Intervention, related_name='research_interv', on_delete=models.CASCADE,
                                      blank=False, null=False, verbose_name='Исследование интервенции', default=None)

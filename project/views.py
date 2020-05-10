@@ -1,16 +1,20 @@
+import pprint
+
+import simplejson as simplejson
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_protect
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research, \
     StageResearch, TaskStage, CustomUser, ResponsResearch
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, FileUploadForm
 from django.shortcuts import redirect
 from py_expression_eval import Parser
-from .models import SPHERE
+from .models import SPHERE, STATUS
 
 parser = Parser()
 
@@ -47,22 +51,32 @@ def profile_view(request):
 
 @login_required(login_url="/login")
 def interv_list(request):
-    title_contains = request.GET.get('title_contains')
-    intervs = Intervention.objects.all()
-    if title_contains is not None:
-        intervs = Intervention.objects.filter(published_date__lte=timezone.now(),
-                                              name__icontains=title_contains).order_by(
-            'published_date')
-    spheres = []
-    for s in SPHERE:
-        spheres.append(s[1])
-    return render(request, 'project/interv_list.html', {'intervs': intervs, 'activate': 'intervs', 'sphere': spheres})
+    if request.method == 'GET':
+        title_contains = request.GET.get('title_contains')
+        intervs = Intervention.objects.all()
+        if title_contains is not None:
+            intervs = Intervention.objects.filter(name__icontains=title_contains).order_by('created_date')
+
+        return render(request, 'project/interv_list.html',
+                      {'intervs': intervs, 'activate': 'intervs', 'sphere': SPHERE})
+
+    if request.method == 'POST':
+        req = request.POST
+        print(req)
+        name = req.get('interv_name')
+        desc = req.get('interv_desc')
+        sphere = req.get('sphere')
+        interv = Intervention(name=name, annotation=desc, sphere=sphere, author=request.user)
+        interv.save()
+        return HttpResponse(interv.pk)
 
 
 def interv_detail(request, pk):
     interv = Intervention.objects.get(pk=pk)
     params = Param.objects.filter(intervention=interv)
     subvalues = []
+    stages = []
+    tasks = []
 
     if request.method == 'GET':
         for sb in params:
@@ -73,15 +87,16 @@ def interv_detail(request, pk):
         if len(template) != 0:
             template = template[0]
             templ = True
+
+            stages = StageResearch.objects.filter(template=template)
+            if len(stages) != 0:
+                for s in stages:
+                    task = TaskStage.objects.filter(stage=s)
+                    for t in task:
+                        tasks.append(t)
+
         researches = Research.objects.filter(intervention=interv)
 
-        stages = StageResearch.objects.filter(template=template)
-        print(stages)
-        tasks = []
-        for s in stages:
-            task = TaskStage.objects.filter(stage=s)
-            for t in task:
-                tasks.append(t)
         current_user = CustomUser.objects.get(user=request.user)
         organization = current_user.organization
         close_users = CustomUser.objects.filter(organization=organization)
@@ -107,25 +122,6 @@ def interv_detail(request, pk):
         researches = Research.objects.filter(organization=organization)
         print(researches)
         return redirect('our_researches')
-
-
-def interv_add(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            interv = form.save(commit=False)
-            interv.author = request.user
-            interv.published_date = timezone.now()
-            interv.save()
-            post_text = request.POST.get('the_post')
-            interv = get_object_or_404(Intervention, pk=interv.pk)
-            return redirect('add_parameters', pk=interv.pk)
-        else:
-            form = PostForm
-            return render(request, 'project/interv_add.html', {'form': form, 'types': TYPE_PARAM})
-    else:
-        form = PostForm
-        return render(request, 'project/interv_add.html', {'form': form, 'types': TYPE_PARAM, 'activate': 'intervs'})
 
 
 def add_parameters(request, pk):
@@ -169,7 +165,6 @@ def fill_params(request, pk):
                     # ParamValue
                     param_val = ParamValue(param=param)
                     if param.type == 3 or param.type == 4:
-                        print(request.FILES)
                         instance = ParamValue(param=param, file=request.FILES["file_%s" % param.id])
                         instance.save()
                     else:
@@ -188,35 +183,24 @@ def fill_params(request, pk):
                 return redirect('interv_detail', pk=interv.pk)
 
 
-def interv_edit(request, pk):
-    interv = get_object_or_404(Intervention, pk=pk)
-    if request.method == "POST":
-        form = PostForm(request.POST, instance=interv)
-        if form.is_valid():
-            interv = form.save(commit=False)
-            interv.author = request.user
-            interv.published_date = timezone.now()
-            interv.save()
-            return redirect('interv_detail', pk=interv.pk)
-    else:
-        form = PostForm(instance=interv)
-    return render(request, 'project/interv_edit.html', {'form': form, 'types': TYPE_PARAM})
-
-
+@csrf_exempt
 def create_templ(request, pk):
     interv = Intervention.objects.get(pk=pk)
     if request.method == "GET":
         # form = PostForm
         return render(request, 'project/template_create.html', {'types': TYPE_PARAM, 'interv': interv})
     else:
+        pprint.pprint(request.POST)
         k = 0
-        template = Template(intervention=interv)
+        template = Template(intervention=interv, protocol=request.FILES['protocol'])
         template.save()
         while True:
             try:
-                name_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "name")]
-                # print(name_templ_param)
-                type_templ_param = request.POST["%s[%s][%s]" % ("templ_params", k, "type_templ_param")]
+                name_templ_param = request.POST["name_%s" % (k)]
+                print(name_templ_param)
+                #template.protocol = request.POST["protocol"]
+                template.save()
+                type_templ_param = request.POST["type_%s" % (k)]
                 interv = Intervention.objects.get(pk=pk)
                 templ_param = TemplParam(template=template, name=name_templ_param, type=type_templ_param)
                 templ_param.save()
@@ -265,21 +249,19 @@ def create_formula(request, pk):
         return redirect('research_tasks', interv_pk=interv.pk)
 
 
-def add_research(request, pk):
+def fill_research(request, pk, res_pk):
     interv = Intervention.objects.get(pk=pk)
     if request.method == "GET":
         template = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=template)
-        return render(request, 'project/add_research.html', {'interv': interv, 'params': templ_params})
+        return render(request, 'project/fill_research.html', {'interv': interv, 'params': templ_params})
     else:
         k = 0
         while True:
             collection = []
             templ = Template.objects.get(intervention=interv)
             templ_params = TemplParam.objects.filter(template=templ)
-            name_research = request.POST["name_research"]
-            research = Research(intervention=interv, template=templ, name=name_research)
-            research.save()
+            research = Research.objects.get(pk=res_pk)
             collection.append({"params": templ_params})
             for c in collection:
                 for param in c["params"]:
@@ -288,7 +270,6 @@ def add_research(request, pk):
                     param_val = ResearchParamValue(research=research, param=templ_param)
 
                     if param.type == 3 or param.type == 4:
-                        # print(request.FILES)
                         instance = ResearchParamValue(research=research, param=templ_param,
                                                       file=request.FILES["file_%s" % param.id])
                         instance.save()
@@ -305,6 +286,7 @@ def add_research(request, pk):
                             param_val.save()
                         # ParamValue.objects.all().delete()
             research.effect = calculate_effect(research)
+            research.status = STATUS[1][0]
             research.save()
             return redirect('interv_detail', pk=interv.pk)
 
@@ -331,28 +313,6 @@ def calculate_effect(research):
     print(result)
     return result
     # ОБРАБОТАТЬ ФУНКЦИИ
-
-
-# def appoint_persons(request, interv_pk):
-#     interv = Intervention.objects.get(pk=interv_pk)
-#     current_user = CustomUser.objects.get(user=request.user)
-#     organization = current_user.organization
-#     templ = Template.objects.get(intervention=interv)
-#     if request.GET:
-#         stages = StageResearch.objects.filter(template=templ)
-#         tasks = []
-#         for s in stages:
-#             task = TaskStage.objects.filter(stage=s)
-#             for t in task:
-#                 tasks.append(t)
-#         close_users = CustomUser.objects.filter(organization=organization)
-#
-#         return render(request, 'project/appoint_persons.html', {'stages': stages, 'tasks': tasks, 'users': close_users})
-#     if request.POST:
-#         print("text")
-#         research = Research(intervention=interv, template=templ, organization=request.user)
-#         research.save()
-#         return redirect('our_researches', pk=interv.pk)
 
 
 def our_researches(request):
@@ -401,4 +361,4 @@ def research_tasks(request, interv_pk):
             task = TaskStage(stage=stage, number=task_number, name=task_value)
             task.save()
 
-        return redirect('interv_detail', pk=interv.pk)
+        return HttpResponse(interv.pk)

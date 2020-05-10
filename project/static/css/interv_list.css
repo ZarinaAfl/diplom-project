@@ -1,12 +1,18 @@
 .header {
     color: #2d2d2d;
 }
+
 .card-body {
     padding-top: 0.5em;
 }
 
-.btn {
+.all_btn, .add_btn {
     margin-top: 10px;
+    background-color: #2e009d;
+    color: white;
+}
+
+.btn-save {
     background-color: #2e009d;
     color: white;
 }
@@ -43,6 +49,7 @@
     margin-top: 10px;
     padding-left: 0.5em;
 }
+
 /* Styles for wrapping the search box */
 
 .main {
@@ -67,12 +74,15 @@
     pointer-events: none;
     color: #aaa;
 }
+
 .fa-search {
     margin-top: 0.1em;
 }
+
 input {
     width: 20em;
 }
+
 .all_filter {
     margin-left: 0.5em;
 }
@@ -80,13 +90,15 @@ input {
 .add_btn {
     margin-left: -1.2em;
 }
+
 .dropdown-toggle {
     height: 3em;
 }
+
 input {
     height: 3em;
 }
 
-.intervs{
+.intervs {
     padding-top: 1em;
 }

@@ -8,7 +8,7 @@
     <div class="row justify-content-md-center">
         <div class="template col-10">
             <div class="p-3 mb-2">
-                <h4>Шаблон исследования для интервенции "{{ interv.name }}"</h4>
+                <h4>Шаблон исследования для интервенции <a href="{% url 'interv_detail' interv.pk %}">"{{ interv.name }}"</a></h4>
                 <br>
                 <h5>Параметры:</h5>
                 <ul>
@@ -51,9 +51,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Исследование
-                        <a href="{% url 'add_research' interv.pk %}">
+                     {% comment %}   <a href="{% url 'add_research' interv.pk %}">
                             <span class="fas fa-plus add_etap"></span>
-                        </a></th>
+                        </a></th>{% endcomment %}
                     <th scope="col">Период проведения</th>
                     <th scope="col">Эффективность</th>
                 </tr>

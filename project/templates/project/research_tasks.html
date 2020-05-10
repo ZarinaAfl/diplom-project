@@ -27,19 +27,6 @@
                                                              role="button">&times;</a></div>
                         </div>
 
-                        <div class="row">
-                            <div class="days">
-                                <div class="input-group etap col-12">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Кол-во дней</span>
-                                    </div>
-                                    <input type="number" class="form-control" aria-label="Default"
-                                           aria-describedby="inputGroup-sizing-default">
-                                </div>
-                            </div>
-
-                        </div>
-
                         <div class="row tasks_header">
                             <div class="col-6"></div>
                             <h5>Задачи</h5>
@@ -104,17 +91,6 @@
                     "                            </div>\n" +
                     "                            <div class=\"form-group col-1\"><a href=\"#\" class=\"close delete_stage\" aria-label=\"Close\"\n" +
                     "                                                             role=\"button\">&times;</a></div>\n" +
-                    "                        </div>\n" +
-                    "                        <div class=\"row\">\n" +
-                    "                            <div class=\"days\">\n" +
-                    "                                <div class=\"input-group etap col-12\">\n" +
-                    "                                    <div class=\"input-group-prepend\">\n" +
-                    "                                        <span class=\"input-group-text\" id=\"inputGroup-sizing-default\">Кол-во дней</span>\n" +
-                    "                                    </div>\n" +
-                    "                                    <input type=\"number\" class=\"form-control\" aria-label=\"Default\"\n" +
-                    "                                           aria-describedby=\"inputGroup-sizing-default\">\n" +
-                    "                                </div>\n" +
-                    "                            </div>\n" +
                     "                        </div>\n" +
                     "                        <div class=\"row tasks_header\">\n" +
                     "                            <div class=\"col-6\"></div>\n" +
@@ -194,7 +170,7 @@
                         data_stages, data_tasks, csrfmiddlewaretoken: '{{ csrf_token }}'
                     },
                     success: function (response) {
-                        window.location = "http://127.0.0.1:8000/intervention/".concat({{ interv.pk }});
+                        window.location = "http://127.0.0.1:8000/intervention/".concat(response).concat("/template_detail/");
                     }
                 });
             });
