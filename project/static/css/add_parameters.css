@@ -1,12 +1,11 @@
-
-.post {
-    margin-top: 1em;
-}
-
 .close {
     color: red;
     font-size: 34px;
     margin-right: 50px;
+}
+
+.param_name {
+    width: 120%;
 }
 
 .col-xs-12 {

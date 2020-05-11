@@ -1,2 +1,261 @@
-{% extends 'project/base_criteria.html' %}
+{% extends 'project/base.html' %}
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/create_formula.css' %}">
+{% endblock %}
 
+{% block content %}
+    <form name="form" method="post">
+        {% csrf_token %}
+        <div class="row justify-content-md-center">
+            <div class="post col-9 constructor">
+                <h4>Создание формулы для расчета эффективности</h4>
+                <hr>
+                <div class="row">
+                    <div class="p-3 col-7">
+                        <h5>Формула</h5>
+                        <label style="font-size: 20px;">
+                        <textarea style="resize: none; font-size: 20px;" name="formula_show "
+                                  class="form-control rounded-0"
+                                  rows="5"
+                                  cols="60"
+                                  id="desc_show" readonly></textarea>
+
+                        </label>
+
+                        <label hidden>Формула для бэка
+                            <textarea name="formula" class="form-control rounded-0" rows="5" cols="40"
+                                      id="desc" readonly></textarea>
+
+                        </label>
+                        <br>
+                        <button style="font-size: 20px;" type="button" class="back btn btn-danger" id="back">
+                            <i class="fas fa-arrow-left"></i> Назад
+                        </button>
+                        <br><br>
+                        <hr>
+
+                        <div class="save-btn">
+                            <button type="submit" class="btn btn-primary btn-save labelText">
+                                <span style="font-size: 18px;">Сохранить</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-3 col-5 tool">
+                        <h5>Параметры критерия</h5>
+                        {% for p in params %}
+                            {% if p.type == 1 %}
+                                <button type="button" style="font-size: 20px;" class="tool btn btn-info param"
+                                        id="{{ p.name }} ">{{ p.name }}</button>
+                            {% endif %}
+                        {% endfor %}
+
+                        <div class="oper">
+                            <h5>Операции</h5>
+                            <button type="button" class="operat tool btn sign for_sign" id="plus">+</button>
+                            <button type="button" class="operat tool btn sign for_sign" id="minus">-</button>
+                            <button type="button" class="operat tool btn sign for_sign" id="div">/</button>
+                            <button type="button" class="operat tool btn sign for_sign" id="mult">*</button>
+                            <button type="button" class="operat tool btn for_sign" id="left_branch">(</button>
+                            <button type="button" class="operat tool btn for_sign" id="right_branch">)</button>
+                        </div>
+
+                        <div class="func">
+                            <h5>Функции</h5>
+                            {% for f in funcs %}
+                                <button type="button" style="font-size: 20px;" class="tool btn btn-warning"
+                                        id="{{ f }}">{{ f }}</button>
+                            {% endfor %}
+                        </div>
+
+                        <div class="numb">
+                            <h5>Числа</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input style="font-size: 20px;" class="form-control" type="number" id="field_numb">
+                                </div>
+                                <div class="col-md-5">
+                                    <button type="button" style="font-size: 20px;" class="tool btn btn-warning"
+                                            id="numb_button">Добавить
+                                    </button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-5 div-err" hidden>
+                                    <h4>Введите число</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="modal modal_formula fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Параметр и основание для функции <span style="color: #2e009d"
+                                                                                   id="insert"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        {% for p in params %}
+                            {% if p.type == 1 %}
+                                <div class="form-check">
+                                    <label class="form-check-label" style="font-size: 18px;">
+                                        <input type="radio" class="form-check-input" name="optradio"
+                                               id="{{ p.id }}" value="{{ p.name }}">{{ p.name }}
+                                    </label>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <div class="form-group row base">
+                            <label for="example-number-input" style="font-size: 18px" class="col-3 col-form-label">Основание:</label>
+                            <div class="col-3">
+                                <input class="form-control" type="number" value="2" id="example-number-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="apply_checkbox"><span
+                            style="font-size: 18px;">Применить</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var symbols = ['+', '-', '/', '*'];
+            var left_branch = '(';
+            var right_branch = ')';
+            var array = [];
+            var display = [];
+            $(document).on('click', '.param', function () {
+                //var str = "a_" + $(this).attr("id") + " ";
+                var str = $(this).attr("id");
+                if (array.length === 0 || (-1 !== symbols.indexOf(array[array.length - 1][0]))
+                    || (left_branch === array[array.length - 1][0])) {
+                    array.push(str);
+                    display.push($(this).text() + " ");
+                }
+                disabled_button();
+                full_textarea();
+            });
+
+            $(".oper").on('click', '.btn.sign', function () {
+                if ((-1 === symbols.indexOf(array[array.length - 1][0])) && (left_branch !== array[array.length - 1][0])) {
+                    var el = $(this).text() + " ";
+                    array.push(el);
+                    display.push(el);
+                }
+                $(".tool").attr("disabled", false);
+                $("#right_branch").attr("disabled", true);
+                $(".sign").attr("disabled", true);
+                full_textarea();
+            });
+
+            $("#left_branch").click(function () {
+                if (array.length === 0 || (-1 !== symbols.indexOf(array[array.length - 1][0]))
+                    || (left_branch === array[array.length - 1][0])) {
+                    array.push("( ");
+                    display.push("( ");
+                }
+                $(".tool").attr("disabled", false);
+                $("#right_branch").attr("disabled", true);
+                $(".sign").attr("disabled", true);
+                full_textarea();
+            });
+
+            $("#right_branch").click(function () {
+                if (((-1 === symbols.indexOf(array[array.length - 1][0])) || (right_branch === array[array.length - 1][0]))
+                    && left_branch !== array[array.length - 1][0]) {
+                    array.push(") ");
+                    display.push(") ");
+                }
+                disabled_button();
+                full_textarea();
+            });
+
+            $("#back").click(function () {
+                array = array.slice(0, array.length - 1);
+                display = display.slice(0, array.length - 1);
+                full_textarea();
+            });
+
+            $("#numb_button").click(function () {
+                var new_el = $('#field_numb').val();
+                if (new_el === "") {
+                    $(".div-err").show();
+                } else {
+                    $(".div-err").hide();
+                    if (array.length === 0 || (-1 !== symbols.indexOf(array[array.length - 1][0]))
+                        || (left_branch === array[array.length - 1][0])) {
+                        array.push(new_el + " ");
+                        display.push(new_el + " ");
+                        $('#field_numb').val("");
+                    }
+                }
+                disabled_button();
+                full_textarea();
+            });
+
+            $(".func > .btn").click(function () {
+                if (array.length === 0 || (-1 !== symbols.indexOf(array[array.length - 1][0]))
+                    || (left_branch === array[array.length - 1][0])) {
+                    $("#insert").append($(this).text());
+                    $('#myModal').modal('show');
+                }
+            });
+
+            $("#apply_checkbox").click(function () {
+                var params = [];
+                var p = $("input[name='optradio']:checked").val();
+                array.push("log(" + p + ", 2) ");
+                console.log(array);
+                disabled_button();
+                full_textarea();
+            });
+
+            function disabled_button() {
+                $(".tool").attr("disabled", false);
+                $(".param").attr("disabled", true);
+                $(".func > .btn").attr("disabled", true);
+                $("#numb_button").attr("disabled", true);
+                $("#left_branch").attr("disabled", true);
+            }
+
+            function full_textarea() {
+                console.log("AAAAAA");
+                var i;
+                var content = "";
+
+                for (i = 0; i < array.length; i++) {
+                    content += array[i];
+                    console.log(content);
+
+                }
+                $("#desc_show").val(content);
+
+                $("#desc").val(content);
+                content = "";
+                for (i = 0; i < display.length; i++) {
+                    content += display[i];
+                }
+            }
+        });
+    </script>
+{% endblock %}

@@ -198,7 +198,7 @@ def create_templ(request, pk):
             try:
                 name_templ_param = request.POST["name_%s" % (k)]
                 print(name_templ_param)
-                #template.protocol = request.POST["protocol"]
+                # template.protocol = request.POST["protocol"]
                 template.save()
                 type_templ_param = request.POST["type_%s" % (k)]
                 interv = Intervention.objects.get(pk=pk)
@@ -340,7 +340,7 @@ def research_detail(request, interv_pk, res_pk):
 def research_tasks(request, interv_pk):
     interv = Intervention.objects.get(pk=interv_pk)
     if request.method == "GET":
-        return render(request, 'project/research_tasks.html')
+        return render(request, 'project/research_tasks.html', {'interv': interv})
     else:
         template = Template.objects.get(intervention=interv)  # получаем шаблон исследования
         stages_kol = int(request.POST['stages_kol'])

@@ -8,8 +8,10 @@
     <div class="row justify-content-md-center">
         <div class="template col-10">
             <div class="p-3 mb-2">
-                <h4>Шаблон исследования для интервенции <a href="{% url 'interv_detail' interv.pk %}">"{{ interv.name }}"</a></h4>
-                <br>
+                <div class="row"><h4>Шаблон исследования для интервенции <a
+                        href="{% url 'interv_detail' interv.pk %}">"{{ interv.name }}"</a></h4>
+                    <i class="fas fa-edit"></i></div>
+<hr>
                 <h5>Параметры:</h5>
                 <ul>
                     {% for param in templ_params %}
@@ -23,23 +25,23 @@
                 </ul>
                 <b>Формула расчета эффективности: </b>{{ template.formula }}
             </div>
-                <div class="stages col-10">
-            {% for stage in stages %}
-                <h5>Этап: {{ stage.name }}</h5>
-                <ul>
-                    {% for task in tasks %}
-                        {% if task.stage == stage %}
-                        <li>
-                            <div class="r">
-                                {{ task.name}}
-                            </div>
-                        </li>
-                        {% endif %}
+            <div class="stages col-10">
+                {% for stage in stages %}
+                    <h5>Этап: {{ stage.name }}</h5>
+                    <ul>
+                        {% for task in tasks %}
+                            {% if task.stage == stage %}
+                                <li>
+                                    <div class="r">
+                                        {{ task.name }}
+                                    </div>
+                                </li>
+                            {% endif %}
 
-                    {% endfor %}
-                </ul>
-            {% endfor %}
-        </div>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
 
         </div>
     </div>
@@ -51,7 +53,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Исследование
-                     {% comment %}   <a href="{% url 'add_research' interv.pk %}">
+                        {% comment %}   <a href="{% url 'add_research' interv.pk %}">
                             <span class="fas fa-plus add_etap"></span>
                         </a></th>{% endcomment %}
                     <th scope="col">Период проведения</th>

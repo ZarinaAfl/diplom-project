@@ -1,20 +1,39 @@
-.row {
-    margin-top: 14px;
+.oper, .func, .numb {
+    margin-top: 1em;
 }
 
-.param {
-    font-size: 16px;
+.btn-save {
+    background-color: #2e009d;
 }
 
-.operations, .func {
-    margin-top: 14px !important;
+.modal_formula {
+    padding-top: 2em;
 }
 
-.funct {
-    width: 3em;
+.base {
+    padding-top: 1em;
+}
+h4 {
+    margin-top: 0.6em;
+}
+.for_sign {
+    font-size: 20px;
+    width: 2em;
 }
 
-.tool {
-    margin-left: 2em!important;
+#field_numb {
+    width: 130px;
 }
 
+.back {
+    float: right;
+}
+
+.save-btn {
+    text-align: center;
+    margin: auto;
+}
+
+.operat {
+    background-color: #b8b8b8;
+}

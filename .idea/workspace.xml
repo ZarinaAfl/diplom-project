@@ -3,24 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evbi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/static/css/interv_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/interv_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/add_parameters.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/add_parameters.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/base_criteria.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/create_formula.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/static/css/project.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/project.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/research_tasks.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/research_tasks.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/static/css/template_create.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/template_create.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/add_research.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_research.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/appoint_persons.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/static/css/template_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/static/css/template_detail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/add_parameters.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/add_parameters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/base_criteria.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/project/create_formula.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/create_formula.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/interv_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/interv_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/interv_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/our_researches.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/our_researches.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/research_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/research_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/research_tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/research_tasks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/template_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_create.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/template_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +73,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/project" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/diploma" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
   </component>
@@ -199,7 +196,7 @@
       <workItem from="1588423404344" duration="5669000" />
       <workItem from="1588444643113" duration="23778000" />
       <workItem from="1588751941980" duration="37729000" />
-      <workItem from="1588948296976" duration="31146000" />
+      <workItem from="1588948296976" duration="44426000" />
     </task>
     <servers />
   </component>
@@ -215,30 +212,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="417" y="152" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1581232010875" />
-    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588773981811">
+    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589109840171">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588773981811" />
-    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1588787598586">
+    <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589109840171" />
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1589111759832">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588787598586" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1589032181266">
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589111759832" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1589110354095">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589032181266" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1589032181266">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1589110354095" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1589110354095">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589032181266" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1589032181266">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1589110354095" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1589110354095">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589032181266" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1589032181266">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1589110354095" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1589110354095">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589032181266" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1589110354095" />
     <state width="1237" height="275" key="GridCell.Tab.1.bottom" timestamp="1588918398547">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -263,10 +260,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1588948606765" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1589041127534">
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1589117359797">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1589041127534" />
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1589117359797" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588697846092">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
