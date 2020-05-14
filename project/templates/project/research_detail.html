@@ -9,10 +9,10 @@
         <div class="research col-10">
             <div class="p-3 mb-2 info">
                 <h4>Исследование "{{ research.name }}"                             {% if research.status == 'in work' %}
-                                <a href="/intervention/{{ research.intervention.pk }}/fill_research/{{ research.pk }}">
-                                    <button type="button" class="btn-sm btn-fill btn">Заполнить</button>
-                                </a>
-                            {% endif %}</h4>
+                    <a href="/intervention/{{ research.intervention.pk }}/fill_research/{{ research.pk }}">
+                        <button type="button" class="btn-sm btn-fill btn">Заполнить</button>
+                    </a>
+                {% endif %}</h4>
                 <a href="{% url 'interv_detail' interv.pk %}"
                    style="color: grey; margin-top: 10em">{{ interv.name }}</a>
                 <hr>
@@ -46,9 +46,8 @@
                         {% endif %}
                     </div>
                 {% endfor %}
-                <b>Протокол исследования</b>:
-                <a href="{{ research.template.protocol.url }}" style="text-decoration: underline"
-                   download>{{ research.template.protocol }}</a>
+                <b> <a href="{{ research.template.protocol.url }}"
+                       download><i class="fas fa-file-alt"></i> Протокол исследования</a></b>
                 <table class="table">
                     <thead>
                     <tr>

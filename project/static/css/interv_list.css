@@ -24,6 +24,10 @@
     color: white;
 }
 
+p {
+    text-align: justify;
+}
+
 .card {
     margin-top: 1em;
     height: 7.3em;
