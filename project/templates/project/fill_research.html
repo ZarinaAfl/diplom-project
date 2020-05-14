@@ -6,12 +6,14 @@
 {% endblock %}
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="col-10  params p-3 mb-2">
-            <h4>Параметры исследования интервенции {{ interv.name }}</h4>
+        <div class="col-8  params p-4 mb-2">
+            <h4>Исследование "{{ research.name }}"</h4>
+            <a href="{% url 'interv_detail' interv.pk %}" style="color: grey; margin-top: 10em">{{ interv.name }}</a>
+            <hr>
             <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 1em">
                 {% csrf_token %}
                 {{ form.as_p }}
-{% comment %}                <div class="form-group">
+                {% comment %}                <div class="form-group">
                     <label for="exampleFormControlTextarea1">Название исследования</label>
                     <textarea class="form-control" name="name_research" id="exampleFormControlTextarea1"></textarea>
                 </div>{% endcomment %}

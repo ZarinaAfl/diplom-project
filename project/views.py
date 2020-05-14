@@ -1,17 +1,13 @@
-import pprint
-
-import simplejson as simplejson
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research, \
-    StageResearch, TaskStage, CustomUser, ResponsResearch
-from django.utils import timezone
+    StageResearch, TaskStage, CustomUser, ResponsTask
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, FileUploadForm
+from .forms import PostForm
 from django.shortcuts import redirect
 from py_expression_eval import Parser
 from .models import SPHERE, STATUS
@@ -47,6 +43,23 @@ def login_view(request):
 @login_required(login_url="/login")
 def profile_view(request):
     return render(request, 'project/profile.html', {'activate': 'profile'})
+
+@csrf_exempt
+def tasks_view(request):
+    user = CustomUser.objects.get(user=request.user)
+    if request.method == 'GET':
+        tasks = ResponsTask.objects.filter(responsible=user)
+        return render(request, 'project/my_tasks.html', {'activate': 'tasks', 'tasks': tasks})
+    else:
+        report = request.FILES['report']
+        print(report)
+        task_pk = request.POST.get('task_pk')
+        task = ResponsTask.objects.get(pk=task_pk)
+        task.report = report
+        task.save()
+        return HttpResponse(task_pk)
+
+
 
 
 @login_required(login_url="/login")
@@ -101,7 +114,7 @@ def interv_detail(request, pk):
         organization = current_user.organization
         close_users = CustomUser.objects.filter(organization=organization)
         return render(request, 'project/interv_detail.html',
-                      {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ,
+                      {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ, 'template': template,
                        'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users})
 
     if request.method == 'POST':
@@ -116,7 +129,7 @@ def interv_detail(request, pk):
         for i in range(int(req.get('tasks_count'))):
             task = TaskStage.objects.get(pk=req["%s[%s][%s]" % ("tasks", i, "pk")])
             responsible = CustomUser.objects.get(pk=req["%s[%s][%s]" % ("tasks", i, "executor")])
-            t = ResponsResearch(research=research, taskstage=task, responsible=responsible)
+            t = ResponsTask(research=research, taskstage=task, responsible=responsible)
             t.save()
 
         researches = Research.objects.filter(organization=organization)
@@ -190,7 +203,6 @@ def create_templ(request, pk):
         # form = PostForm
         return render(request, 'project/template_create.html', {'types': TYPE_PARAM, 'interv': interv})
     else:
-        pprint.pprint(request.POST)
         k = 0
         template = Template(intervention=interv, protocol=request.FILES['protocol'])
         template.save()
@@ -198,7 +210,6 @@ def create_templ(request, pk):
             try:
                 name_templ_param = request.POST["name_%s" % (k)]
                 print(name_templ_param)
-                # template.protocol = request.POST["protocol"]
                 template.save()
                 type_templ_param = request.POST["type_%s" % (k)]
                 interv = Intervention.objects.get(pk=pk)
@@ -254,7 +265,8 @@ def fill_research(request, pk, res_pk):
     if request.method == "GET":
         template = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=template)
-        return render(request, 'project/fill_research.html', {'interv': interv, 'params': templ_params})
+        research = Research.objects.get(pk=res_pk)
+        return render(request, 'project/fill_research.html', {'interv': interv, 'params': templ_params, 'research': research})
     else:
         k = 0
         while True:
@@ -269,9 +281,13 @@ def fill_research(request, pk, res_pk):
                     templ_param = TemplParam.objects.get(template=templ, name=param.name)
                     param_val = ResearchParamValue(research=research, param=templ_param)
 
-                    if param.type == 3 or param.type == 4:
+                    if param.type == 3:
                         instance = ResearchParamValue(research=research, param=templ_param,
                                                       file=request.FILES["file_%s" % param.id])
+                        instance.save()
+                    elif param.type == 4:
+                        instance = ResearchParamValue(research=research, param=templ_param,
+                                                          image=request.FILES["file_%s" % param.id])
                         instance.save()
                     else:
                         val = request.POST["sp_%s" % param.id]
@@ -330,10 +346,12 @@ def research_detail(request, interv_pk, res_pk):
     params = TemplParam.objects.filter(template=Template.objects.get(intervention=interv))
     res_params_value = ResearchParamValue.objects.filter(research=research)
     researches = Research.objects.filter(intervention=interv)
+    tasks = ResponsTask.objects.filter(research=research)
     return render(request, 'project/research_detail.html', {'research': research, 'interv': interv,
                                                             'params': params,
                                                             'params_value': res_params_value,
-                                                            'researches': researches})
+                                                            'researches': researches,
+                                                            'tasks': tasks})
 
 
 @login_required(login_url="login/")

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Intervention, Param, ParamValue, Template, TemplParam, Research, ResearchParamValue, StageResearch, \
-    TaskStage, CustomUser, EducatInst, ResponsResearch
+    TaskStage, CustomUser, EducatInst, ResponsTask
 
 admin.site.register(Intervention)
 admin.site.register(Param)
@@ -13,4 +13,4 @@ admin.site.register(StageResearch)
 admin.site.register(TaskStage)
 admin.site.register(CustomUser)
 admin.site.register(EducatInst)
-admin.site.register(ResponsResearch)
+admin.site.register(ResponsTask)

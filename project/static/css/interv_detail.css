@@ -11,6 +11,10 @@
     margin-left: -20px !important;
 }
 
+.responsible {
+    width: 120% !important;
+}
+
 img {
     max-width: 50%;
 }

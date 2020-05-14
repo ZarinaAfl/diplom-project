@@ -113,10 +113,11 @@ class ParamValue(models.Model):
 class Template(models.Model):
     intervention = models.ForeignKey(Intervention, related_name='research_template', on_delete=models.CASCADE,
                                      blank=False, null=False, verbose_name='Шаблон исследования')
-    description = models.TextField(verbose_name="Описание")
     formula = models.TextField(blank=True, null=True)
     protocol = models.FileField(default='file')
 
+    def __str__(self):
+        return "Шаблон интервенции " + self.intervention.name
 
 class TemplParam(models.Model):
     template = models.ForeignKey(Template, related_name='template_param', on_delete=models.CASCADE,
@@ -125,6 +126,9 @@ class TemplParam(models.Model):
     type = models.IntegerField(choices=TYPE_PARAM, null=False, blank=False, default=TYPE_PARAM[0][0],
                                verbose_name='Тип параметра')
 
+    def __str__(self):
+        return self.name
+
 
 class Research(models.Model):
     name = models.CharField(max_length=255, default='test')
@@ -132,11 +136,12 @@ class Research(models.Model):
                                      blank=False, null=False, verbose_name='Исследование интервенции', default=None)
     template = models.ForeignKey(Template, related_name='template', on_delete=models.CASCADE,
                                  blank=False, null=False)
-    effect = models.IntegerField(verbose_name='Эффективность интервенции по исследованию', default=0)
+    effect = models.FloatField(verbose_name='Эффективность интервенции по исследованию', default=0)
     organization = models.ForeignKey(EducatInst, related_name='org_research', default=None, on_delete=models.SET_NULL,
                                      null=True)
     status = models.CharField(choices=STATUS, max_length=50, blank=True, null=True, default=STATUS[0][0],
                               verbose_name="Статус")
+    responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.name
@@ -172,6 +177,8 @@ class ResearchParamValue(models.Model):
 
     # def get_files(self):
     #   return self.files.all()
+    def __str__(self):
+        return self.param.name
 
 
 class StageResearch(models.Model):
@@ -198,9 +205,20 @@ class TaskStage(models.Model):
         return "Задача \"%s\" стадии \"%s\"" % (self.name, self.stage.name)
 
 
-class ResponsResearch(models.Model):
+class ResponsTask(models.Model):
     research = models.ForeignKey(Research, related_name='task_stage', on_delete=models.CASCADE,
                                  blank=False, null=False, verbose_name='Исследование', default=None)
     taskstage = models.ForeignKey(TaskStage, related_name='task_stage', on_delete=models.CASCADE,
                                   blank=False, null=False, verbose_name='Этап задачи', default=None)
     responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    status = models.CharField(choices=STATUS, max_length=50, blank=True, null=True, default=STATUS[0][0],
+                              verbose_name="Статус")
+    report = models.FileField()
+
+    def is_completed(self):
+        if self.report:
+            return True
+        else:
+            return False
+
+

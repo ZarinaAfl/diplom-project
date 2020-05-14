@@ -111,21 +111,8 @@
                     var t = "type_".concat(j);
                     formdata.append(n, $(templ_params[j]).find("#sub_text").val());
                     formdata.append(t, $(templ_params[j]).find("#type_templ_param").val());
-                    var tmp = {
-                        "name": $(templ_params[j]).find("#sub_text").val(),
-                        "type_templ_param": $(templ_params[j]).find("#type_templ_param").val(),
-                    };
-                    {#formdata.append(j.toString(), tmp)#}
-                    {#data_templ_params.push(tmp);#}
-                    console.log(formdata)
                 }
 
-                var result = {
-                    {#"templ_params": data_templ_params,#}
-                    "protocol": protocol
-                };
-
-                console.log(formdata);
                 $.ajax({
                     type: "post",
                     data: formdata,

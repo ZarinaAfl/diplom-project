@@ -67,7 +67,7 @@
                         <th scope="row" class="number"></th>
                         <td><a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a></td>
                         <td>23.03.2020 - 30.04.2020</td>
-                        <td>{{ r.effect }}</td>
+                        <td>{{ r.effect|floatformat:2 }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

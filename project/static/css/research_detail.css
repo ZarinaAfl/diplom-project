@@ -15,6 +15,13 @@ img {
     margin-top: 7px;
 }
 
+.table {
+    width: 80%;
+}
+img {
+    max-width: 20%;
+}
+
 .info, .research_list {
     background-color: rgba(0, 176, 255, 0.11);
 }

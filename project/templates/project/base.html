@@ -20,7 +20,7 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #000839ff; position: fixed">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #000839ff; position: fixed">
     <!--<a class="navbar-brand" href="#">EVBI</a>-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,10 @@
 
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if activate == 'tasks' %} active{% endif %}"
+                       href="{% url 'tasks_view' %}">Задачи</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link {% if activate == 'profile' %} active{% endif %}"
                        href="{% url 'profile_view' %}">Профиль</a>

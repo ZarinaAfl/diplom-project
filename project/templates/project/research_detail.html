@@ -8,8 +8,10 @@
     <div class="row justify-content-md-center">
         <div class="research col-10">
             <div class="p-3 mb-2 info">
-                <h2>{{ interv.name }}</h2>
-                <h3>{{ research.name }}</h3>
+                <h4>Исследование "{{ research.name }}"</h4>
+                <a href="{% url 'interv_detail' interv.pk %}"
+                   style="color: grey; margin-top: 10em">{{ interv.name }}</a>
+                <hr>
                 {% for p in params_value %}
                     <div class="param">
                         <b>{{ p.param.name }}</b>:
@@ -25,46 +27,79 @@
                         {% if p.is_file %}
                             <a href="{{ p.file.url }}" download>{{ p.filename }}</a>
                         {% endif %}
-
-                        {% if p.param.is_image %}
+                        {% if sb.is_image %}
                             <br>
-                            <a href="{{ p.file.url }}"> <img href="{{ p.file.url }}"
-                                                             src="{{ p.file.url }}" class="img-responsive"/>
+                            <a href="{{ sb.file.url }}"> <img href="{{ sb.file.url }}"
+                                                              src="{{ sb.file.url }}" class="img-responsive"/>
+                            </a>
+                        {% endif %}
+
+                        {% if p.is_image %}
+                            <br>
+                            <a href="{{ p.image.url }}"> <img href="{{ p.image.url }}"
+                                                              src="{{ p.image.url }}" class="img-responsive"/>
                             </a>
                         {% endif %}
                     </div>
                 {% endfor %}
+
+                <table class="table">
+                    <thead>
+                    {#                    <tr>#}
+                    {#                        <th></th>#}
+                    {#                        <th>За 1 день до исследования</th>#}
+                    {#                        <th></th>#}
+                    {#                        <th></th>#}
+                    {#                    </tr>#}
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Задача</th>
+                        <th scope="col">Ответственный</th>
+                        <th scope="col">Статус</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for t in tasks %}
+                        <tr>
+                            <th scope="row" class="number"></th>
+                            <td class="w-10">{{ t.taskstage.name }}</td>
+                            <td>{{ t.responsible.fullname }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
-    <div class="row justify-content-md-center">
-        <div class="template col-10">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Исследование
-{% comment %}                        <a href="{% url 'add_research' interv.pk %}">
-                            <span class="fas fa-plus add_etap"></span>
-                        </a></th>{% endcomment %}
-                    <th scope="col">Период проведения</th>
-                    <th scope="col">Эффективность</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for r in researches %}
-                    <tr>
-                        <th scope="row" class="number"></th>
-                        <td><a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a></td>
-                        <td>23.03.2020 - 30.04.2020</td>
-                        <td>{{ r.effect }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
+    {#    <div class="row justify-content-md-center">#}
+    {#        <div class="template col-10">#}
+    {#            <table class="table">#}
+    {#                <thead>#}
+    {#                <tr>#}
+    {#                    <th scope="col">#</th>#}
+    {#                    <th scope="col">Исследование#}
+    {#{% comment %}                        <a href="{% url 'add_research' interv.pk %}">#}
+    {#                            <span class="fas fa-plus add_etap"></span>#}
+    {#                        </a></th>{% endcomment %}#}
+    {#                    <th scope="col">Период проведения</th>#}
+    {#                    <th scope="col">Эффективность</th>#}
+    {#                </tr>#}
+    {#                </thead>#}
+    {#                <tbody>#}
+    {#                {% for r in researches %}#}
+    {#                    <tr>#}
+    {#                        <th scope="row" class="number"></th>#}
+    {#                        <td><a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a></td>#}
+    {#                        <td>23.03.2020 - 30.04.2020</td>#}
+    {#                        <td>{{ r.effect }}</td>#}
+    {#                    </tr>#}
+    {#                {% endfor %}#}
+    {#                </tbody>#}
+    {#            </table>#}
+    {#        </div>#}
+    {#    </div>#}
 
 
     <script type="text/javascript">

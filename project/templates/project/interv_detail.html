@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'css/interv_detail.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="row">
+    <div class="row justify-content-md-center">
         <div class="col-8">
             <div class="p-3 mb-2 info">
                 <div class="date">
@@ -49,21 +49,23 @@
                     <button class="btn add_research" data-toggle="modal" data-target="#exampleModalCenter"><i
                             class="fas fa-plus add_etap"></i></button>
 
-                    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+                    <div class="modal fade bd-example-modal-sm" id="exampleModalCenter" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="width: 55%">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle">Новое исследование</h5>
-
-
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="alert alert-primary" role="alert">
-                                        This is a primary alert—check it out!
+                                    <div class="alert alert-primary" role="alert" style="font-size: 15px">
+                                        Исследование должно проводиться в соответствии с
+                                        <a href="{{ template.protocol.url }}" style="text-decoration: underline"
+                                           download>протоколом.</a>
+                                        Ознакомьтесь с ним и назначьте ответственного за исследование и ответственных
+                                        лиц по задачам.
                                     </div>
                                     <div class="form-group">
                                         <label for="research_name">Название исследования</label>
@@ -71,7 +73,7 @@
                                                aria-describedby="emailHelp">
                                     </div>
                                     <label for="exampleFormControlSelect1">Ответственный</label>
-                                    <select class="col-6 form-control" id="exampleFormControlSelect1">
+                                    <select class="col-6 form-control responsible" id="exampleFormControlSelect1">
                                         {% for user in users %}
                                             <option>{{ user.fullname }}</option>
                                         {% endfor %}
@@ -83,9 +85,9 @@
                                         {% for t in tasks %}
                                             {% if t.stage == s %}
                                                 <div class="task" id="{{ t.pk }}">
-                                                    <p><b>Задача: </b>{{ t.name }}</p>
+                                                    <p><b>{{ forloop.counter }}. </b>{{ t.name }}</p>
                                                     <div class="form-group stage col-6" id="{{ s.pk }}">
-                                                        <select class="form-control">
+                                                        <select class="form-control responsible">
                                                             {% for user in users %}
                                                                 <option class="executor"
                                                                         id="{{ user.pk }}">{{ user.fullname }}</option>
@@ -113,11 +115,8 @@
                         </div>
                     </div>
 
-                    <a href="
-
-
-
-                            {% if templ %}{% url 'template_detail' interv.pk %}{% else %}{% url 'create_template' interv.pk %}{% endif %}">
+                    <a href="                            {% if templ %}{% url 'template_detail' interv.pk %}
+{% else %}{% url 'create_template' interv.pk %}{% endif %}">
                         <button type="button" class="template btn">Шаблон</button>
                     </a>
 
