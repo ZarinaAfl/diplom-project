@@ -169,7 +169,7 @@
                         data_stages, data_tasks, csrfmiddlewaretoken: '{{ csrf_token }}'
                     },
                     success: function (response) {
-                        window.location = "http://127.0.0.1:8000/intervention/".concat(response).concat("/template_detail/");
+                        window.location = "/intervention/".concat(response).concat("/template_detail/");
                     }
                 });
             });

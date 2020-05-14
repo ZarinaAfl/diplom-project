@@ -2,6 +2,14 @@
     margin-top: 10px;
 }
 
+.btn-fill {
+    position: absolute;
+    right: 3em;
+    top: 2em;
+    background-color: #2e009d;
+    color: white;
+}
+
 .research {
     margin-left: -20px !important;
 }
@@ -15,9 +23,7 @@ img {
     margin-top: 7px;
 }
 
-.table {
-    width: 80%;
-}
+
 img {
     max-width: 20%;
 }

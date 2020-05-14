@@ -115,7 +115,7 @@ def interv_detail(request, pk):
         close_users = CustomUser.objects.filter(organization=organization)
         return render(request, 'project/interv_detail.html',
                       {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ, 'template': template,
-                       'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users})
+                       'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users, 'activate': 'intervs',})
 
     if request.method == 'POST':
         req = request.POST

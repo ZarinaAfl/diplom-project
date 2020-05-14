@@ -104,7 +104,7 @@
                     type: "post",
                     data: result,
                     success: function (response) {
-                        window.location = "http://127.0.0.1:8000/intervention/".concat({{ interv.pk }}).concat("/fill_params");
+                        window.location = "/intervention/".concat({{ interv.pk }}).concat("/fill_params");
                     }
                 });
             });
