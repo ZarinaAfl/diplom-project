@@ -71,7 +71,7 @@ def interv_list(request):
             intervs = Intervention.objects.filter(name__icontains=title_contains).order_by('created_date')
 
         return render(request, 'project/interv_list.html',
-                      {'intervs': intervs, 'activate': 'intervs', 'sphere': SPHERE})
+                      {'intervs': intervs, 'activate': 'intervs', 'spheres': SPHERE})
 
     if request.method == 'POST':
         req = request.POST

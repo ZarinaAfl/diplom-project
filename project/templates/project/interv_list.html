@@ -6,106 +6,105 @@
 {% endblock %}
 {% block content %}
     <div class="row justify-content-md-center">
-        <div class="col-8">
+        <div class="col-9">
             <div class="row">
-                <div class="col-11">
+                <div class="col-12">
                     <div class="card">
-                        <h6 class="card-header">Фильтр</h6>
-                        <div class="row">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-1 all_filter">
-                                        <div class="dropdown">
-                                            <button class="btn all_btn btn-primary dropdown-toggle" type="button"
-                                                    data-toggle="dropdown">Все
-                                                <span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <input class="form-control" id="myInput" type="text" placeholder="пои">
-                                                <li><a href="#">HTML</a></li>
-                                                <li><a href="#">CSS</a></li>
-                                                <li><a href="#">JavaScript</a></li>
-                                                <li><a href="#">jQuery</a></li>
-                                                <li><a href="#">Bootstrap</a></li>
-                                                <li><a href="#">Angular</a></li>
-                                            </ul>
+                        <h6 class="card-header"></h6>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-1 all_filter">
+                                    <div class="dropdown">
+                                        <button class="btn all_btn btn-primary dropdown-toggle" type="button"
+                                                data-toggle="dropdown">Все
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu">
+                                            <input class="form-control" id="myInput" type="text" placeholder="пои">
+                                            {% for s in spheres %}
+                                                <li>{{ s.1 }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <form class="form-inline search" method="get" action=".">
+                                        <div class="form-group has-search">
+                                            <span class="fa fa-search form-control-feedback"></span>
+                                            <input size="80" type="text" class="form-control" name="title_contains"
+                                                   placeholder="Поиск...">
                                         </div>
-                                    </div>
-                                    <div class="col-10">
-                                        <form class="form-inline search" method="get" action=".">
-                                            <div class="form-group has-search">
-                                                <span class="fa fa-search form-control-feedback"></span>
-                                                <input size="77" type="text" class="form-control" name="title_contains"
-                                                       placeholder="Поиск...">
-                                            </div>
-                                        </form>
-                                    </div>
-
+                                    </form>
+                                </div>
+                                <div class="col-1">
+                                    <button type="button" class="btn add_btn" data-toggle="modal"
+                                            data-target="#exampleModalCenter">
+                                        <span class="fas fa-plus add_etap"></span> Добавить
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <div class="col-1">
-                    <button type="button" class="btn add_btn" data-toggle="modal" data-target="#exampleModalCenter">
-                        <span class="fas fa-plus add_etap"></span> Добавить
-                    </button>
 
-                    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Добавление интервенции</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+
+                <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Добавление интервенции</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="research_name">Название</label>
+                                    <input type="email" class="form-control" id="research_name"
+                                           aria-describedby="emailHelp">
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="research_name">Название</label>
-                                        <input type="email" class="form-control" id="research_name"
-                                               aria-describedby="emailHelp">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Описание</label>
-                                        <textarea class="form-control interv_desc" id="exampleFormControlTextarea1"
-                                                  rows="3"></textarea>
-                                    </div>
-                                    <label for="exampleFormControlSelect1">Дисциплина</label>
-                                    <select class="col-6 form-control sphere" name="sphere"
-                                            id="exampleFormControlSelect1">
-                                        {% for s in sphere %}
-                                            <option class="{{ s.0 }}">{{ s.1 }}</option>
-                                        {% endfor %}
-                                    </select>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Описание</label>
+                                    <textarea class="form-control interv_desc" id="exampleFormControlTextarea1"
+                                              rows="3"></textarea>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть
-                                    </button>
-                                    <button type="submit" id="further" name="singlebutton"
-                                            class="btn btn-save btn-primary">
-                                        Далее
-                                    </button>
-                                </div>
+                                <label for="exampleFormControlSelect1">Дисциплина</label>
+                                <select class="col-6 form-control sphere" name="sphere"
+                                        id="exampleFormControlSelect1">
+                                    {% for s in spheres %}
+                                        <option class="{{ s.0 }}">{{ s.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть
+                                </button>
+                                <button type="submit" id="further" name="singlebutton"
+                                        class="btn btn-save btn-primary">
+                                    Далее
+                                </button>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
             </div>
 
-            <div class="intervs">
-                {% for interv in intervs %}
-                    <div class="interv">
-                        <div class="date">
-                            {{ interv.created_date }}
+            <div class=" row intervs">
+                <div class="col-12">
+                    {% for interv in intervs %}
+                        <div class="interv">
+                            <div class="date">
+                                {{ interv.created_date }}
+                            </div>
+                            <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a>
+                            </h3>
+                            <p class="annotation" row>{{ interv.annotation|linebreaksbr }}</p>
                         </div>
-                        <h3><a href="{% url 'interv_detail' pk=interv.pk %}" class="header">{{ interv.name }}</a></h3>
-                        <p class="annotation" row>{{ interv.annotation|linebreaksbr }}</p>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+
             </div>
 
         </div>
@@ -139,7 +138,7 @@
                         sphere: sphere,
                         csrfmiddlewaretoken: '{{ csrf_token }}'
                     },
-                       success: function (response) {
+                    success: function (response) {
                         window.location = "/intervention/".concat(response).concat("/add_parameters/");
                     }
                 });

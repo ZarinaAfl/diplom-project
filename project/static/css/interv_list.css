@@ -3,14 +3,22 @@
 }
 
 .card-body {
-    padding-top: 0.5em;
+    margin-top: -0.3em;
+    padding: 0.5em;
+}
+
+.all_btn {
+    width: 4.5em;
 }
 
 .all_btn, .add_btn {
     margin-top: 10px;
     background-color: #2e009d;
     color: white;
+    height: 2.9em;
 }
+
+
 
 .btn-save {
     background-color: #2e009d;
@@ -30,10 +38,10 @@ p {
 
 .card {
     margin-top: 1em;
-    height: 7.3em;
+    height: 6.5em;
 }
 
-.input-group, .add_btn {
+.input-group {
     margin-top: 1em;
 }
 
@@ -51,7 +59,7 @@ p {
 
 .search {
     margin-top: 10px;
-    padding-left: 0.5em;
+    margin-left: 0.5em;
 }
 
 /* Styles for wrapping the search box */
@@ -92,7 +100,7 @@ input {
 }
 
 .add_btn {
-    margin-left: -1.2em;
+    margin-left: -0.3em;
 }
 
 .dropdown-toggle {
