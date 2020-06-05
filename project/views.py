@@ -19,6 +19,9 @@ def logout_view(request):
     logout(request)
     return redirect("login_view")
 
+def home_view(request):
+    return render(request, 'project/home.html')
+
 
 def login_view(request):
     # if not request.user.is_anonymous:
@@ -346,7 +349,10 @@ def research_detail(request, interv_pk, res_pk):
     params = TemplParam.objects.filter(template=Template.objects.get(intervention=interv))
     res_params_value = ResearchParamValue.objects.filter(research=research)
     researches = Research.objects.filter(intervention=interv)
-    tasks = ResponsTask.objects.filter(research=research)
+    tasks = ResponsTask.objects.filter(research=research).order_by('id')
+
+    print(tasks)
+
     return render(request, 'project/research_detail.html', {'research': research, 'interv': interv,
                                                             'params': params,
                                                             'params_value': res_params_value,

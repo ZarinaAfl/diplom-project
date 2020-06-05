@@ -8,9 +8,10 @@
     <div class="row justify-content-md-center">
         <div class="template col-10">
             <div class="p-3 mb-2">
-                <div class="row"><h4>Шаблон исследования для интервенции <a
-                        href="{% url 'interv_detail' interv.pk %}">"{{ interv.name }}"</a></h4>
+                <div class="row"><h4>Шаблон исследования для интервенции</h4>
                     <i class="fas fa-edit"></i></div>
+               <a href="{% url 'interv_detail' interv.pk %}"
+                       style="color: darkblue; margin-top: 10em">{{ interv.name }}</a>
 <hr>
                             <h5>Протокол: <a href="{{ research.template.protocol.url }}"
                                download><i class="fas fa-file-alt"></i></a></h5>
@@ -57,8 +58,7 @@
                         {% comment %}   <a href="{% url 'add_research' interv.pk %}">
                             <span class="fas fa-plus add_etap"></span>
                         </a></th>{% endcomment %}
-                    <th scope="col">Период проведения</th>
-                    <th scope="col">Эффективность</th>
+                    <th scope="col">Эффективность, %</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,7 +67,6 @@
 
                         <th scope="row" class="number"></th>
                         <td><a href="{% url 'research_detail' interv.pk r.pk %}"> {{ r.name }}</a></td>
-                        <td>23.03.2020 - 30.04.2020</td>
                         <td>{{ r.effect|floatformat:2 }}</td>
                     </tr>
                 {% endfor %}

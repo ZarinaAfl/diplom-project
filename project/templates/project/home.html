@@ -1,0 +1,38 @@
+{% extends 'project/base.html' %}
+{% load static %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-4">PROVE</h1>
+        <p class="lead">платформа управления исследованиями эффективности образовательных интервенций</p>
+
+
+        <div class="steps-form">
+            <div class="steps-row setup-panel">
+                <div class="steps-step">
+                    <a href="#step-9" type="button" class="btn btn-indigo btn-circle">1</a>
+                    <p>Загрузка интервенции</p>
+                </div>
+                <div class="steps-step">
+                    <a href="#step-10" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+                    <p>Создание шаблона <br> исследования</p>
+                </div>
+                <div class="steps-step">
+                    <a href="#step-11" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                    <p>Проведение исследований<br> согласно протоколу</p>
+                </div>
+                <div class="steps-step">
+                    <a href="#step-11" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
+                    <p>Заполнение данных<br>получение результатов</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="structure center"><img src="/media/structure.PNG" alt="альтернативный текст" class="center">
+    </div>
+
+
+{% endblock %}

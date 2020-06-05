@@ -7,11 +7,13 @@
     <div class="row justify-content-md-center">
         <div class="col-8 post params p-6 mb-2">
             <div class="p-3">
-                <h4>Дополнительные параметры для интервенции "{{ interv.name }}"</h4>
+                <h4>Дополнительные параметры</h4>
+                <a href="{% url 'interv_detail' interv.pk %}"
+                   style="color: darkblue; margin-top: 10em">{{ interv.name }}</a>
                 <hr>
-{#                <p class="instruction" style="font-size: 11pt; color: #5c5c5c;">#}
-{#                    Введите дополнительные параметры интервенции#}
-{#                </p>#}
+                {#                <p class="instruction" style="font-size: 11pt; color: #5c5c5c;">#}
+                {#                    Введите дополнительные параметры интервенции#}
+                {#                </p>#}
                 <form enctype="multipart/form-data" name="form" method="post" style="margin-top: 1em">
                     {% csrf_token %}
                     {{ form.as_p }}

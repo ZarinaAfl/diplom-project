@@ -22,8 +22,10 @@ ROLE_CHOICES = (
 
 SPHERE = (
     ('M', 'Математика'),
+    ('I', 'Информатика'),
     ('R', 'Русский язык'),
     ('L', 'Литература'),
+    ('F', 'Иностранный язык'),
 )
 
 STATUS = (
@@ -43,7 +45,7 @@ class EducatInst(models.Model):
 class CustomUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='custom_user')
     fullname = models.CharField(max_length=100, verbose_name="ФИО", default="")
-    organization = models.ForeignKey(EducatInst, on_delete=models.CASCADE)
+    educat_inst = models.ForeignKey(EducatInst, on_delete=models.CASCADE)
     role = models.IntegerField(choices=ROLE_CHOICES, blank=True, null=True, default=ROLE_CHOICES[0][0],
                                verbose_name="Роль")
 
@@ -118,6 +120,7 @@ class Template(models.Model):
 
     def __str__(self):
         return "Шаблон интервенции " + self.intervention.name
+
 
 class TemplParam(models.Model):
     template = models.ForeignKey(Template, related_name='template_param', on_delete=models.CASCADE,
@@ -213,12 +216,10 @@ class ResponsTask(models.Model):
     responsible = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
     status = models.CharField(choices=STATUS, max_length=50, blank=True, null=True, default=STATUS[0][0],
                               verbose_name="Статус")
-    report = models.FileField()
+    report = models.FileField(null=True)
 
     def is_completed(self):
         if self.report:
             return True
         else:
             return False
-
-
