@@ -2,38 +2,65 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71644c4-a855-4b08-8fdc-295314b9f9e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/media/structure.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/static/css/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/TFA_manual_F3LITEm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/TFA_manual_FUkkJdc.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/TFA_manual_XIq9f5r.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/TFA_manual_lt7Bmv8.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/TFA_manual_nFL0TKO.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_1990686.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_1990686_CFpbSiD.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_1990686_RTlcRI1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2014222.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2014245.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2014245_2G67Biv.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2016969.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2016969_HLPXdcW.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2016969_W6H0Mi0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_2969814_1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_3013974.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_3013974_e8aioLl.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Акт_КС-2_3013974_sSZTB6j.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/evbi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evbi/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/evbi/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0002_auto_20200105_1418.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0003_auto_20200107_1114.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0004_auto_20200107_1204.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0005_auto_20200126_1127.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0006_auto_20200126_2044.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0007_auto_20200126_2045.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0008_uploaddata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0009_auto_20200208_1257.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0010_auto_20200208_1338.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0011_auto_20200208_1442.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0012_auto_20200208_1511.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0013_auto_20200209_1004.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0014_auto_20200209_1040.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0015_auto_20200209_1354.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0016_remove_uploaddata_header_for_file.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0017_paramvalue_file.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0018_remove_paramvalue_file.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0019_paramvalue_file.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0020_auto_20200212_1234.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0021_remove_paramvalue_file_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0022_paramvalue_image.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0023_auto_20200212_1341.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0024_template_templparam.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0025_auto_20200214_1625.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0026_templparam_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0027_template_formula.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0028_auto_20200309_1449.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0029_research_intervention.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0030_research_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0031_research_effect.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0032_customuser.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0033_auto_20200418_1122.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0034_stageresearch_taskstage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0035_auto_20200426_1750.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0036_auto_20200426_1811.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0037_research_organization.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0038_auto_20200428_1725.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0039_research_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0040_auto_20200505_1155.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0041_auto_20200505_1210.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0042_research_status.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0043_auto_20200508_1803.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0044_research_responsible.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0045_remove_template_description.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0046_auto_20200512_1325.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0047_auto_20200512_1339.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0048_auto_20200512_1540.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/migrations/0049_auto_20200513_1453.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/add_parameters.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/add_parameters.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/create_formula.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/create_formula.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/fill_params.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/fill_params.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/research_tasks.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/research_tasks.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/project/template_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/project/template_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/project/template_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +80,43 @@
       <set />
     </option>
     <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="diplom@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="diplom@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="diplom@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="diplom: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="diplom@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="diplom: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="diplom@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="diplom: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="diplom@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="diplom: database" type="162271b6:PgImplModel$Database" />
+        <item name="extensions" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="Django default" type="feb32156:DbDataSourceImpl" />
@@ -90,12 +154,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/diplom-project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\diplom-project\project" />
       <recent name="C:\diplom-project\media" />
       <recent name="C:\Diplom\project" />
       <recent name="C:\Diplom\project\migrations" />
@@ -225,7 +290,10 @@
       <workItem from="1590761984340" duration="10304000" />
       <workItem from="1590840788781" duration="1557000" />
       <workItem from="1591033977187" duration="1331000" />
-      <workItem from="1591092686986" duration="7292000" />
+      <workItem from="1591092686986" duration="8025000" />
+      <workItem from="1591365311805" duration="15170000" />
+      <workItem from="1591428288610" duration="19981000" />
+      <workItem from="1592241657800" duration="2905000" />
     </task>
     <servers />
   </component>
@@ -233,34 +301,34 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="321" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591364628423">
+    <state x="54" y="6" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591478537350">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="321" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1591364628423" />
+    <state x="54" y="6" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1591478537350" />
     <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589109840171">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1589109840171" />
-    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1591364310145">
+    <state x="421" y="100" key="FileChooserDialogImpl" timestamp="1591730945074">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1591364310145" />
-    <state width="1237" height="276" key="GridCell.Tab.0.bottom" timestamp="1591038258687">
+    <state x="421" y="100" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1591730945074" />
+    <state width="1237" height="137" key="GridCell.Tab.0.bottom" timestamp="1592241777935">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="276" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1591038258687" />
-    <state width="1237" height="276" key="GridCell.Tab.0.center" timestamp="1591038258685">
+    <state width="1237" height="137" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1592241777935" />
+    <state width="1237" height="137" key="GridCell.Tab.0.center" timestamp="1592241777934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="276" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1591038258685" />
-    <state width="1237" height="276" key="GridCell.Tab.0.left" timestamp="1591038258684">
+    <state width="1237" height="137" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1592241777934" />
+    <state width="1237" height="137" key="GridCell.Tab.0.left" timestamp="1592241777934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="276" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1591038258684" />
-    <state width="1237" height="276" key="GridCell.Tab.0.right" timestamp="1591038258685">
+    <state width="1237" height="137" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1592241777934" />
+    <state width="1237" height="137" key="GridCell.Tab.0.right" timestamp="1592241777934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="276" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1591038258685" />
+    <state width="1237" height="137" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1592241777934" />
     <state width="1237" height="275" key="GridCell.Tab.1.bottom" timestamp="1588918398547">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -277,30 +345,34 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="275" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1588918398546" />
-    <state width="198" height="457" key="HiddenNamespacesPopup" timestamp="1591364618242">
+    <state width="198" height="457" key="HiddenNamespacesPopup" timestamp="1591364763178">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="198" height="457" key="HiddenNamespacesPopup/0.0.1280.680@0.0.1280.680" timestamp="1591364618242" />
+    <state width="198" height="457" key="HiddenNamespacesPopup/0.0.1280.680@0.0.1280.680" timestamp="1591364763178" />
     <state x="144" y="0" key="SettingsEditor" timestamp="1588422426324">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="144" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588422426324" />
-    <state x="443" y="175" width="533" height="291" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1589979983694">
+    <state x="535" y="235" width="315" height="221" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1591551909093">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="443" y="175" width="533" height="291" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1280.680@0.0.1280.680" timestamp="1589979983694" />
-    <state x="350" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1590819583046">
+    <state x="535" y="235" width="315" height="221" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1280.680@0.0.1280.680" timestamp="1591551909093" />
+    <state x="443" y="175" width="533" height="307" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1591514727992">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="350" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1590819583046" />
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1591093462041">
+    <state x="443" y="175" width="533" height="307" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1280.680@0.0.1280.680" timestamp="1591514727992" />
+    <state x="350" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1591514606549">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591093462041" />
-    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1589487522196">
+    <state x="350" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1591514606549" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1591365318442">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1589487522196" />
+    <state x="349" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591365318442" />
+    <state x="335" y="76" width="591" height="488" key="find.popup" timestamp="1591384141912">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="335" y="76" width="591" height="488" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1591384141912" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1588697846092">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -311,7 +383,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/project/views.py</url>
-          <line>372</line>
+          <line>369</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>

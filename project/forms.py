@@ -1,16 +1,16 @@
 from django import forms
 
-from .models import Intervention, Param, ParamValue, Template
+from .models import Intervention, IntervParam, ParamValue, Template
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Intervention
-        fields = ('name', 'annotation', 'sphere')
+        fields = ('name', 'annotation', 'subject')
 
 class ParamForm(forms.ModelForm):
     class Meta:
-        model = Param
+        model = IntervParam
         fields = ('name', 'type')
 
 

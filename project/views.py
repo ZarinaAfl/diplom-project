@@ -4,13 +4,14 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
-from .models import Intervention, TYPE_PARAM, Param, ParamValue, TemplParam, Template, ResearchParamValue, Research, \
+from .models import Intervention, TYPE_PARAM, IntervParam, ParamValue, TemplParam, Template, ResearchParamValue, \
+    Research, \
     StageResearch, TaskStage, CustomUser, ResponsTask
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
 from py_expression_eval import Parser
-from .models import SPHERE, STATUS
+from .models import SUBJECT, STATUS
 
 parser = Parser()
 
@@ -18,6 +19,7 @@ parser = Parser()
 def logout_view(request):
     logout(request)
     return redirect("login_view")
+
 
 def home_view(request):
     return render(request, 'project/home.html')
@@ -47,6 +49,7 @@ def login_view(request):
 def profile_view(request):
     return render(request, 'project/profile.html', {'activate': 'profile'})
 
+
 @csrf_exempt
 def tasks_view(request):
     user = CustomUser.objects.get(user=request.user)
@@ -63,8 +66,6 @@ def tasks_view(request):
         return HttpResponse(task_pk)
 
 
-
-
 @login_required(login_url="/login")
 def interv_list(request):
     if request.method == 'GET':
@@ -74,7 +75,7 @@ def interv_list(request):
             intervs = Intervention.objects.filter(name__icontains=title_contains).order_by('created_date')
 
         return render(request, 'project/interv_list.html',
-                      {'intervs': intervs, 'activate': 'intervs', 'spheres': SPHERE})
+                      {'intervs': intervs, 'activate': 'intervs', 'spheres': SUBJECT})
 
     if request.method == 'POST':
         req = request.POST
@@ -82,14 +83,14 @@ def interv_list(request):
         name = req.get('interv_name')
         desc = req.get('interv_desc')
         sphere = req.get('sphere')
-        interv = Intervention(name=name, annotation=desc, sphere=sphere, author=request.user)
+        interv = Intervention(name=name, annotation=desc, subject=sphere, author=request.user)
         interv.save()
         return HttpResponse(interv.pk)
 
 
 def interv_detail(request, pk):
     interv = Intervention.objects.get(pk=pk)
-    params = Param.objects.filter(intervention=interv)
+    params = IntervParam.objects.filter(intervention=interv)
     subvalues = []
     stages = []
     tasks = []
@@ -118,7 +119,8 @@ def interv_detail(request, pk):
         close_users = CustomUser.objects.filter(organization=organization)
         return render(request, 'project/interv_detail.html',
                       {'interv': interv, 'params': params, 'subvalues': subvalues, 'templ': templ, 'template': template,
-                       'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users, 'activate': 'intervs',})
+                       'researches': researches, 'stages': stages, 'tasks': tasks, 'users': close_users,
+                       'activate': 'intervs', })
 
     if request.method == 'POST':
         req = request.POST
@@ -153,7 +155,7 @@ def add_parameters(request, pk):
                 name_subparam = request.POST["%s[%s][%s]" % ("subparams", k, "name")]
                 type_subparam = request.POST["%s[%s][%s]" % ("subparams", k, "type_subparam")]
                 interv = Intervention.objects.get(pk=pk)
-                subparam = Param(intervention=interv, name=name_subparam, type=type_subparam)
+                subparam = IntervParam(intervention=interv, name=name_subparam, type=type_subparam)
                 subparam.save()
                 k += 1
             except Exception as e:
@@ -167,14 +169,14 @@ def fill_params(request, pk):
     # return render(request, 'project/fill_params.html')
     interv = Intervention.objects.get(pk=pk)
     if request.method == "GET":
-        params = Param.objects.filter(intervention=interv)
+        params = IntervParam.objects.filter(intervention=interv)
         return render(request, 'project/fill_params.html', {'interv': interv, 'params': params})
     # POST-method
     else:
         k = 0
         while True:
             collection = []
-            params = Param.objects.filter(intervention=interv)
+            params = IntervParam.objects.filter(intervention=interv)
             collection.append({"params": params})
             for c in collection:
                 for param in c["params"]:
@@ -269,7 +271,8 @@ def fill_research(request, pk, res_pk):
         template = Template.objects.get(intervention=interv)
         templ_params = TemplParam.objects.filter(template=template)
         research = Research.objects.get(pk=res_pk)
-        return render(request, 'project/fill_research.html', {'interv': interv, 'params': templ_params, 'research': research})
+        return render(request, 'project/fill_research.html',
+                      {'interv': interv, 'params': templ_params, 'research': research})
     else:
         k = 0
         while True:
@@ -290,7 +293,7 @@ def fill_research(request, pk, res_pk):
                         instance.save()
                     elif param.type == 4:
                         instance = ResearchParamValue(research=research, param=templ_param,
-                                                          image=request.FILES["file_%s" % param.id])
+                                                      image=request.FILES["file_%s" % param.id])
                         instance.save()
                     else:
                         val = request.POST["sp_%s" % param.id]
@@ -317,7 +320,6 @@ def calculate_effect(research):
     vars = ['a', 'b', 'c', 'd', 'e', 'x', 'y', 'z']
     var_val = {}
     k = 0
-    print("ДО  " + formula)
     for p in params:
         if p.is_number():
             print(p.param.name + ' ' + str(p.value))
@@ -326,13 +328,8 @@ def calculate_effect(research):
                 formula = formula.replace(name_p, vars[k])
                 var_val[vars[k]] = p.value
                 k = k + 1
-    print("ПОСЛЕ  " + formula)
-
     result = parser.parse(formula).evaluate(var_val)
-    print(result)
     return result
-    # ОБРАБОТАТЬ ФУНКЦИИ
-
 
 def our_researches(request):
     current_user = CustomUser.objects.get(user=request.user)

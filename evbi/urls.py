@@ -20,6 +20,8 @@ from django.urls import path, include
 from evbi import settings
 
 urlpatterns = [
+    path(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
     path('admin/', admin.site.urls),
     path('', include('project.urls')),
 ]

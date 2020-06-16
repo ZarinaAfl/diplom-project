@@ -9,5 +9,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Diplom\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="diplom@localhost" uuid="23b77e5a-5111-4289-ae71-07a5fddd9f97">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/diplom</jdbc-url>
+    </data-source>
   </component>
 </project>
